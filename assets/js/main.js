@@ -99,18 +99,9 @@
     });
   }
 
-    const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
+    // Typed.js sera initialisé par i18n.js après le chargement des traductions
+    // On initialise window.typedInstance à null pour que i18n.js puisse le gérer
+    window.typedInstance = null;
 
     let skilsContent = select('.skills-content');
   if (skilsContent) {
@@ -202,5 +193,16 @@
   });
 
     new PureCounter();
+
+    // Gestionnaire pour le sélecteur de langue
+    const languageSelector = select('#language-selector');
+    if (languageSelector) {
+      on('change', '#language-selector', function(e) {
+        const selectedLang = this.value;
+        if (window.i18n && window.i18n.setLanguage) {
+          window.i18n.setLanguage(selectedLang);
+        }
+      });
+    }
 
 })()

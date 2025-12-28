@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bryckaert Anthony</title>
+  <title>Anthony Bryckaert</title>
 
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -30,24 +30,38 @@
 
     <nav id="navbar" class="navbar nav-menu">
       <ul>
-        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a>
+        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span
+              data-i18n="nav.home">Home</span></a></li>
+        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span
+              data-i18n="nav.about">About</span></a></li>
+        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span
+              data-i18n="nav.resume">Resume</span></a></li>
+        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span
+              data-i18n="nav.portfolio">Portfolio</span></a>
         </li>
-        <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+        <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span
+              data-i18n="nav.services">Services</span></a></li>
+        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span
+              data-i18n="nav.contact">Contact</span></a></li>
       </ul>
     </nav>
+    <div class="language-selector-container">
+      <select id="language-selector">
+        <option value="en">🇬🇧 English</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="es">🇪🇸 Español</option>
+      </select>
+    </div>
   </header>
   <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container" data-aos="zoom-in" data-aos-delay="100" style="margin-top: 60px;">
-      <h1>Bryckaert Anthony</h1>
-      <p>I'm <span class="typed" data-typed-items="Student, Developer, Pentester"></span></p>
+      <h1 data-i18n="hero.title">Anthony Bryckaert</h1>
+      <p><span data-i18n="hero.subtitle">I'm</span> <span class="typed"
+          data-typed-items="Engineer, Developer, Pentester" data-i18n-typed-items="hero.typedItems"></span></p>
       <a href="assets/resume/Anthony-Bryckaert-resume.pdf"
         class="btn btn-primary btn-lg d-flex align-items-center btn-oval" download>
         <i class="bi bi-cloud-arrow-down me-2" style="font-size: 1.4em;"></i>
-        <span style="padding-left: 5px;">Download resume</span>
+        <span style="padding-left: 5px;" data-i18n="hero.download">Download resume</span>
       </a>
     </div>
     <div class="d-flex justify-content-center">
@@ -62,7 +76,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>About</h2>
+          <h2 data-i18n="about.title">About</h2>
         </div>
 
         <div class="row">
@@ -70,48 +84,54 @@
             <img src="assets/img/profile-image.jpg" class="img-fluid" alt>
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>Digital engineering & Cybersecurity student</h3>
-            <p class="fst-italic">
-              Student in M1 in engineering school in Aix-En-Provence. I'm
-              passionate about IT, more specifically Cybersecurity and AI
+            <h3 data-i18n="about.subtitle">Engineer specializing in Software Development, Cybersecurity, and Artificial
+              Intelligence</h3>
+            <p class="fst-italic" data-i18n="about.description">
+              I am deeply committed to the fields of Information Technology, with a particular focus on Cybersecurity
+              and Artificial Intelligence.
             </p>
             <div class="row">
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i>
-                    <strong>Nationality:</strong> <span>French</span>
+                    <strong data-i18n="about.nationality">Nationality:</strong> <span
+                      data-i18n="about.nationality.value">French</span>
                   </li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Second
-                      langage:</strong> <span>English</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Third
-                      langage:</strong> <span>Spanish</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.firstLang">First
+                      language:</strong> <span data-i18n="about.firstLang.value">French (native)</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.secondLang">Second
+                      language:</strong> <span data-i18n="about.secondLang.value">English (B2)</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.thirdLang">Third
+                      language:</strong> <span data-i18n="about.thirdLang.value">Spanish (B1)</span></li>
                   <li><i class="bi bi-chevron-right"></i>
-                    <strong>City:</strong> <span>Aix-En-Provence</span>
+                    <strong data-i18n="about.city">City:</strong> <span
+                      data-i18n="about.city.value">Aix-En-Provence</span>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i>
-                    <strong>Age:</strong> <span>23</span>
+                    <strong data-i18n="about.age">Age:</strong> <span>24</span>
                   </li>
                   <li><i class="bi bi-chevron-right"></i>
-                    <strong>Degree:</strong> <span>M1</span>
+                    <strong data-i18n="about.degree">Degree:</strong> <span data-i18n="about.degree.value">Master's in
+                      Computer Science</span>
                   </li>
                   <li><i class="bi bi-chevron-right"></i>
-                    <strong>Email:</strong>
+                    <strong data-i18n="about.email">Email:</strong>
                     <span>abryckaert.ir2025@esaip.org</span>
                   </li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Professional phone
+                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.phone">Professional phone
                       number:</strong> <span>+33781755907</span></li>
                 </ul>
               </div>
             </div>
-            <p>
-              Hi! I'm looking for an internship in AI engineering, to bring my dynamism to your team and
-              enrich my experience in this field. I'm particularly interested
-              in projects involving artificial intelligence, including model development, fine-tuning, and deployment,
-              as well as exploring applications in machine learning and deep learning.
+            <p data-i18n="about.seeking">
+              I am looking for freelance opportunities in AI engineering, web application, and software development. I
+              am particularly interested in projects involving artificial intelligence including model development,
+              fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and
+              software solutions.
             </p>
           </div>
         </div>
@@ -122,8 +142,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Skills</h2>
-          <p>All the skills I've acquired at school and through personal
+          <h2 data-i18n="skills.title">Skills</h2>
+          <p data-i18n="skills.subtitle">All the skills I've acquired at jobs, school and through personal
             projects.</p>
         </div>
 
@@ -132,8 +152,8 @@
           <div class="col-lg-6">
 
             <div class="progress">
-              <span class="skill">Network : Wireshark, Cisco Pack Tracer,
-                Firewall <i class="val">90%</i></span>
+              <span class="skill"><span data-i18n="skills.network">Network : Wireshark, Cisco Pack Tracer,
+                  Firewall</span> <i class="val">90%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                 </div>
@@ -141,7 +161,8 @@
             </div>
 
             <div class="progress">
-              <span class="skill">Backend : Java, Python, C++, <i class="val">70%</i></span>
+              <span class="skill"><span data-i18n="skills.backend">Backend : Java, Python, C++, Javascript</span> <i
+                  class="val">80%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
                 </div>
@@ -149,8 +170,8 @@
             </div>
 
             <div class="progress">
-              <span class="skill">Frontend : Bootstrap, Angular,
-                Javascript,CMS (Odoo, Wordpress, Wix) <i class="val">65%</i></span>
+              <span class="skill"><span data-i18n="skills.frontend">Frontend : Bootstrap, Angular, Javascript, CMS
+                  (Odoo, Wordpress, Wix)</span> <i class="val">65%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
                 </div>
@@ -162,7 +183,8 @@
           <div class="col-lg-6">
 
             <div class="progress">
-              <span class="skill">AI development : PyTorch, Azure<i class="val">75%</i></span>
+              <span class="skill"><span data-i18n="skills.ai">AI development : PyTorch, Azure</span><i
+                  class="val">75%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                 </div>
@@ -170,7 +192,7 @@
             </div>
 
             <div class="progress">
-              <span class="skill"> Forensic <i class="val">90%</i></span>
+              <span class="skill"><span data-i18n="skills.forensic">Forensic</span> <i class="val">90%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                 </div>
@@ -178,105 +200,165 @@
             </div>
 
             <div class="progress">
-              <span class="skill">Pentesting<i class="val">60%</i></span>
+              <span class="skill"><span data-i18n="skills.pentesting">Pentesting</span><i class="val">60%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
     <section id="resume" class="resume">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Resume</h2>
-          <p>Here are all my qualifications and experiences</p>
+          <h2 data-i18n="resume.title">Resume</h2>
+          <p data-i18n="resume.subtitle">Here are all my qualifications and experiences</p>
         </div>
 
         <div class="row">
           <div class="col-lg-6">
-            <h3 class="resume-title">Diplomas</h3>
+            <h3 class="resume-title" data-i18n="resume.diplomas">Diplomas</h3>
             <div class="resume-item pb-0">
-              <h4>Second year of Engineer school (M1) </h4>
-              <h5>2023 - 2024</h5>
-              <p><em>ESAIP Engineering School, Aix-En-Provence 13090,
-                  France</em></p>
-              <b>TOEIC certificate, score 850</b>
-              <p> <br> Cybersecurity : Forensic,
-                CTF, Cryptology, Secure development, Risk management <br>
-                Developement : Backend Java | Android development <br> Linux
-                Administration : Apache, Ssh, Iptable, Git, | Windows
-                Administration : <br> Network : </p>
+              <h4 data-i18n="resume.m2.title">Third year of Engineer school (M2)</h4>
+              <h5 data-i18n="resume.m2.period">2025 - 2026</h5>
+              <p>
+                <em>
+                  🇫🇷
+                  <span data-i18n="resume.m2.school">ESAIP Engineering School, Aix-En-Provence 13090, France</span>
+                </em>
+                <br>
+                <em>
+                  🇦🇷
+                  <span data-i18n="resume.m2.exchange">Exchange Semester at UNAJ National University Arturo Jauretche,
+                    Buenos Aires, Argentina</span>
+                </em>
+              </p>
+              <p data-i18n="resume.m2.courses" data-i18n-html>
+                <br>
+                Développement : <b>Design Pattern</b> in <b>C#</b> <br>
+                Application Development : <b>Kotlin</b> <br>
+                Web Application Development : <b>Node.js</b>, <b>Express.js</b>
+              </p>
+            </div>
+
+            <div class="resume-item pb-0">
+              <h4 data-i18n="resume.m1.title">Second year of Engineer school (M1) </h4>
+              <h5 data-i18n="resume.m1.period">2023 - 2025</h5>
+              <p>
+                <em>
+                  🇫🇷
+                  <span data-i18n="resume.m1.school">ESAIP Engineering School, Aix-En-Provence 13090, France</span>
+                </em>
+              </p>
+              <b data-i18n="resume.m1.toeic">TOEIC certificate, score 850</b>
+              <p data-i18n="resume.m1.courses" data-i18n-html>
+                <br>
+                Cybersécurité : <b>Forensic</b>, <b>CTF</b>, <b>Cryptology</b>, <b>Secure development</b>, <b>Risk
+                  management</b> <br>
+                Développement : Backend <b>Java</b> | Android development <br>
+                Linux Administration : <b>Apache</b>, <b>Ssh</b>, <b>Iptable</b>, <b>Git</b> | Windows Administration :
+                <br>
+                Network :
+              </p>
             </div>
             <div class="resume-item pb-0">
-              <h4>First year of Engineer school </h4>
-              <h5>Semeter two of Engineer school 2023</h4>
-                <p><em>VIA University College, Horsens, 8700, Danemark</em></p>
-                <p>MongoDB, ASP.NET, SQL Server Management Studio</p>
-                <h5>Semeter one of Engineer school 2022 </h4>
-                  <p><em>ESAIP Engineering School, Aix-En-Provence 13090,
-                      France</em></p>
-                  <p>Frontend : Html, Css | Backend : Java | Network : Cisco
-                    Packet Tracer</p>
+              <h4 data-i18n="resume.l3.sem2.title">First year of Engineer school </h4>
+              <h5 data-i18n="resume.l3.sem2.period">Semester two of Engineer school 2023</h5>
+              <p>
+                <em>
+                  🇫🇷
+                  <span data-i18n="resume.l3.sem2.school">ESAIP Engineering School, Aix-En-Provence 13090, France</span>
+                </em>
+                <br>
+                <em>
+                  🇩🇰
+                  <span data-i18n="resume.l3.sem2.exchange">Exchange Semester at VIA University College, Horsens, 8700,
+                    Denmark</span>
+                </em>
+              </p>
+              <p data-i18n="resume.l3.sem2.courses"><b>MongoDB</b>, <b>ASP.NET</b>, <b>SQL Server Management Studio</b>
+              </p>
+              <h5 data-i18n="resume.l3.sem1.period">Semester one of Engineer school 2022</h5>
+              <p>
+                <em>
+                  🇫🇷
+                  <span data-i18n="resume.l3.sem2.school">ESAIP Engineering School, Aix-En-Provence 13090, France</span>
+                </em>
+              </p>
+              <p data-i18n="resume.l3.sem1.courses">Frontend : <b>Html</b>, <b>Css</b> | Backend : <b>Java</b> | Network
+                : <b>Cisco Packet Tracer</b></p>
             </div>
             <div class="resume-item">
-              <h4>2 years diploma in IT (BTS SN)</h4>
-              <h5>2019 - 2022</h5>
-              <p><em>Saint Jean-Baptiste de lasalle, Avignon 84000,
-                  France</em></p>
-              <p>Developement : Java, C++, Qt Creator Framework <br> Linux
-                administration : Apache, VsFtp, MySql, Ssh, Ufw firewall</p>
+              <h4 data-i18n="resume.bts.title">2 years diploma in IT (BTS SN)</h4>
+              <h5 data-i18n="resume.bts.period">2019 - 2022</h5>
+              <p>
+                <em>
+                  🇫🇷
+                  <span data-i18n="resume.bts.school">Saint Jean-Baptiste de lasalle, Avignon 84000, France</span>
+                </em>
+              </p>
+              <p data-i18n="resume.bts.courses" data-i18n-html>Développement : <b>Java</b>, <b>C++</b>, <b>Qt Creator
+                  Framework</b> <br>
+                Linux administration : <b>Apache</b>, <b>VsFtp</b>, <b>MySql</b>, <b>Ssh</b>, <b>Ufw firewall</b>
+              </p>
             </div>
           </div>
           <div class="col-lg-6">
-            <h3 class="resume-title">Professional Experience</h3>
+            <h3 class="resume-title" data-i18n="resume.experience">Professional Experience</h3>
             <div class="resume-item">
-              <h4>Capgemini secure development and risk analysis (EBIOS RM)</h4>
-              <h5>2024-2025</h5>
-              <p><em>Aix-En-Provence, France</em></p>
-              <p>During my internship at Capgemini's Aix-en-Provence office, I developed web application, an internal HR
-                management tool using Node.js, to streamline employee activity tracking and KPI monitoring with
-                role-based functionalities. In parallel, I conducted risk analyses using the EBIOS RM methodology and
-                utilized Docker to deploy tools such as CISO Assistant. These tasks enhanced my technical expertise and
+              <h4 data-i18n="resume.csgroup.title">CS GROUP FRANCE IA Solutions Developer</h4>
+              <h5 data-i18n="resume.csgroup.period">2026-2026 (6 months)</h5>
+              <p><em data-i18n="resume.csgroup.location">Aix-En-Provence, France</em></p>
+              <p data-i18n="resume.csgroup.description">
+                Design and development of Artificial Intelligence-based solutions at CS GROUP FRANCE's Aix-en-Provence office. My work focused on creating intelligent systems aimed at optimizing business processes and enhancing decision support.
+              </p>
+            </div>
+            <div class="resume-item">
+              <h4 data-i18n="resume.capgemini.title">Capgemini secure development and risk analysis (EBIOS RM)</h4>
+              <h5 data-i18n="resume.capgemini.period">2024-2025 (7 months)</h5>
+              <p><em data-i18n="resume.capgemini.location">Aix-En-Provence, France</em></p>
+              <p data-i18n="resume.capgemini.description">During my internship at Capgemini's Aix-en-Provence office, I
+                developed web application, an internal HR
+                management tool using <b>Node.js</b>, to streamline employee activity tracking and KPI monitoring with
+                role-based functionalities. In parallel, I conducted risk analyses using the <b>EBIOS RM</b> methodology
+                and
+                utilized <b>Docker</b> to deploy tools such as <b>CISO Assistant</b>. These tasks enhanced my technical
+                expertise and
                 contributed to improving operational efficiency and security. </p>
             </div>
             <div class="resume-item">
-              <h4>OTAN</h4>
-              <h5>2024</h5>
-              <p><em>France</em></p>
-              <p>.</p>
+              <h4 data-i18n="resume.nato.title">NATO (OTAN)</h4>
+              <h5 data-i18n="resume.nato.period">2024 (4 months)</h5>
+              <p><em data-i18n="resume.nato.location">France</em></p>
             </div>
             <div class="resume-item">
-              <h4>Volunteering in Archelon</h4>
-              <h5>Summer 2023</h5>
-              <p><em>Crete (Chania)</em></p>
-              <p>Archelon is committed to protecting sea turtles through
+              <h4 data-i18n="resume.archelon.title">Volunteering in Archelon</h4>
+              <h5 data-i18n="resume.archelon.period">Summer 2023</h5>
+              <p><em data-i18n="resume.archelon.location">Chania, Crete</em></p>
+              <p data-i18n="resume.archelon.description">Archelon is committed to protecting sea turtles through
                 habitat conservation, scientific research to better understand
                 their needs, and public awareness to encourage the
                 preservation of these species and their natural
                 environments.</p>
             </div>
             <div class="resume-item">
-              <h4>Les entrep'</h4>
-              <h5>2022</h5>
-              <p><em>Avignon, 84000, France</em></p>
-              <p>Practicing business creation involves exploring ideas and
+              <h4 data-i18n="resume.entrep.title">Les entrep'</h4>
+              <h5 data-i18n="resume.entrep.period">2022</h5>
+              <p><em data-i18n="resume.entrep.location">Avignon, 84000, France</em></p>
+              <p data-i18n="resume.entrep.description">Practicing business creation involves exploring ideas and
                 assessing fit through a cycle of doing, failing, and redoing,
                 supported by diverse teamwork and mentorship. It combines
                 practical learning and networking, culminating in the Les
                 Entrep' certificate for professional advancement.</p>
             </div>
             <div class="resume-item">
-              <h4>Technician trainee</h4>
-              <h5>2021</h5>
-              <p><em>Emergency Informatique, Avignon, 84000, France</em></p>
-              <p>Computer repair, installation and configuration of network
+              <h4 data-i18n="resume.technician.title">Technician trainee</h4>
+              <h5 data-i18n="resume.technician.period">2021</h5>
+              <p><em data-i18n="resume.technician.location">Emergency Informatique, Avignon, 84000, France</em></p>
+              <p data-i18n="resume.technician.description">Computer repair, installation and configuration of network
                 equipment</p>
             </div>
           </div>
@@ -288,16 +370,16 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>My projects</h2>
-          <p>Here are all my projects, others are still in progress</p>
+          <h2 data-i18n="portfolio.title">My projects</h2>
+          <p data-i18n="portfolio.subtitle">Here are all my projects, others are still in progress</p>
         </div>
 
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Software</li>
-              <li data-filter=".filter-web">Web</li>
+              <li data-filter="*" class="filter-active" data-i18n="portfolio.filter.all">All</li>
+              <li data-filter=".filter-app" data-i18n="portfolio.filter.software">Software</li>
+              <li data-filter=".filter-web" data-i18n="portfolio.filter.web">Web</li>
             </ul>
           </div>
         </div>
@@ -308,14 +390,14 @@
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/siteWebAepf.png" class="img-fluid" alt>
               <div class="portfolio-info">
-                <h4>Website for Polynesian Association</h4>
-                <p>Creation of a website to promote Polynesian culture</p>
+                <h4 data-i18n="portfolio.aepf.title">Website for Polynesian Association</h4>
+                <p data-i18n="portfolio.aepf.description">Creation of a website to promote Polynesian culture</p>
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/siteWebAepf.png" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" title="Website developed with Silex, an open-source website maker"><i
-                      class="bx bx-plus"></i></a>
+                    class="portfolio-lightbox" data-i18n="portfolio.aepf.lightbox"
+                    title="Website developed with Silex, an open-source website maker"><i class="bx bx-plus"></i></a>
                   <a href="#" class="portfolio-details-lightbox" data-glightbox="type: external"
-                    title="Portfolio Details"><i class="bx bx-link"></i></a>
+                    data-i18n="portfolio.details" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -325,14 +407,16 @@
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/pikawa.gif" class="img-fluid" alt>
               <div class="portfolio-info">
-                <h4>Connected Coffee Machine "Pikawa"</h4>
-                <p>Make and manage coffee with Bluetooth</p>
+                <h4 data-i18n="portfolio.pikawa.title">Connected Coffee Machine "Pikawa"</h4>
+                <p data-i18n="portfolio.pikawa.description">Make and manage coffee with Bluetooth</p>
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/pikawa.gif" data-gallery="portfolioGallery" class="portfolio-lightbox"
+                    data-i18n="portfolio.pikawa.lightbox"
                     title="Developed in C++ with QT Creator framework during my 2-year diploma project"><i
                       class="bx bx-plus"></i></a>
                   <a href="https://github.com/btssn-lasalle-84/pikawa-2022" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                    data-glightbox="type: external" data-i18n="portfolio.details" title="Portfolio Details"><i
+                      class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -342,15 +426,16 @@
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/leVigneuxVin.png" class="img-fluid" alt>
               <div class="portfolio-info">
-                <h4>Le Vigneux Vin</h4>
-                <p>Web application for winemaker</p>
+                <h4 data-i18n="portfolio.levigneux.title">Le Vigneux Vin</h4>
+                <p data-i18n="portfolio.levigneux.description">Web application for winemaker</p>
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/leVigneuxVin.png" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
+                    class="portfolio-lightbox" data-i18n="portfolio.levigneux.lightbox"
                     title="Website created with ASP.NET, enabling the winemaker to add and manage their wines"><i
                       class="bx bx-plus"></i></a>
                   <a href="https://github.com/abryckaert/LeVigneuxVin" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                    data-glightbox="type: external" data-i18n="portfolio.details" title="Portfolio Details"><i
+                      class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -360,15 +445,16 @@
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/brainPilot.gif" class="img-fluid" alt>
               <div class="portfolio-info">
-                <h4>BrainPilot</h4>
-                <p>Android application to help students</p>
+                <h4 data-i18n="portfolio.brainpilot.title">BrainPilot</h4>
+                <p data-i18n="portfolio.brainpilot.description">Android application to help students</p>
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/brainPilot.gif" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox"
+                    class="portfolio-lightbox" data-i18n="portfolio.brainpilot.lightbox"
                     title="Android application developed in Java to help students manage their time"><i
                       class="bx bx-plus"></i></a>
                   <a href="https://github.com/abryckaert/BrainPilotAndroid" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                    data-glightbox="type: external" data-i18n="portfolio.details" title="Portfolio Details"><i
+                      class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -378,18 +464,22 @@
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/t-one.png" class="img-fluid" alt>
               <div class="portfolio-info">
-                <h4>Internal HR Management Tool</h4>
-                <p>An application developed using Node.js to streamline HR processes, including employee activity tracking, KPI monitoring, and role-based functionalities for administrators, project managers, and consultants.</p>
+                <h4 data-i18n="portfolio.hr.title">Internal HR Management Tool</h4>
+                <p data-i18n="portfolio.hr.description">An application developed using Node.js to streamline HR
+                  processes, including employee activity tracking, KPI monitoring, and role-based functionalities for
+                  administrators, project managers, and consultants.</p>
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/t-one.png" data-gallery="portfolioGallery" class="portfolio-lightbox"
-                    title="Detailed description of the project"><i class="bx bx-plus"></i></a>
-                  <a href="https://github.com/your-repo-link" class="portfolio-details-lightbox" data-glightbox="type: external"
-                    title="Portfolio Details"><i class="bx bx-link"></i></a>
+                    data-i18n="portfolio.hr.lightbox" title="Detailed description of the project"><i
+                      class="bx bx-plus"></i></a>
+                  <a href="https://github.com/your-repo-link" class="portfolio-details-lightbox"
+                    data-glightbox="type: external" data-i18n="portfolio.details" title="Portfolio Details"><i
+                      class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
           </div>
-          
+
 
         </div>
 
@@ -398,8 +488,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Services</h2>
-          <p>Here are all the services I can accomplish for your company.</p>
+          <h2 data-i18n="services.title">Services</h2>
+          <p data-i18n="services.subtitle">Here are all the services I can accomplish for your company.</p>
         </div>
 
         <div class="row">
@@ -414,8 +504,8 @@
                 </svg>
                 <i class=" bi bi-browser-firefox"></i>
               </div>
-              <h4><a href>Website Creation</a></h4>
-              <p>I can create a website for your company with Bootstrap,
+              <h4><a href data-i18n="services.website.title">Website Creation</a></h4>
+              <p data-i18n="services.website.description">I can create a website for your company with Bootstrap,
                 React, Angular or with a CMS like Wordpress, Wix and Odoo.</p>
             </div>
           </div>
@@ -431,8 +521,9 @@
                 </svg>
                 <i class="bi bi-code-slash"></i>
               </div>
-              <h4><a href>Software Developement</a></h4>
-              <p>I can build with a team the Frontend and the Backend of software using Java, C++, C or
+              <h4><a href data-i18n="services.software.title">Software Developement</a></h4>
+              <p data-i18n="services.software.description">I can build with a team the Frontend and the Backend of
+                software using Java, C++, C or
                 Python.</p>
             </div>
           </div>
@@ -448,8 +539,8 @@
                 </svg>
                 <i class="bi bi-fingerprint"></i>
               </div>
-              <h4><a href>Forensic Analysis</a></h4>
-              <p>I can recover deleted files or look for suspicious malware in
+              <h4><a href data-i18n="services.forensic.title">Forensic Analysis</a></h4>
+              <p data-i18n="services.forensic.description">I can recover deleted files or look for suspicious malware in
                 RAM or disk image.</p>
             </div>
           </div>
@@ -464,8 +555,8 @@
                 </svg>
                 <i class="bi bi-crosshair"></i>
               </div>
-              <h4><a href>Pentest</a></h4>
-              <p>I can perform a pentest with your accord on your network,
+              <h4><a href data-i18n="services.pentest.title">Pentest</a></h4>
+              <p data-i18n="services.pentest.description">I can perform a pentest with your accord on your network,
                 servers and software.</p>
             </div>
           </div>
@@ -480,8 +571,8 @@
                 </svg>
                 <i class="bi bi-diagram-3"></i>
               </div>
-              <h4><a href>Administrate Network</a></h4>
-              <p>I can administrate a Linux or Windows servers or network of
+              <h4><a href data-i18n="services.network.title">Administrate Network</a></h4>
+              <p data-i18n="services.network.description">I can administrate a Linux or Windows servers or network of
                 your company </p>
             </div>
           </div>
@@ -496,8 +587,9 @@
                 </svg>
                 <i class="bi bi-terminal"></i>
               </div>
-              <h4><a href>Develop AI Agent</a></h4>
-              <p>I can develop and train an AI agent to meet your specific needs.</p>
+              <h4><a href data-i18n="services.ai.title">Develop AI Agent</a></h4>
+              <p data-i18n="services.ai.description">I can develop and train an AI agent to meet your specific needs.
+              </p>
             </div>
           </div>
         </div>
@@ -507,7 +599,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Testimonials</h2>
+          <h2 data-i18n="testimonials.title">Testimonials</h2>
         </div>
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
           <div class="swiper-wrapper">
@@ -517,12 +609,13 @@
                 <a href="https://www.linkedin.com/in/raimana-brasier-056116291/?originalSubdomain=fr"><img
                     src="assets/img/testimonials/raimana.jpg" class="testimonial-img" alt=""></a>
                 <h3>Raimana Brasier</h3>
-                <h4>Student specialized in Big Data</h4>
+                <h4 data-i18n="testimonials.raimana.title">Student specialized in Big Data</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Anthony is a passionate person, he loves what he does and it
-                  shows. Very involved in all the projects we've done
-                  together. I look forward to working with you again.
+                  <span data-i18n="testimonials.raimana.text">Anthony is a passionate person, he loves what he does and
+                    it
+                    shows. Very involved in all the projects we've done
+                    together. I look forward to working with you again.</span>
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -532,12 +625,13 @@
                 <a href="https://www.linkedin.com/in/teony-mathieu/"><img src="assets/img/testimonials/teony.jpg"
                     class="testimonial-img" alt=""></a>
                 <h3>Teony Mathieu </h3>
-                <h4>Student specialized in Big Data & Junior AQSE President</h4>
+                <h4 data-i18n="testimonials.teony.title">Student specialized in Big Data & Junior AQSE President</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Anthony stands out for his professionalism and his ability to inspire the team. His pragmatic approach
-                  and innovative spirit make him an invaluable asset in the workplace. Working alongside him is both
-                  rewarding and stimulating. <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  <span data-i18n="testimonials.teony.text">Anthony stands out for his professionalism and his ability
+                    to inspire the team. His pragmatic approach
+                    and innovative spirit make him an invaluable asset in the workplace. Working alongside him is both
+                    rewarding and stimulating.</span> <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
             </div>
@@ -552,7 +646,7 @@
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Contact</h2>
+          <h2 data-i18n="contact.title">Contact</h2>
         </div>
 
         <div class="row justify-content-center text-start">
@@ -560,7 +654,7 @@
             <div class="info">
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
+                <h4 data-i18n="contact.location">Location:</h4>
                 <p>Aix-En-Provence, 13090, France</p>
               </div>
             </div>
@@ -570,7 +664,7 @@
             <div class="info">
               <div class="email">
                 <i class="bi bi-envelope"></i>
-                <h4>Linkedin:</h4>
+                <h4 data-i18n="contact.linkedin">Linkedin:</h4>
                 <a href="https://www.linkedin.com/in/anthony-bryckaert-a482621b7/?originalSubdomain=fr">Anthony
                   Bryckaert</a>
               </div>
@@ -581,7 +675,7 @@
             <div class="info">
               <div class="email">
                 <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
+                <h4 data-i18n="contact.email">Email:</h4>
                 <p>abryckaert.ir2025@esaip.org</p>
               </div>
             </div>
@@ -591,7 +685,7 @@
             <div class="info">
               <div class="phone">
                 <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
+                <h4 data-i18n="contact.call">Call:</h4>
                 <p>+33781755907</p>
               </div>
             </div>
@@ -618,6 +712,7 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 
 </body>
