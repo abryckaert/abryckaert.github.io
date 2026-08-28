@@ -3,17 +3,57 @@ const translations = {
   en: {
     // Navigation
     'nav.home': 'Home',
+    'nav.company': 'Company',
     'nav.about': 'About',
     'nav.resume': 'Resume',
     'nav.portfolio': 'Portfolio',
-    'nav.services': 'Services',
     'nav.contact': 'Contact',
     
     // Hero section
     'hero.title': 'Anthony Bryckaert',
     'hero.subtitle': "I'm",
-    'hero.typedItems': 'Engineer, Developer, Pentester',
+    'hero.typedItems': 'Engineer, Freelancer, Developer, Pentester',
     'hero.download': 'Download resume',
+
+    // Company section
+    'company.title': 'My Company',
+    'company.subtitle': 'Flexible IT expertise, when you need it.',
+    'company.information.title': 'Business Information',
+    'company.services.title': 'My Services',
+    'company.website': 'Website:',
+    'company.status': 'Business status:',
+    'company.status.value': 'French micro-enterprise - Freelance',
+    'company.location': 'Location:',
+    'company.location.value': 'Avignon, France - Remote services available',
+    'company.siren': 'SIREN:',
+    'company.siret': 'SIRET:',
+    'company.cybersecurity.title': 'Cybersecurity',
+    'company.cybersecurity.description': 'Cybersecurity consulting and support for professionals, including vulnerability analysis, digital risk assessment, application, information system and network security, code review and correction, SIEM tool configuration, technical recommendations and user awareness of digital security best practices.',
+    'company.ai.title': 'Artificial Intelligence and Automation',
+    'company.ai.description': 'Design, development and integration of artificial intelligence solutions adapted to professional needs, including autonomous agents, RAG systems, chatbots and automated document processing tools. Implementation of workflows with N8N, API integration and business process automation.',
+    'company.cta': 'See more',
+    'company.development.title': 'Application Development',
+    'company.development.description': 'Design and development of web applications, software and tailor-made digital tools. Front-end and back-end development, API creation and integration, database design and management, Docker containerization, testing, deployment, maintenance, optimization and application security.',
+    'company.systems.title': 'IT Systems and Networks',
+    'company.systems.description': 'Installation, configuration, administration, maintenance and security of professional IT systems and networks. Equipment configuration, workstation management, incident diagnosis and resolution, network monitoring, hardware and software maintenance, technical assistance and user support.',
+    'company.description': 'I am deeply committed to the fields of Information Technology, with a particular focus on Cybersecurity and Artificial Intelligence.',
+    'company.nationality': 'Nationality:',
+    'company.nationality.value': 'French',
+    'company.firstLang': 'First language:',
+    'company.firstLang.value': 'French (native)',
+    'company.secondLang': 'Second language:',
+    'company.secondLang.value': 'English (B2)',
+    'company.thirdLang': 'Third language:',
+    'company.thirdLang.value': 'Spanish (B2)',
+    'company.city': 'City:',
+    'company.city.value': 'Avignon',
+    'company.age': 'Age:',
+    'company.degree': 'Degree:',
+    'company.degree.value': "Master's in Computer Science",
+    'company.email': 'Email:',
+    'company.phone': 'Professional phone number:',
+    'company.seeking': 'I am looking for freelance opportunities in AI engineering, cybersecurity, web application, and software development. I am particularly interested in projects involving artificial intelligence including model development, fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and software solutions.',
+
     
     // About section
     'about.title': 'About',
@@ -26,29 +66,29 @@ const translations = {
     'about.secondLang': 'Second language:',
     'about.secondLang.value': 'English (B2)',
     'about.thirdLang': 'Third language:',
-    'about.thirdLang.value': 'Spanish (B1)',
+    'about.thirdLang.value': 'Spanish (B2)',
     'about.city': 'City:',
-    'about.city.value': 'Aix-En-Provence',
+    'about.city.value': 'Avignon',
     'about.age': 'Age:',
     'about.degree': 'Degree:',
     'about.degree.value': "Master's in Computer Science",
     'about.email': 'Email:',
     'about.phone': 'Professional phone number:',
-    'about.seeking': 'I am looking for freelance opportunities in AI engineering, web application, and software development. I am particularly interested in projects involving artificial intelligence including model development, fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and software solutions.',
+    'about.seeking': 'I am looking for freelance opportunities in AI engineering, cybersecurity, web application, and software development. I am particularly interested in projects involving artificial intelligence including model development, fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and software solutions.',
     
     // Skills section
     'skills.title': 'Skills',
-    'skills.subtitle': "All the skills I've acquired at jobs, school and through personal projects.",
+    'skills.subtitle': "Acquired at jobs, school and through personal projects.",
     'skills.network': 'Network : Wireshark, Cisco Pack Tracer, Firewall',
     'skills.backend': 'Backend : Java, Python, C++, Javascript',
-    'skills.frontend': 'Frontend : Bootstrap, Angular, Javascript, CMS (Odoo, Wordpress, Wix)',
-    'skills.ai': 'AI development : PyTorch, Azure',
-    'skills.forensic': 'Forensic',
+    'skills.frontend': 'Frontend : Bootstrap, Angular, Javascript, Node JS CMS (Odoo, Wordpress, Wix)',
+    'skills.ai': 'AI development : PyTorch, Langchain, Skills, N8N, Azure',
+    'skills.forensic': 'Forensic, OSINT',
     'skills.pentesting': 'Pentesting',
     
     // Resume section
     'resume.title': 'Resume',
-    'resume.subtitle': 'Here are all my qualifications and experiences',
+    'resume.subtitle': 'Qualifications and experiences',
     'resume.diplomas': 'Diplomas',
     'resume.experience': 'Professional Experience',
     'resume.m2.title': 'Third year of Engineer school (M2)',
@@ -119,22 +159,6 @@ const translations = {
     'portfolio.hr.lightbox': 'Detailed description of the project',
     'portfolio.details': 'Portfolio Details',
     
-    // Services section
-    'services.title': 'Services',
-    'services.subtitle': 'Here are all the services I can accomplish for your company.',
-    'services.website.title': 'Website Creation',
-    'services.website.description': 'I can create a website for your company with Bootstrap, React, Angular or with a CMS like Wordpress, Wix and Odoo.',
-    'services.software.title': 'Software Developement',
-    'services.software.description': 'I can build with a team the Frontend and the Backend of software using Java, C++, C or Python.',
-    'services.forensic.title': 'Forensic Analysis',
-    'services.forensic.description': 'I can recover deleted files or look for suspicious malware in RAM or disk image.',
-    'services.pentest.title': 'Pentest',
-    'services.pentest.description': 'I can perform a pentest with your accord on your network, servers and software.',
-    'services.network.title': 'Administrate Network',
-    'services.network.description': 'I can administrate a Linux or Windows servers or network of your company',
-    'services.ai.title': 'Develop AI Agent',
-    'services.ai.description': 'I can develop and train an AI agent to meet your specific needs.',
-    
     // Testimonials section
     'testimonials.title': 'Testimonials',
     'testimonials.raimana.title': 'Student specialized in Big Data',
@@ -152,10 +176,10 @@ const translations = {
   fr: {
     // Navigation
     'nav.home': 'Accueil',
+    'nav.company': 'Entreprise',
     'nav.about': 'À propos',
     'nav.resume': 'CV',
     'nav.portfolio': 'Portfolio',
-    'nav.services': 'Services',
     'nav.contact': 'Contact',
     
     // Hero section
@@ -163,6 +187,46 @@ const translations = {
     'hero.subtitle': "Je suis",
     'hero.typedItems': 'Ingénieur, Développeur, Pentester',
     'hero.download': 'Télécharger le CV',
+
+    // Company section
+    'company.title': 'Mon entreprise',
+    'company.subtitle': 'L\'expertise IT flexible, quand vous en avez besoin.',
+    'company.information.title': 'Informations de l\'entreprise',
+    'company.services.title': 'Mes services',
+    'company.website': 'Site web :',
+    'company.status': 'Statut de l\'entreprise :',
+    'company.status.value': 'Micro-entreprise française - Freelance',
+    'company.location': 'Localisation :',
+    'company.location.value': 'Avignon, France - Services à distance disponibles',
+    'company.siren': 'SIREN :',
+    'company.siret': 'SIRET :',
+    'company.cybersecurity.title': 'Cybersécurité',
+    'company.cybersecurity.description': 'Conseil et accompagnement en cybersécurité pour les professionnels : analyse des vulnérabilités, évaluation des risques numériques, sécurité des applications, des systèmes d\'information et des réseaux, revue et correction de code, configuration d\'outils SIEM, recommandations techniques et sensibilisation des utilisateurs aux bonnes pratiques de sécurité numérique.',
+    'company.ai.title': 'Intelligence artificielle et automatisation',
+    'company.ai.description': 'Conception, développement et intégration de solutions d\'intelligence artificielle adaptées aux besoins professionnels : agents autonomes, systèmes RAG, chatbots et outils de traitement automatisé de documents. Mise en place de workflows avec N8N, intégration d\'API et automatisation des processus métier.',
+    'company.cta': 'Voir plus',
+    'company.development.title': 'Développement d\'applications',
+    'company.development.description': 'Conception et développement d\'applications web, de logiciels et d\'outils numériques sur mesure. Développement front-end et back-end, création et intégration d\'API, conception et gestion de bases de données, conteneurisation Docker, tests, déploiement, maintenance, optimisation et sécurité applicative.',
+    'company.systems.title': 'Systèmes et réseaux informatiques',
+    'company.systems.description': 'Installation, configuration, administration, maintenance et sécurisation de systèmes et réseaux informatiques professionnels. Configuration des équipements, gestion des postes de travail, diagnostic et résolution des incidents, supervision réseau, maintenance matérielle et logicielle, assistance technique et support utilisateurs.',
+    'company.nationality': 'Nationality:',
+    'company.nationality.value': 'French',
+    'company.firstLang': 'First language:',
+    'company.firstLang.value': 'French (native)',
+    'company.secondLang': 'Second language:',
+    'company.secondLang.value': 'English (B2)',
+    'company.thirdLang': 'Third language:',
+    'company.thirdLang.value': 'Spanish (B2)',
+    'company.city': 'City:',
+    'company.city.value': 'Avignon',
+    'company.age': 'Age:',
+    'company.degree': 'Degree:',
+    'company.degree.value': "Master's in Computer Science",
+    'company.email': 'Email:',
+    'company.phone': 'Professional phone number:',
+    'company.seeking': 'I am looking for freelance opportunities in AI engineering, cybersecurity, web application, and software development. I am particularly interested in projects involving artificial intelligence including model development, fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and software solutions.',
+
+
     
     // About section
     'about.title': 'À propos',
@@ -175,7 +239,7 @@ const translations = {
     'about.secondLang': 'Deuxième langue:',
     'about.secondLang.value': 'Anglais (B2)',
     'about.thirdLang': 'Troisième langue:',
-    'about.thirdLang.value': 'Espagnol (B1)',
+    'about.thirdLang.value': 'Espagnol (B2)',
     'about.city': 'Ville:',
     'about.city.value': 'Aix-En-Provence',
     'about.age': 'Âge:',
@@ -187,17 +251,17 @@ const translations = {
     
     // Skills section
     'skills.title': 'Compétences',
-    'skills.subtitle': 'Toutes les compétences que j\'ai acquises au travail, à l\'école et à travers des projets personnels.',
+    'skills.subtitle': 'Compétences que j\'ai acquises au travail, à l\'école et à travers des projets personnels.',
     'skills.network': 'Réseau : Wireshark, Cisco Pack Tracer, Firewall',
     'skills.backend': 'Backend : Java, Python, C++, Javascript',
-    'skills.frontend': 'Frontend : Bootstrap, Angular, Javascript, CMS (Odoo, Wordpress, Wix)',
-    'skills.ai': 'Développement IA : PyTorch, Azure',
-    'skills.forensic': 'Forensic',
+    'skills.frontend': 'Frontend : Bootstrap, Angular, Javascript, Node JS CMS (Odoo, Wordpress, Wix)',
+    'skills.ai': 'Développement IA : PyTorch, Langchain, Skills, N8N, Azure',
+    'skills.forensic': 'Forensic, OSINT',
     'skills.pentesting': 'Pentesting',
     
     // Resume section
     'resume.title': 'CV',
-    'resume.subtitle': 'Voici toutes mes qualifications et expériences',
+    'resume.subtitle': 'Qualifications et expériences',
     'resume.diplomas': 'Diplômes',
     'resume.experience': 'Expérience Professionnelle',
     'resume.m2.title': 'Troisième année d\'école d\'ingénieur (M2)',
@@ -268,22 +332,6 @@ const translations = {
     'portfolio.hr.lightbox': 'Description détaillée du projet',
     'portfolio.details': 'Détails du Portfolio',
     
-    // Services section
-    'services.title': 'Services',
-    'services.subtitle': 'Voici tous les services que je peux accomplir pour votre entreprise.',
-    'services.website.title': 'Création de site web',
-    'services.website.description': 'Je peux créer un site web pour votre entreprise avec Bootstrap, React, Angular ou avec un CMS comme Wordpress, Wix et Odoo.',
-    'services.software.title': 'Développement logiciel',
-    'services.software.description': 'Je peux construire avec une équipe le Frontend et le Backend de logiciels en utilisant Java, C++, C ou Python.',
-    'services.forensic.title': 'Analyse forensique',
-    'services.forensic.description': 'Je peux récupérer des fichiers supprimés ou rechercher des logiciels malveillants suspects dans la RAM ou l\'image disque.',
-    'services.pentest.title': 'Pentest',
-    'services.pentest.description': 'Je peux effectuer un pentest avec votre accord sur votre réseau, serveurs et logiciels.',
-    'services.network.title': 'Administrer le réseau',
-    'services.network.description': 'Je peux administrer des serveurs Linux ou Windows ou le réseau de votre entreprise',
-    'services.ai.title': 'Développer un agent IA',
-    'services.ai.description': 'Je peux développer et entraîner un agent IA pour répondre à vos besoins spécifiques.',
-    
     // Testimonials section
     'testimonials.title': 'Témoignages',
     'testimonials.raimana.title': 'Étudiant spécialisé en Big Data',
@@ -301,10 +349,10 @@ const translations = {
   es: {
     // Navigation
     'nav.home': 'Inicio',
+    'nav.company': 'Empresa',
     'nav.about': 'Acerca de',
     'nav.resume': 'Currículum',
     'nav.portfolio': 'Portafolio',
-    'nav.services': 'Servicios',
     'nav.contact': 'Contacto',
     
     // Hero section
@@ -312,6 +360,46 @@ const translations = {
     'hero.subtitle': 'Soy',
     'hero.typedItems': 'Ingeniero, Desarrollador, Pentester',
     'hero.download': 'Descargar currículum',
+    
+    // Company section
+    'company.title': 'Mi empresa',
+    'company.subtitle': 'Experiencia IT flexible, cuando la necesitas.',
+    'company.information.title': 'Información de la empresa',
+    'company.services.title': 'Mis servicios',
+    'company.website': 'Sitio web:',
+    'company.status': 'Estado de la empresa:',
+    'company.status.value': 'Microempresa francesa - Freelance',
+    'company.location': 'Ubicación:',
+    'company.location.value': 'Avignon, Francia - Servicios a distancia disponibles',
+    'company.siren': 'SIREN:',
+    'company.siret': 'SIRET:',
+    'company.cybersecurity.title': 'Ciberseguridad',
+    'company.cybersecurity.description': 'Consultoría y soporte en ciberseguridad para profesionales, incluyendo análisis de vulnerabilidades, evaluación de riesgos digitales, seguridad de aplicaciones, sistemas de información y redes, revisión y corrección de código, configuración de herramientas SIEM, recomendaciones técnicas y concienciación de los usuarios sobre buenas prácticas de seguridad digital.',
+    'company.ai.title': 'Inteligencia artificial y automatización',
+    'company.ai.description': 'Diseño, desarrollo e integración de soluciones de inteligencia artificial adaptadas a las necesidades profesionales, incluyendo agentes autónomos, sistemas RAG, chatbots y herramientas de procesamiento automatizado de documentos. Implementación de flujos de trabajo con N8N, integración de API y automatización de procesos empresariales.',
+    'company.cta': 'Ver más',
+    'company.development.title': 'Desarrollo de aplicaciones',
+    'company.development.description': 'Diseño y desarrollo de aplicaciones web, software y herramientas digitales a medida. Desarrollo front-end y back-end, creación e integración de API, diseño y gestión de bases de datos, contenerización con Docker, pruebas, despliegue, mantenimiento, optimización y seguridad de aplicaciones.',
+    'company.systems.title': 'Sistemas y redes informáticas',
+    'company.systems.description': 'Instalación, configuración, administración, mantenimiento y seguridad de sistemas y redes informáticas profesionales. Configuración de equipos, gestión de estaciones de trabajo, diagnóstico y resolución de incidentes, monitorización de redes, mantenimiento de hardware y software, asistencia técnica y soporte a usuarios.',
+    'company.description': 'I am deeply committed to the fields of Information Technology, with a particular focus on Cybersecurity and Artificial Intelligence.',
+    'company.nationality': 'Nationality:',
+    'company.nationality.value': 'French',
+    'company.firstLang': 'First language:',
+    'company.firstLang.value': 'French (native)',
+    'company.secondLang': 'Second language:',
+    'company.secondLang.value': 'English (B2)',
+    'company.thirdLang': 'Third language:',
+    'company.thirdLang.value': 'Spanish (B2)',
+    'company.city': 'City:',
+    'company.city.value': 'Avignon',
+    'company.age': 'Age:',
+    'company.degree': 'Degree:',
+    'company.degree.value': "Master's in Computer Science",
+    'company.email': 'Email:',
+    'company.phone': 'Professional phone number:',
+    'company.seeking': 'I am looking for freelance opportunities in AI engineering, cybersecurity, web application, and software development. I am particularly interested in projects involving artificial intelligence including model development, fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and software solutions.',
+
     
     // About section
     'about.title': 'Acerca de',
@@ -324,7 +412,7 @@ const translations = {
     'about.secondLang': 'Segunda lengua:',
     'about.secondLang.value': 'Inglés (B2)',
     'about.thirdLang': 'Tercera lengua:',
-    'about.thirdLang.value': 'Español (B1)',
+    'about.thirdLang.value': 'Español (B2)',
     'about.city': 'Ciudad:',
     'about.city.value': 'Aix-En-Provence',
     'about.age': 'Edad:',
@@ -336,17 +424,17 @@ const translations = {
     
     // Skills section
     'skills.title': 'Habilidades',
-    'skills.subtitle': 'Todas las habilidades que he adquirido en trabajos, escuela y a través de proyectos personales.',
+    'skills.subtitle': 'Habilidades que he adquirido en trabajos, escuela y a través de proyectos personales.',
     'skills.network': 'Red : Wireshark, Cisco Pack Tracer, Firewall',
     'skills.backend': 'Backend : Java, Python, C++, Javascript',
-    'skills.frontend': 'Frontend : Bootstrap, Angular, Javascript, CMS (Odoo, Wordpress, Wix)',
-    'skills.ai': 'Desarrollo IA : PyTorch, Azure',
+    'skills.frontend': 'Frontend : Bootstrap, Angular, Javascript, Node JS CMS (Odoo, Wordpress, Wix)',
+    'skills.ai': 'Desarrollo IA : PyTorch, Langchain, Skills, N8N, Azure',
     'skills.forensic': 'Forensic',
     'skills.pentesting': 'Pentesting',
     
     // Resume section
     'resume.title': 'Currículum',
-    'resume.subtitle': 'Aquí están todas mis calificaciones y experiencias',
+    'resume.subtitle': 'Calificaciones y experiencias',
     'resume.diplomas': 'Diplomas',
     'resume.experience': 'Experiencia Profesional',
     'resume.m2.title': 'Tercer año de escuela de ingeniería (M2)',
@@ -417,22 +505,6 @@ const translations = {
     'portfolio.hr.lightbox': 'Descripción detallada del proyecto',
     'portfolio.details': 'Detalles del Portafolio',
     
-    // Services section
-    'services.title': 'Servicios',
-    'services.subtitle': 'Aquí están todos los servicios que puedo realizar para su empresa.',
-    'services.website.title': 'Creación de sitio web',
-    'services.website.description': 'Puedo crear un sitio web para su empresa con Bootstrap, React, Angular o con un CMS como Wordpress, Wix y Odoo.',
-    'services.software.title': 'Desarrollo de software',
-    'services.software.description': 'Puedo construir con un equipo el Frontend y el Backend de software usando Java, C++, C o Python.',
-    'services.forensic.title': 'Análisis forense',
-    'services.forensic.description': 'Puedo recuperar archivos eliminados o buscar malware sospechoso en RAM o imagen de disco.',
-    'services.pentest.title': 'Pentest',
-    'services.pentest.description': 'Puedo realizar un pentest con su acuerdo en su red, servidores y software.',
-    'services.network.title': 'Administrar red',
-    'services.network.description': 'Puedo administrar servidores Linux o Windows o la red de su empresa',
-    'services.ai.title': 'Desarrollar agente IA',
-    'services.ai.description': 'Puedo desarrollar y entrenar un agente IA para satisfacer sus necesidades específicas.',
-    
     // Testimonials section
     'testimonials.title': 'Testimonios',
     'testimonials.raimana.title': 'Estudiante especializado en Big Data',
@@ -468,6 +540,13 @@ function getCurrentLanguage() {
   
   // Par défaut, retourner l'anglais
   return 'en';
+}
+
+function getBrowserLanguage() {
+  const browserLanguage = navigator.language || navigator.userLanguage || 'en';
+  const languageCode = browserLanguage.split('-')[0].toLowerCase();
+
+  return ['en', 'fr', 'es'].includes(languageCode) ? languageCode : 'en';
 }
 
 // Fonction pour changer la langue
@@ -579,10 +658,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeTyped();
 });
 
+window.addEventListener('load', () => {
+  setLanguage(getBrowserLanguage());
+});
+
 // Exporter les fonctions pour utilisation globale
 window.i18n = {
   setLanguage,
   getCurrentLanguage,
+  getBrowserLanguage,
   translations
 };
 

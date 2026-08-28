@@ -194,7 +194,6 @@
 
     new PureCounter();
 
-    // Gestionnaire pour le sélecteur de langue
     const languageSelector = select('#language-selector');
     if (languageSelector) {
       on('change', '#language-selector', function(e) {
