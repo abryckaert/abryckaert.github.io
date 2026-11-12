@@ -158,6 +158,9 @@ const translations = {
     'portfolio.hr.title': 'Internal HR Management Tool',
     'portfolio.hr.description': 'An application developed using Node.js to streamline HR processes, including employee activity tracking, KPI monitoring, and role-based functionalities for administrators, project managers, and consultants.',
     'portfolio.hr.lightbox': 'Detailed description of the project',
+    'portfolio.bimmer.title': 'Bimmer Buyer',
+    'portfolio.bimmer.description': 'Secure web platform to buy, sell and manage BMW vehicle listings, with admin moderation before publication.',
+    'portfolio.bimmer.lightbox': 'Node.js / Express / MySQL application with a back office and OWASP-based security',
     'portfolio.details': 'Portfolio Details',
     
     // Testimonials section
@@ -332,6 +335,9 @@ const translations = {
     'portfolio.hr.title': 'Outil de gestion RH interne',
     'portfolio.hr.description': 'Une application développée en utilisant Node.js pour rationaliser les processus RH, incluant le suivi des activités des employés, le suivi des KPI et les fonctionnalités basées sur les rôles pour les administrateurs, chefs de projet et consultants.',
     'portfolio.hr.lightbox': 'Description détaillée du projet',
+    'portfolio.bimmer.title': 'Bimmer Buyer',
+    'portfolio.bimmer.description': 'Plateforme web sécurisée pour acheter, vendre et gérer des annonces de BMW, avec modération par un administrateur avant publication.',
+    'portfolio.bimmer.lightbox': 'Application Node.js / Express / MySQL avec back office et sécurité basée sur l\'OWASP',
     'portfolio.details': 'Détails du Portfolio',
     
     // Testimonials section
@@ -506,6 +512,9 @@ const translations = {
     'portfolio.hr.title': 'Herramienta de gestión de RRHH interna',
     'portfolio.hr.description': 'Una aplicación desarrollada usando Node.js para optimizar los procesos de RRHH, incluyendo seguimiento de actividades de empleados, monitoreo de KPI y funcionalidades basadas en roles para administradores, gerentes de proyecto y consultores.',
     'portfolio.hr.lightbox': 'Descripción detallada del proyecto',
+    'portfolio.bimmer.title': 'Bimmer Buyer',
+    'portfolio.bimmer.description': 'Plataforma web segura para comprar, vender y gestionar anuncios de BMW, con moderación de un administrador antes de la publicación.',
+    'portfolio.bimmer.lightbox': 'Aplicación Node.js / Express / MySQL con back office y seguridad basada en OWASP',
     'portfolio.details': 'Detalles del Portafolio',
     
     // Testimonials section
