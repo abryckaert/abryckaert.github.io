@@ -45,7 +45,7 @@ h2 {
   background-color: #25d366;
   border-color: #25d366;
   margin-top: 15px;
-  width: auto;
+  width: fit-content;
   min-width: 250px;
   white-space: nowrap;
 }
