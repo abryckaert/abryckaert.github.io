@@ -14,6 +14,7 @@ const translations = {
     'hero.subtitle': "I'm",
     'hero.typedItems': 'Engineer, Freelancer, Developer, Pentester',
     'hero.download': 'Download resume',
+    'hero.whatsapp': 'Contact me on WhatsApp',
 
     // Company section
     'company.title': 'My Company',
@@ -187,6 +188,7 @@ const translations = {
     'hero.subtitle': "Je suis",
     'hero.typedItems': 'Ingénieur, Développeur, Pentester',
     'hero.download': 'Télécharger le CV',
+    'hero.whatsapp': 'Me contacter sur WhatsApp',
 
     // Company section
     'company.title': 'Mon entreprise',
@@ -360,6 +362,7 @@ const translations = {
     'hero.subtitle': 'Soy',
     'hero.typedItems': 'Ingeniero, Desarrollador, Pentester',
     'hero.download': 'Descargar currículum',
+    'hero.whatsapp': 'Escríbeme por WhatsApp',
     
     // Company section
     'company.title': 'Mi empresa',

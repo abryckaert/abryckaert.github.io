@@ -1,577 +1,1016 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Anthony Bryckaert</title>
 
-  <title>Anthony Bryckaert</title>
+    <link href="assets/img/favicon.jpeg" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-  <link href="assets/img/favicon.jpeg" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
 
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
 
-  <link href="assets/css/style.css" rel="stylesheet">
-</head>
+  <body>
+    <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+    <header id="header" class="d-flex flex-column justify-content-center">
+      <nav id="navbar" class="navbar nav-menu">
+        <ul>
+          <li>
+            <a href="#hero" class="nav-link scrollto active"
+              ><i class="bx bx-home"></i>
+              <span data-i18n="nav.home">Home</span></a
+            >
+          </li>
+          <li>
+            <a href="#mycompany" class="nav-link scrollto company-nav-link">
+              <img
+                src="assets/img/favicon.jpeg"
+                class="company-nav-logo"
+                alt="Company logo"
+              />
+              <span data-i18n="nav.company">Company</span>
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="nav-link scrollto"
+              ><i class="bx bx-user"></i>
+              <span data-i18n="nav.about">About</span></a
+            >
+          </li>
+          <li>
+            <a href="#resume" class="nav-link scrollto"
+              ><i class="bx bx-file-blank"></i>
+              <span data-i18n="nav.resume">Resume</span></a
+            >
+          </li>
+          <li>
+            <a href="#portfolio" class="nav-link scrollto"
+              ><i class="bx bx-book-content"></i>
+              <span data-i18n="nav.portfolio">Portfolio</span></a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="nav-link scrollto"
+              ><i class="bx bx-envelope"></i>
+              <span data-i18n="nav.contact">Contact</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="language-selector-container">
+        <select id="language-selector">
+          <option value="en">🇬🇧 English</option>
+          <option value="fr">🇫🇷 Français</option>
+          <option value="es">🇪🇸 Español</option>
+        </select>
+      </div>
+    </header>
 
-<body>
-  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
-  <header id="header" class="d-flex flex-column justify-content-center">
+    <section id="hero" class="d-flex flex-column justify-content-center">
+      <div
+        class="container"
+        data-aos="zoom-in"
+        data-aos-delay="100"
+        style="margin-top: 60px"
+      >
+        <h1 data-i18n="hero.title">Anthony Bryckaert</h1>
+        <p>
+          <span data-i18n="hero.subtitle">I'm</span>
+          <span
+            class="typed"
+            data-typed-items="Engineer, Freelancer, Developer, Pentester"
+            data-i18n-typed-items="hero.typedItems"
+          ></span>
+        </p>
+        <a
+          href="assets/resume/Anthony-Bryckaert-resume.pdf"
+          class="btn btn-primary btn-lg d-flex align-items-center btn-oval"
+          download
+        >
+          <i class="bi bi-cloud-arrow-down me-2" style="font-size: 1.4em"></i>
+          <span style="padding-left: 5px" data-i18n="hero.download"
+            >Download resume</span
+          >
+        </a>
+        <a
+          href="https://wa.me/33781755907"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-success btn-lg d-flex align-items-center btn-oval btn-whatsapp"
+        >
+          <i class="bi bi-whatsapp me-2" style="font-size: 1.4em"></i>
+          <span style="padding-left: 5px" data-i18n="hero.whatsapp"
+            >Contact me on WhatsApp</span
+          >
+        </a>
+      </div>
+      <div class="d-flex justify-content-center">
+        <a
+          href="#mycompany"
+          class="bi bi-chevron-down mobile-only"
+          style="font-size: 3em; color: #0563bb; transform: translateY(185px)"
+        ></a>
+      </div>
+    </section>
 
-    <nav id="navbar" class="navbar nav-menu">
-      <ul>
-        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span
-              data-i18n="nav.home">Home</span></a></li>
-        <li><a href="#mycompany" class="nav-link scrollto company-nav-link">
-            <img src="assets/img/favicon.jpeg" class="company-nav-logo" alt="Company logo">
-            <span data-i18n="nav.company">Company</span>
-          </a></li>
-        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span
-              data-i18n="nav.about">About</span></a></li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span
-              data-i18n="nav.resume">Resume</span></a></li>
-        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span
-              data-i18n="nav.portfolio">Portfolio</span></a>
-        </li>
-        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span
-              data-i18n="nav.contact">Contact</span></a></li>
-      </ul>
-    </nav>
-    <div class="language-selector-container">
-      <select id="language-selector">
-        <option value="en">🇬🇧 English</option>
-        <option value="fr">🇫🇷 Français</option>
-        <option value="es">🇪🇸 Español</option>
-      </select>
-    </div>
-  </header>
+    <main id="main">
+      <section id="mycompany" class="mycompany">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2 data-i18n="company.title">Mon entreprise</h2>
+            <h3 data-i18n="company.subtitle">
+              L'expertise IT flexible, quand vous en avez besoin.
+            </h3>
+          </div>
 
-  <section id="hero" class="d-flex flex-column justify-content-center">
-    <div class="container" data-aos="zoom-in" data-aos-delay="100" style="margin-top: 60px;">
-      <h1 data-i18n="hero.title">Anthony Bryckaert</h1>
-      <p><span data-i18n="hero.subtitle">I'm</span> <span class="typed"
-          data-typed-items="Engineer, Freelancer, Developer, Pentester" data-i18n-typed-items="hero.typedItems"></span>
-      </p>
-      <a href="assets/resume/Anthony-Bryckaert-resume.pdf"
-        class="btn btn-primary btn-lg d-flex align-items-center btn-oval" download>
-        <i class="bi bi-cloud-arrow-down me-2" style="font-size: 1.4em;"></i>
-        <span style="padding-left: 5px;" data-i18n="hero.download">Download resume</span>
-      </a>
-    </div>
-    <div class="d-flex justify-content-center">
-      <a href="#mycompany" class="bi bi-chevron-down mobile-only"
-        style="font-size: 3em; color: #0563bb; transform: translateY(185px);"></a>
-    </div>
-  </section>
-
-  <main id="main">
-    <section id="mycompany" class="mycompany">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2 data-i18n="company.title">Mon entreprise</h2>
-          <h3 data-i18n="company.subtitle">L'expertise IT flexible, quand vous en avez besoin.</h3>
-        </div>
-
-        <div class="row mt-5 company-services-section">
-          <div class="col-lg-12">
-            <h3 class="company-services-title mb-4" data-i18n="company.services.title">My Services</h3>
-            <div class="row g-4 company-services">
-              <div class="col-lg-4 d-flex">
-                <div class="card company-service-card h-100 w-100 d-flex flex-column">
-                  <div class="card-body">
-                    <div class="company-service-icon"><i class="bi bi-shield-check" style="font-size: 1.3em"></i></div>
-                    <h3 class="card-title" data-i18n="company.cybersecurity.title">Cybersecurity</h3>
-                    <p class="card-text" data-i18n="company.cybersecurity.description">Cybersecurity consulting and
-                      support for professionals, including vulnerability analysis, digital risk assessment, application,
-                      information system and network security, code review and correction, SIEM tool configuration,
-                      technical recommendations and user awareness of digital security best practices.</p>
-                  </div>
-                  <a href="#contact" class="btn btn-primary btn-sm w-auto align-self-center mt-auto mb-4"
-                    data-i18n="company.cta">See more</a>
-                </div>
-              </div>
-              <div class="col-lg-4 d-flex">
-                <div class="card company-service-card h-100 w-100 d-flex flex-column">
-                  <div class="card-body">
-                    <div class="company-service-icon">
-                      <i class="bi bi-cpu" style="font-size: 1.3em"></i>
+          <div class="row mt-5 company-services-section">
+            <div class="col-lg-12">
+              <h3
+                class="company-services-title mb-4"
+                data-i18n="company.services.title"
+              >
+                My Services
+              </h3>
+              <div class="row g-4 company-services">
+                <div class="col-lg-4 d-flex">
+                  <div
+                    class="card company-service-card h-100 w-100 d-flex flex-column"
+                  >
+                    <div class="card-body">
+                      <div class="company-service-icon">
+                        <i
+                          class="bi bi-shield-check"
+                          style="font-size: 1.3em"
+                        ></i>
+                      </div>
+                      <h3
+                        class="card-title"
+                        data-i18n="company.cybersecurity.title"
+                      >
+                        Cybersecurity
+                      </h3>
+                      <p
+                        class="card-text"
+                        data-i18n="company.cybersecurity.description"
+                      >
+                        Cybersecurity consulting and support for professionals,
+                        including vulnerability analysis, digital risk
+                        assessment, application, information system and network
+                        security, code review and correction, SIEM tool
+                        configuration, technical recommendations and user
+                        awareness of digital security best practices.
+                      </p>
                     </div>
-                    <h3 class="card-title" data-i18n="company.ai.title">Artificial Intelligence and Automation</h3>
-                    <p class="card-text" data-i18n="company.ai.description">Design, development and integration of
-                      artificial intelligence solutions adapted to professional needs, including autonomous agents, RAG
-                      systems, chatbots and automated document processing tools. Implementation of workflows with N8N,
-                      API integration and business process automation.</p>
+                    <a
+                      href="#contact"
+                      class="btn btn-primary btn-sm w-auto align-self-center mt-auto mb-4"
+                      data-i18n="company.cta"
+                      >See more</a
+                    >
                   </div>
-                  <a href="#contact" class="btn btn-primary btn-sm w-auto align-self-center mt-auto mb-4"
-                    data-i18n="company.cta">See more</a>
                 </div>
-              </div>
-              <div class="col-lg-4 d-flex">
-                <div class="card company-service-card h-100 w-100 d-flex flex-column">
-                  <div class="card-body">
-                    <div class="company-service-icon"><i class="bi bi-code-slash" style="font-size: 1.3em;"></i></div>
-                    <h3 class="card-title" data-i18n="company.development.title">Application Development</h3>
-                    <p class="card-text" data-i18n="company.development.description">Design and development of web
-                      applications, software and tailor-made digital tools. Front-end and back-end development, API
-                      creation and integration, database design and management, Docker containerization, testing,
-                      deployment, maintenance, optimization and application security.</p>
+                <div class="col-lg-4 d-flex">
+                  <div
+                    class="card company-service-card h-100 w-100 d-flex flex-column"
+                  >
+                    <div class="card-body">
+                      <div class="company-service-icon">
+                        <i class="bi bi-cpu" style="font-size: 1.3em"></i>
+                      </div>
+                      <h3 class="card-title" data-i18n="company.ai.title">
+                        Artificial Intelligence and Automation
+                      </h3>
+                      <p class="card-text" data-i18n="company.ai.description">
+                        Design, development and integration of artificial
+                        intelligence solutions adapted to professional needs,
+                        including autonomous agents, RAG systems, chatbots and
+                        automated document processing tools. Implementation of
+                        workflows with N8N, API integration and business process
+                        automation.
+                      </p>
+                    </div>
+                    <a
+                      href="#contact"
+                      class="btn btn-primary btn-sm w-auto align-self-center mt-auto mb-4"
+                      data-i18n="company.cta"
+                      >See more</a
+                    >
                   </div>
-                  <a href="#contact" class="btn btn-primary btn-sm w-auto align-self-center mt-auto mb-4"
-                    data-i18n="company.cta">See more</a>
+                </div>
+                <div class="col-lg-4 d-flex">
+                  <div
+                    class="card company-service-card h-100 w-100 d-flex flex-column"
+                  >
+                    <div class="card-body">
+                      <div class="company-service-icon">
+                        <i
+                          class="bi bi-code-slash"
+                          style="font-size: 1.3em"
+                        ></i>
+                      </div>
+                      <h3
+                        class="card-title"
+                        data-i18n="company.development.title"
+                      >
+                        Application Development
+                      </h3>
+                      <p
+                        class="card-text"
+                        data-i18n="company.development.description"
+                      >
+                        Design and development of web applications, software and
+                        tailor-made digital tools. Front-end and back-end
+                        development, API creation and integration, database
+                        design and management, Docker containerization, testing,
+                        deployment, maintenance, optimization and application
+                        security.
+                      </p>
+                    </div>
+                    <a
+                      href="#contact"
+                      class="btn btn-primary btn-sm w-auto align-self-center mt-auto mb-4"
+                      data-i18n="company.cta"
+                      >See more</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-5 mb-0 align-text-top company-information">
+            <h3
+              class="company-information-title mb-4"
+              data-i18n="company.information.title"
+            >
+              Business Information
+            </h3>
+            <div class="col-lg-4">
+              <p>
+                <strong data-i18n="company.status">Business status:</strong
+                ><br /><span data-i18n="company.status.value"
+                  >French micro-enterprise - Freelance</span
+                >
+              </p>
+              <p>
+                <strong data-i18n="company.location">Location:</strong
+                ><br /><span data-i18n="company.location.value"
+                  >Avignon, France - Remote services available</span
+                >
+              </p>
+              <p>
+                <strong data-i18n="company.siren">SIREN:</strong><br /><span
+                  >109131110</span
+                >
+              </p>
+              <p class="mb-0">
+                <strong data-i18n="company.siret">SIRET:</strong><br /><span
+                  >10913111000016</span
+                >
+              </p>
+            </div>
+            <div class="col-lg-4">
+              <p>
+                <strong data-i18n="company.website">Website:</strong><br /><a
+                  >Soon!</a
+                >
+              </p>
+              <p>
+                <strong data-i18n="company.email">Email:</strong><br /><a
+                  href="mailto:bryckaert.anthony@gmail.com"
+                  >bryckaert.anthony@gmail.com</a
+                >
+              </p>
+              <p class="mb-0">
+                <strong data-i18n="company.phone">Phone:</strong><br /><a
+                  href="tel:+33781755907"
+                  >+33 7 81 75 59 07</a
+                >
+              </p>
+            </div>
+            <div
+              class="col-lg-4 d-flex align-items-start justify-content-center"
+            >
+              <img
+                src="assets/img/favicon.jpeg"
+                class="img-fluid"
+                alt="Freelance software engineer logo"
+                style="width: 45%"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2 data-i18n="about.title">About</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4">
+              <img src="assets/img/profile-image.jpg" class="img-fluid" alt />
+            </div>
+            <div class="col-lg-8 pt-4 pt-lg-0 content">
+              <h3 data-i18n="about.subtitle">
+                Engineer specializing in Software Development, Cybersecurity,
+                and Artificial Intelligence
+              </h3>
+              <p class="fst-italic" data-i18n="about.description">
+                I am deeply committed to the fields of Information Technology,
+                with a particular focus on Cybersecurity and Artificial
+                Intelligence.
+              </p>
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.nationality"
+                        >Nationality:</strong
+                      >
+                      <span data-i18n="about.nationality.value">French</span>
+                    </li>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.firstLang"
+                        >First language:</strong
+                      >
+                      <span data-i18n="about.firstLang.value"
+                        >French (native)</span
+                      >
+                    </li>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.secondLang"
+                        >Second language:</strong
+                      >
+                      <span data-i18n="about.secondLang.value"
+                        >English (B2)</span
+                      >
+                    </li>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.thirdLang"
+                        >Third language:</strong
+                      >
+                      <span data-i18n="about.thirdLang.value"
+                        >Spanish (B2)</span
+                      >
+                    </li>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.city">City:</strong>
+                      <span data-i18n="about.city.value">Avignon</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.age">Age:</strong>
+                      <span>24</span>
+                    </li>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.degree">Degree:</strong>
+                      <span data-i18n="about.degree.value"
+                        >Master's in Computer Science</span
+                      >
+                    </li>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.email">Email:</strong>
+                      <span>bryckaert.anthony@gmail.com</span>
+                    </li>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.phone"
+                        >Professional phone number:</strong
+                      >
+                      <span>+33781755907</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <p data-i18n="about.seeking">
+                I am looking for freelance opportunities in AI engineering,
+                cybersecurity, web application, and software development. I am
+                particularly interested in projects involving artificial
+                intelligence including model development, fine-tuning, and
+                deployment as well as exploring applications in machine
+                learning, deep learning, and software solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="skills" class="skills section-bg">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2 data-i18n="skills.title">Skills</h2>
+            <h3 data-i18n="skills.subtitle">
+              Acquired at jobs, school and through personal projects.
+            </h3>
+          </div>
+
+          <div class="row skills-content">
+            <div class="col-lg-6">
+              <div class="progress">
+                <span class="skill"
+                  ><span data-i18n="skills.network"
+                    >Network : Wireshark, Cisco Pack Tracer, Firewall</span
+                  >
+                  <i class="val">90%</i></span
+                >
+                <div class="progress-bar-wrap">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="90"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill"
+                  ><span data-i18n="skills.backend"
+                    >Backend : Java, Python, C++, Javascript</span
+                  >
+                  <i class="val">80%</i></span
+                >
+                <div class="progress-bar-wrap">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="70"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill"
+                  ><span data-i18n="skills.frontend"
+                    >Frontend : Bootstrap, Angular, Javascript, Node JS CMS
+                    (Odoo, Wordpress, Wix)</span
+                  >
+                  <i class="val">65%</i></span
+                >
+                <div class="progress-bar-wrap">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="65"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="progress">
+                <span class="skill"
+                  ><span data-i18n="skills.ai"
+                    >AI development : PyTorch, Langchain, Skills, N8N,
+                    Azure</span
+                  ><i class="val">75%</i></span
+                >
+                <div class="progress-bar-wrap">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="75"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill"
+                  ><span data-i18n="skills.forensic">Forensic, OSINT</span>
+                  <i class="val">90%</i></span
+                >
+                <div class="progress-bar-wrap">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="90"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill"
+                  ><span data-i18n="skills.pentesting">Pentesting</span
+                  ><i class="val">60%</i></span
+                >
+                <div class="progress-bar-wrap">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="60"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
+      <section id="resume" class="resume">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2 data-i18n="resume.title">Resume</h2>
+            <h3 data-i18n="resume.subtitle">Qualifications and experiences</h3>
+          </div>
 
-        <div class="row mt-5 mb-0 align-text-top company-information">
-          <h3 class="company-information-title mb-4" data-i18n="company.information.title">Business Information</h3>
-          <div class="col-lg-4">
-            <p><strong data-i18n="company.status">Business status:</strong><br><span
-                data-i18n="company.status.value">French micro-enterprise - Freelance</span></p>
-            <p><strong data-i18n="company.location">Location:</strong><br><span
-                data-i18n="company.location.value">Avignon, France - Remote services available</span></p>
-            <p><strong data-i18n="company.siren">SIREN:</strong><br><span>109131110</span></p>
-            <p class="mb-0"><strong data-i18n="company.siret">SIRET:</strong><br><span>10913111000016</span></p>
-          </div>
-          <div class="col-lg-4 ">
-            <p><strong data-i18n="company.website">Website:</strong><br><a>Soon!</a></p>
-            <p><strong data-i18n="company.email">Email:</strong><br><a
-                href="mailto:bryckaert.anthony@gmail.com">bryckaert.anthony@gmail.com</a></p>
-            <p class="mb-0"><strong data-i18n="company.phone">Phone:</strong><br><a href="tel:+33781755907">+33 7 81 75 59 07</a></p>
-          </div>
-          <div class="col-lg-4 d-flex align-items-start justify-content-center">
-            <img src="assets/img/favicon.jpeg" class="img-fluid" alt="Freelance software engineer logo"
-              style="width: 45%">
+          <div class="row">
+            <div class="col-lg-6">
+              <h3 class="resume-title" data-i18n="resume.diplomas">Diplomas</h3>
+              <div class="resume-item pb-0">
+                <h4 data-i18n="resume.m2.title">
+                  Third year of Engineer school (M2)
+                </h4>
+                <h5 data-i18n="resume.m2.period">2025 - 2026</h5>
+                <p>
+                  <em>
+                    🇫🇷
+                    <span data-i18n="resume.m2.school"
+                      >ESAIP Engineering School, Aix-En-Provence 13090,
+                      France</span
+                    >
+                  </em>
+                  <br />
+                  <em>
+                    🇦🇷
+                    <span data-i18n="resume.m2.exchange"
+                      >Exchange Semester at UNAJ National University Arturo
+                      Jauretche, Buenos Aires, Argentina</span
+                    >
+                  </em>
+                </p>
+                <p data-i18n="resume.m2.courses" data-i18n-html>
+                  <br />
+                  Développement : <b>Design Pattern</b> in <b>C#</b> <br />
+                  Application Development : <b>Kotlin</b> <br />
+                  Web Application Development : <b>Node.js</b>,
+                  <b>Express.js</b>
+                </p>
+              </div>
+
+              <div class="resume-item pb-0">
+                <h4 data-i18n="resume.m1.title">
+                  Second year of Engineer school (M1)
+                </h4>
+                <h5 data-i18n="resume.m1.period">2023 - 2025</h5>
+                <p>
+                  <em>
+                    🇫🇷
+                    <span data-i18n="resume.m1.school"
+                      >ESAIP Engineering School, Aix-En-Provence 13090,
+                      France</span
+                    >
+                  </em>
+                </p>
+                <b data-i18n="resume.m1.toeic">TOEIC certificate, score 850</b>
+                <p data-i18n="resume.m1.courses" data-i18n-html>
+                  <br />
+                  Cybersécurité : <b>Forensic</b>, <b>CTF</b>,
+                  <b>Cryptology</b>, <b>Secure development</b>,
+                  <b>Risk management</b> <br />
+                  Développement : Backend <b>Java</b> | Android development
+                  <br />
+                  Linux Administration : <b>Apache</b>, <b>Ssh</b>,
+                  <b>Iptable</b>, <b>Git</b> | Windows Administration :
+                  <br />
+                  Network :
+                </p>
+              </div>
+              <div class="resume-item pb-0">
+                <h4 data-i18n="resume.l3.sem2.title">
+                  First year of Engineer school
+                </h4>
+                <h5 data-i18n="resume.l3.sem2.period">
+                  Semester two of Engineer school 2023
+                </h5>
+                <p>
+                  <em>
+                    🇫🇷
+                    <span data-i18n="resume.l3.sem2.school"
+                      >ESAIP Engineering School, Aix-En-Provence 13090,
+                      France</span
+                    >
+                  </em>
+                  <br />
+                  <em>
+                    🇩🇰
+                    <span data-i18n="resume.l3.sem2.exchange"
+                      >Exchange Semester at VIA University College, Horsens,
+                      8700, Denmark</span
+                    >
+                  </em>
+                </p>
+                <p data-i18n="resume.l3.sem2.courses">
+                  <b>MongoDB</b>, <b>ASP.NET</b>,
+                  <b>SQL Server Management Studio</b>
+                </p>
+                <h5 data-i18n="resume.l3.sem1.period">
+                  Semester one of Engineer school 2022
+                </h5>
+                <p>
+                  <em>
+                    🇫🇷
+                    <span data-i18n="resume.l3.sem2.school"
+                      >ESAIP Engineering School, Aix-En-Provence 13090,
+                      France</span
+                    >
+                  </em>
+                </p>
+                <p data-i18n="resume.l3.sem1.courses">
+                  Frontend : <b>Html</b>, <b>Css</b> | Backend : <b>Java</b> |
+                  Network : <b>Cisco Packet Tracer</b>
+                </p>
+              </div>
+              <div class="resume-item">
+                <h4 data-i18n="resume.bts.title">
+                  2 years diploma in IT (BTS SN)
+                </h4>
+                <h5 data-i18n="resume.bts.period">2019 - 2022</h5>
+                <p>
+                  <em>
+                    🇫🇷
+                    <span data-i18n="resume.bts.school"
+                      >Saint Jean-Baptiste de lasalle, Avignon 84000,
+                      France</span
+                    >
+                  </em>
+                </p>
+                <p data-i18n="resume.bts.courses" data-i18n-html>
+                  Développement : <b>Java</b>, <b>C++</b>,
+                  <b>Qt Creator Framework</b> <br />
+                  Linux administration : <b>Apache</b>, <b>VsFtp</b>,
+                  <b>MySql</b>, <b>Ssh</b>, <b>Ufw firewall</b>
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <h3 class="resume-title" data-i18n="resume.experience">
+                Professional Experience
+              </h3>
+              <div class="resume-item">
+                <h4 data-i18n="resume.csgroup.title">
+                  CS GROUP FRANCE IA Solutions Developer
+                </h4>
+                <h5 data-i18n="resume.csgroup.period">2026-2026 (6 months)</h5>
+                <p>
+                  <em data-i18n="resume.csgroup.location"
+                    >Aix-En-Provence, France</em
+                  >
+                </p>
+                <p data-i18n="resume.csgroup.description">
+                  Design and development of Artificial Intelligence-based
+                  solutions at CS GROUP FRANCE's Aix-en-Provence office. My work
+                  focused on creating intelligent systems aimed at optimizing
+                  business processes and enhancing decision support.
+                </p>
+              </div>
+              <div class="resume-item">
+                <h4 data-i18n="resume.capgemini.title">
+                  Capgemini secure development and risk analysis (EBIOS RM)
+                </h4>
+                <h5 data-i18n="resume.capgemini.period">
+                  2024-2025 (7 months)
+                </h5>
+                <p>
+                  <em data-i18n="resume.capgemini.location"
+                    >Aix-En-Provence, France</em
+                  >
+                </p>
+                <p data-i18n="resume.capgemini.description">
+                  During my internship at Capgemini's Aix-en-Provence office, I
+                  developed web application, an internal HR management tool
+                  using <b>Node.js</b>, to streamline employee activity tracking
+                  and KPI monitoring with role-based functionalities. In
+                  parallel, I conducted risk analyses using the
+                  <b>EBIOS RM</b> methodology and utilized <b>Docker</b> to
+                  deploy tools such as <b>CISO Assistant</b>. These tasks
+                  enhanced my technical expertise and contributed to improving
+                  operational efficiency and security.
+                </p>
+              </div>
+              <div class="resume-item">
+                <h4 data-i18n="resume.nato.title">NATO (OTAN)</h4>
+                <h5 data-i18n="resume.nato.period">2024 (4 months)</h5>
+                <p><em data-i18n="resume.nato.location">France</em></p>
+              </div>
+              <div class="resume-item">
+                <h4 data-i18n="resume.archelon.title">
+                  Volunteering in Archelon
+                </h4>
+                <h5 data-i18n="resume.archelon.period">Summer 2023</h5>
+                <p>
+                  <em data-i18n="resume.archelon.location">Chania, Crete</em>
+                </p>
+                <p data-i18n="resume.archelon.description">
+                  Archelon is committed to protecting sea turtles through
+                  habitat conservation, scientific research to better understand
+                  their needs, and public awareness to encourage the
+                  preservation of these species and their natural environments.
+                </p>
+              </div>
+              <div class="resume-item">
+                <h4 data-i18n="resume.entrep.title">Les entrep'</h4>
+                <h5 data-i18n="resume.entrep.period">2022</h5>
+                <p>
+                  <em data-i18n="resume.entrep.location"
+                    >Avignon, 84000, France</em
+                  >
+                </p>
+                <p data-i18n="resume.entrep.description">
+                  Practicing business creation involves exploring ideas and
+                  assessing fit through a cycle of doing, failing, and redoing,
+                  supported by diverse teamwork and mentorship. It combines
+                  practical learning and networking, culminating in the Les
+                  Entrep' certificate for professional advancement.
+                </p>
+              </div>
+              <div class="resume-item">
+                <h4 data-i18n="resume.technician.title">Technician trainee</h4>
+                <h5 data-i18n="resume.technician.period">2021</h5>
+                <p>
+                  <em data-i18n="resume.technician.location"
+                    >Emergency Informatique, Avignon, 84000, France</em
+                  >
+                </p>
+                <p data-i18n="resume.technician.description">
+                  Computer repair, installation and configuration of network
+                  equipment
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2 data-i18n="about.title">About</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4">
-            <img src="assets/img/profile-image.jpg" class="img-fluid" alt>
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3 data-i18n="about.subtitle">Engineer specializing in Software Development, Cybersecurity, and Artificial
-              Intelligence</h3>
-            <p class="fst-italic" data-i18n="about.description">
-              I am deeply committed to the fields of Information Technology, with a particular focus on Cybersecurity
-              and Artificial Intelligence.
+      </section>
+      <section id="portfolio" class="portfolio section-bg">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2 data-i18n="portfolio.title">My projects</h2>
+            <p data-i18n="portfolio.subtitle">
+              Here are all my projects, others are still in progress
             </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i>
-                    <strong data-i18n="about.nationality">Nationality:</strong> <span
-                      data-i18n="about.nationality.value">French</span>
-                  </li>
-                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.firstLang">First
-                      language:</strong> <span data-i18n="about.firstLang.value">French (native)</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.secondLang">Second
-                      language:</strong> <span data-i18n="about.secondLang.value">English (B2)</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.thirdLang">Third
-                      language:</strong> <span data-i18n="about.thirdLang.value">Spanish (B2)</span></li>
-                  <li><i class="bi bi-chevron-right"></i>
-                    <strong data-i18n="about.city">City:</strong> <span data-i18n="about.city.value">Avignon</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i>
-                    <strong data-i18n="about.age">Age:</strong> <span>24</span>
-                  </li>
-                  <li><i class="bi bi-chevron-right"></i>
-                    <strong data-i18n="about.degree">Degree:</strong> <span data-i18n="about.degree.value">Master's in
-                      Computer Science</span>
-                  </li>
-                  <li><i class="bi bi-chevron-right"></i>
-                    <strong data-i18n="about.email">Email:</strong>
-                    <span>bryckaert.anthony@gmail.com</span>
-                  </li>
-                  <li><i class="bi bi-chevron-right"></i> <strong data-i18n="about.phone">Professional phone
-                      number:</strong> <span>+33781755907</span></li>
-                </ul>
-              </div>
-            </div>
-            <p data-i18n="about.seeking">
-              I am looking for freelance opportunities in AI engineering, cybersecurity, web application, and software
-              development. I
-              am particularly interested in projects involving artificial intelligence including model development,
-              fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and
-              software solutions.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <section id="skills" class="skills section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2 data-i18n="skills.title">Skills</h2>
-          <h3 data-i18n="skills.subtitle">Acquired at jobs, school and through personal projects.</h3>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span data-i18n="skills.network">Network : Wireshark, Cisco Pack Tracer,
-                  Firewall</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill"><span data-i18n="skills.backend">Backend : Java, Python, C++, Javascript</span> <i
-                  class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill"><span data-i18n="skills.frontend">Frontend : Bootstrap, Angular, Javascript, Node JS
-                  CMS (Odoo, Wordpress, Wix)</span> <i class="val">65%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
           </div>
 
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span data-i18n="skills.ai">AI development : PyTorch, Langchain, Skills, N8N,
-                  Azure</span><i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill"><span data-i18n="skills.forensic">Forensic, OSINT</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill"><span data-i18n="skills.pentesting">Pentesting</span><i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="resume" class="resume">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2 data-i18n="resume.title">Resume</h2>
-          <h3 data-i18n="resume.subtitle">Qualifications and experiences</h3>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <h3 class="resume-title" data-i18n="resume.diplomas">Diplomas</h3>
-            <div class="resume-item pb-0">
-              <h4 data-i18n="resume.m2.title">Third year of Engineer school (M2)</h4>
-              <h5 data-i18n="resume.m2.period">2025 - 2026</h5>
-              <p>
-                <em>
-                  🇫🇷
-                  <span data-i18n="resume.m2.school">ESAIP Engineering School, Aix-En-Provence 13090, France</span>
-                </em>
-                <br>
-                <em>
-                  🇦🇷
-                  <span data-i18n="resume.m2.exchange">Exchange Semester at UNAJ National University Arturo Jauretche,
-                    Buenos Aires, Argentina</span>
-                </em>
-              </p>
-              <p data-i18n="resume.m2.courses" data-i18n-html>
-                <br>
-                Développement : <b>Design Pattern</b> in <b>C#</b> <br>
-                Application Development : <b>Kotlin</b> <br>
-                Web Application Development : <b>Node.js</b>, <b>Express.js</b>
-              </p>
-            </div>
-
-            <div class="resume-item pb-0">
-              <h4 data-i18n="resume.m1.title">Second year of Engineer school (M1) </h4>
-              <h5 data-i18n="resume.m1.period">2023 - 2025</h5>
-              <p>
-                <em>
-                  🇫🇷
-                  <span data-i18n="resume.m1.school">ESAIP Engineering School, Aix-En-Provence 13090, France</span>
-                </em>
-              </p>
-              <b data-i18n="resume.m1.toeic">TOEIC certificate, score 850</b>
-              <p data-i18n="resume.m1.courses" data-i18n-html>
-                <br>
-                Cybersécurité : <b>Forensic</b>, <b>CTF</b>, <b>Cryptology</b>, <b>Secure development</b>, <b>Risk
-                  management</b> <br>
-                Développement : Backend <b>Java</b> | Android development <br>
-                Linux Administration : <b>Apache</b>, <b>Ssh</b>, <b>Iptable</b>, <b>Git</b> | Windows Administration :
-                <br>
-                Network :
-              </p>
-            </div>
-            <div class="resume-item pb-0">
-              <h4 data-i18n="resume.l3.sem2.title">First year of Engineer school </h4>
-              <h5 data-i18n="resume.l3.sem2.period">Semester two of Engineer school 2023</h5>
-              <p>
-                <em>
-                  🇫🇷
-                  <span data-i18n="resume.l3.sem2.school">ESAIP Engineering School, Aix-En-Provence 13090, France</span>
-                </em>
-                <br>
-                <em>
-                  🇩🇰
-                  <span data-i18n="resume.l3.sem2.exchange">Exchange Semester at VIA University College, Horsens, 8700,
-                    Denmark</span>
-                </em>
-              </p>
-              <p data-i18n="resume.l3.sem2.courses"><b>MongoDB</b>, <b>ASP.NET</b>, <b>SQL Server Management Studio</b>
-              </p>
-              <h5 data-i18n="resume.l3.sem1.period">Semester one of Engineer school 2022</h5>
-              <p>
-                <em>
-                  🇫🇷
-                  <span data-i18n="resume.l3.sem2.school">ESAIP Engineering School, Aix-En-Provence 13090, France</span>
-                </em>
-              </p>
-              <p data-i18n="resume.l3.sem1.courses">Frontend : <b>Html</b>, <b>Css</b> | Backend : <b>Java</b> | Network
-                : <b>Cisco Packet Tracer</b></p>
-            </div>
-            <div class="resume-item">
-              <h4 data-i18n="resume.bts.title">2 years diploma in IT (BTS SN)</h4>
-              <h5 data-i18n="resume.bts.period">2019 - 2022</h5>
-              <p>
-                <em>
-                  🇫🇷
-                  <span data-i18n="resume.bts.school">Saint Jean-Baptiste de lasalle, Avignon 84000, France</span>
-                </em>
-              </p>
-              <p data-i18n="resume.bts.courses" data-i18n-html>Développement : <b>Java</b>, <b>C++</b>, <b>Qt Creator
-                  Framework</b> <br>
-                Linux administration : <b>Apache</b>, <b>VsFtp</b>, <b>MySql</b>, <b>Ssh</b>, <b>Ufw firewall</b>
-              </p>
+          <div class="row">
+            <div
+              class="col-lg-12 d-flex justify-content-center"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <ul id="portfolio-flters">
+                <li
+                  data-filter="*"
+                  class="filter-active"
+                  data-i18n="portfolio.filter.all"
+                >
+                  All
+                </li>
+                <li
+                  data-filter=".filter-app"
+                  data-i18n="portfolio.filter.software"
+                >
+                  Software
+                </li>
+                <li data-filter=".filter-web" data-i18n="portfolio.filter.web">
+                  Web
+                </li>
+              </ul>
             </div>
           </div>
-          <div class="col-lg-6">
-            <h3 class="resume-title" data-i18n="resume.experience">Professional Experience</h3>
-            <div class="resume-item">
-              <h4 data-i18n="resume.csgroup.title">CS GROUP FRANCE IA Solutions Developer</h4>
-              <h5 data-i18n="resume.csgroup.period">2026-2026 (6 months)</h5>
-              <p><em data-i18n="resume.csgroup.location">Aix-En-Provence, France</em></p>
-              <p data-i18n="resume.csgroup.description">
-                Design and development of Artificial Intelligence-based solutions at CS GROUP FRANCE's Aix-en-Provence
-                office. My work focused on creating intelligent systems aimed at optimizing business processes and
-                enhancing decision support.
-              </p>
+
+          <div
+            class="row portfolio-container"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+              <div class="portfolio-wrap">
+                <img
+                  src="assets/img/portfolio/siteWebAepf.png"
+                  class="img-fluid"
+                  alt
+                />
+                <div class="portfolio-info">
+                  <h4 data-i18n="portfolio.aepf.title">
+                    Website for Polynesian Association
+                  </h4>
+                  <p data-i18n="portfolio.aepf.description">
+                    Creation of a website to promote Polynesian culture
+                  </p>
+                  <div class="portfolio-links">
+                    <a
+                      href="assets/img/portfolio/siteWebAepf.png"
+                      data-gallery="portfolioGallery"
+                      class="portfolio-lightbox"
+                      data-i18n="portfolio.aepf.lightbox"
+                      title="Website developed with Silex, an open-source website maker"
+                      ><i class="bx bx-plus"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="portfolio-details-lightbox"
+                      data-glightbox="type: external"
+                      data-i18n="portfolio.details"
+                      title="Portfolio Details"
+                      ><i class="bx bx-link"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="resume-item">
-              <h4 data-i18n="resume.capgemini.title">Capgemini secure development and risk analysis (EBIOS RM)</h4>
-              <h5 data-i18n="resume.capgemini.period">2024-2025 (7 months)</h5>
-              <p><em data-i18n="resume.capgemini.location">Aix-En-Provence, France</em></p>
-              <p data-i18n="resume.capgemini.description">During my internship at Capgemini's Aix-en-Provence office, I
-                developed web application, an internal HR
-                management tool using <b>Node.js</b>, to streamline employee activity tracking and KPI monitoring with
-                role-based functionalities. In parallel, I conducted risk analyses using the <b>EBIOS RM</b> methodology
-                and
-                utilized <b>Docker</b> to deploy tools such as <b>CISO Assistant</b>. These tasks enhanced my technical
-                expertise and
-                contributed to improving operational efficiency and security. </p>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+              <div class="portfolio-wrap">
+                <img
+                  src="assets/img/portfolio/pikawa.gif"
+                  class="img-fluid"
+                  alt
+                />
+                <div class="portfolio-info">
+                  <h4 data-i18n="portfolio.pikawa.title">
+                    Connected Coffee Machine "Pikawa"
+                  </h4>
+                  <p data-i18n="portfolio.pikawa.description">
+                    Make and manage coffee with Bluetooth
+                  </p>
+                  <div class="portfolio-links">
+                    <a
+                      href="assets/img/portfolio/pikawa.gif"
+                      data-gallery="portfolioGallery"
+                      class="portfolio-lightbox"
+                      data-i18n="portfolio.pikawa.lightbox"
+                      title="Developed in C++ with QT Creator framework during my 2-year diploma project"
+                      ><i class="bx bx-plus"></i
+                    ></a>
+                    <a
+                      href="https://github.com/btssn-lasalle-84/pikawa-2022"
+                      class="portfolio-details-lightbox"
+                      data-glightbox="type: external"
+                      data-i18n="portfolio.details"
+                      title="Portfolio Details"
+                      ><i class="bx bx-link"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="resume-item">
-              <h4 data-i18n="resume.nato.title">NATO (OTAN)</h4>
-              <h5 data-i18n="resume.nato.period">2024 (4 months)</h5>
-              <p><em data-i18n="resume.nato.location">France</em></p>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+              <div class="portfolio-wrap">
+                <img
+                  src="assets/img/portfolio/leVigneuxVin.png"
+                  class="img-fluid"
+                  alt
+                />
+                <div class="portfolio-info">
+                  <h4 data-i18n="portfolio.levigneux.title">Le Vigneux Vin</h4>
+                  <p data-i18n="portfolio.levigneux.description">
+                    Web application for winemaker
+                  </p>
+                  <div class="portfolio-links">
+                    <a
+                      href="assets/img/portfolio/leVigneuxVin.png"
+                      data-gallery="portfolioGallery"
+                      class="portfolio-lightbox"
+                      data-i18n="portfolio.levigneux.lightbox"
+                      title="Website created with ASP.NET, enabling the winemaker to add and manage their wines"
+                      ><i class="bx bx-plus"></i
+                    ></a>
+                    <a
+                      href="https://github.com/abryckaert/LeVigneuxVin"
+                      class="portfolio-details-lightbox"
+                      data-glightbox="type: external"
+                      data-i18n="portfolio.details"
+                      title="Portfolio Details"
+                      ><i class="bx bx-link"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="resume-item">
-              <h4 data-i18n="resume.archelon.title">Volunteering in Archelon</h4>
-              <h5 data-i18n="resume.archelon.period">Summer 2023</h5>
-              <p><em data-i18n="resume.archelon.location">Chania, Crete</em></p>
-              <p data-i18n="resume.archelon.description">Archelon is committed to protecting sea turtles through
-                habitat conservation, scientific research to better understand
-                their needs, and public awareness to encourage the
-                preservation of these species and their natural
-                environments.</p>
+
+            <div
+              class="col-lg-4 col-md-6 portfolio-item filter-app"
+              style="width: 14%"
+            >
+              <div class="portfolio-wrap">
+                <img
+                  src="assets/img/portfolio/brainPilot.gif"
+                  class="img-fluid"
+                  alt
+                />
+                <div class="portfolio-info">
+                  <h4 data-i18n="portfolio.brainpilot.title">BrainPilot</h4>
+                  <p data-i18n="portfolio.brainpilot.description">
+                    Android application to help students
+                  </p>
+                  <div class="portfolio-links">
+                    <a
+                      href="assets/img/portfolio/brainPilot.gif"
+                      data-gallery="portfolioGallery"
+                      class="portfolio-lightbox"
+                      data-i18n="portfolio.brainpilot.lightbox"
+                      title="Android application developed in Java to help students manage their time"
+                      ><i class="bx bx-plus"></i
+                    ></a>
+                    <a
+                      href="https://github.com/abryckaert/BrainPilotAndroid"
+                      class="portfolio-details-lightbox"
+                      data-glightbox="type: external"
+                      data-i18n="portfolio.details"
+                      title="Portfolio Details"
+                      ><i class="bx bx-link"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="resume-item">
-              <h4 data-i18n="resume.entrep.title">Les entrep'</h4>
-              <h5 data-i18n="resume.entrep.period">2022</h5>
-              <p><em data-i18n="resume.entrep.location">Avignon, 84000, France</em></p>
-              <p data-i18n="resume.entrep.description">Practicing business creation involves exploring ideas and
-                assessing fit through a cycle of doing, failing, and redoing,
-                supported by diverse teamwork and mentorship. It combines
-                practical learning and networking, culminating in the Les
-                Entrep' certificate for professional advancement.</p>
-            </div>
-            <div class="resume-item">
-              <h4 data-i18n="resume.technician.title">Technician trainee</h4>
-              <h5 data-i18n="resume.technician.period">2021</h5>
-              <p><em data-i18n="resume.technician.location">Emergency Informatique, Avignon, 84000, France</em></p>
-              <p data-i18n="resume.technician.description">Computer repair, installation and configuration of network
-                equipment</p>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+              <div class="portfolio-wrap">
+                <img
+                  src="assets/img/portfolio/t-one.png"
+                  class="img-fluid"
+                  alt
+                />
+                <div class="portfolio-info">
+                  <h4 data-i18n="portfolio.hr.title">
+                    Internal HR Management Tool
+                  </h4>
+                  <p data-i18n="portfolio.hr.description">
+                    An application developed using Node.js to streamline HR
+                    processes, including employee activity tracking, KPI
+                    monitoring, and role-based functionalities for
+                    administrators, project managers, and consultants.
+                  </p>
+                  <div class="portfolio-links">
+                    <a
+                      href="assets/img/portfolio/t-one.png"
+                      data-gallery="portfolioGallery"
+                      class="portfolio-lightbox"
+                      data-i18n="portfolio.hr.lightbox"
+                      title="Detailed description of the project"
+                      ><i class="bx bx-plus"></i
+                    ></a>
+                    <a
+                      href="https://github.com/your-repo-link"
+                      class="portfolio-details-lightbox"
+                      data-glightbox="type: external"
+                      data-i18n="portfolio.details"
+                      title="Portfolio Details"
+                      ><i class="bx bx-link"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-      </div>
-    </section>
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2 data-i18n="portfolio.title">My projects</h2>
-          <p data-i18n="portfolio.subtitle">Here are all my projects, others are still in progress</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active" data-i18n="portfolio.filter.all">All</li>
-              <li data-filter=".filter-app" data-i18n="portfolio.filter.software">Software</li>
-              <li data-filter=".filter-web" data-i18n="portfolio.filter.web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/siteWebAepf.png" class="img-fluid" alt>
-              <div class="portfolio-info">
-                <h4 data-i18n="portfolio.aepf.title">Website for Polynesian Association</h4>
-                <p data-i18n="portfolio.aepf.description">Creation of a website to promote Polynesian culture</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/siteWebAepf.png" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" data-i18n="portfolio.aepf.lightbox"
-                    title="Website developed with Silex, an open-source website maker"><i class="bx bx-plus"></i></a>
-                  <a href="#" class="portfolio-details-lightbox" data-glightbox="type: external"
-                    data-i18n="portfolio.details" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/pikawa.gif" class="img-fluid" alt>
-              <div class="portfolio-info">
-                <h4 data-i18n="portfolio.pikawa.title">Connected Coffee Machine "Pikawa"</h4>
-                <p data-i18n="portfolio.pikawa.description">Make and manage coffee with Bluetooth</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/pikawa.gif" data-gallery="portfolioGallery" class="portfolio-lightbox"
-                    data-i18n="portfolio.pikawa.lightbox"
-                    title="Developed in C++ with QT Creator framework during my 2-year diploma project"><i
-                      class="bx bx-plus"></i></a>
-                  <a href="https://github.com/btssn-lasalle-84/pikawa-2022" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" data-i18n="portfolio.details" title="Portfolio Details"><i
-                      class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/leVigneuxVin.png" class="img-fluid" alt>
-              <div class="portfolio-info">
-                <h4 data-i18n="portfolio.levigneux.title">Le Vigneux Vin</h4>
-                <p data-i18n="portfolio.levigneux.description">Web application for winemaker</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/leVigneuxVin.png" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" data-i18n="portfolio.levigneux.lightbox"
-                    title="Website created with ASP.NET, enabling the winemaker to add and manage their wines"><i
-                      class="bx bx-plus"></i></a>
-                  <a href="https://github.com/abryckaert/LeVigneuxVin" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" data-i18n="portfolio.details" title="Portfolio Details"><i
-                      class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width: 14%;">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/brainPilot.gif" class="img-fluid" alt>
-              <div class="portfolio-info">
-                <h4 data-i18n="portfolio.brainpilot.title">BrainPilot</h4>
-                <p data-i18n="portfolio.brainpilot.description">Android application to help students</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/brainPilot.gif" data-gallery="portfolioGallery"
-                    class="portfolio-lightbox" data-i18n="portfolio.brainpilot.lightbox"
-                    title="Android application developed in Java to help students manage their time"><i
-                      class="bx bx-plus"></i></a>
-                  <a href="https://github.com/abryckaert/BrainPilotAndroid" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" data-i18n="portfolio.details" title="Portfolio Details"><i
-                      class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/t-one.png" class="img-fluid" alt>
-              <div class="portfolio-info">
-                <h4 data-i18n="portfolio.hr.title">Internal HR Management Tool</h4>
-                <p data-i18n="portfolio.hr.description">An application developed using Node.js to streamline HR
-                  processes, including employee activity tracking, KPI monitoring, and role-based functionalities for
-                  administrators, project managers, and consultants.</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/t-one.png" data-gallery="portfolioGallery" class="portfolio-lightbox"
-                    data-i18n="portfolio.hr.lightbox" title="Detailed description of the project"><i
-                      class="bx bx-plus"></i></a>
-                  <a href="https://github.com/your-repo-link" class="portfolio-details-lightbox"
-                    data-glightbox="type: external" data-i18n="portfolio.details" title="Portfolio Details"><i
-                      class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-
-    </section>
-    <!--
+      </section>
+      <!--
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
 
@@ -684,126 +1123,141 @@
       </div>
     </section>
     -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2 data-i18n="testimonials.title">Testimonials</h2>
-        </div>
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <a href="https://www.linkedin.com/in/raimana-brasier-056116291/?originalSubdomain=fr"><img
-                    src="assets/img/testimonials/raimana.jpg" class="testimonial-img" alt=""></a>
-                <h3>Raimana Brasier</h3>
-                <h4 data-i18n="testimonials.raimana.title">Student specialized in Big Data</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  <span data-i18n="testimonials.raimana.text">Anthony is a passionate person, he loves what he does and
-                    it
-                    shows. Very involved in all the projects we've done
-                    together. I look forward to working with you again.</span>
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <a href="https://www.linkedin.com/in/teony-mathieu/"><img src="assets/img/testimonials/teony.jpg"
-                    class="testimonial-img" alt=""></a>
-                <h3>Teony Mathieu </h3>
-                <h4 data-i18n="testimonials.teony.title">Student specialized in Big Data & Junior AQSE President</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  <span data-i18n="testimonials.teony.text">Anthony stands out for his professionalism and his ability
-                    to inspire the team. His pragmatic approach
-                    and innovative spirit make him an invaluable asset in the workplace. Working alongside him is both
-                    rewarding and stimulating.</span> <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-
+      <section id="testimonials" class="testimonials section-bg">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2 data-i18n="testimonials.title">Testimonials</h2>
           </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section>
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2 data-i18n="contact.title">Contact</h2>
-        </div>
-
-        <div class="row justify-content-center text-start">
-          <div class="col-md-3">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4 data-i18n="contact.location">Location:</h4>
-                <p>Avignon, 84000, France</p>
+          <div
+            class="testimonials-slider swiper"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <a
+                    href="https://www.linkedin.com/in/raimana-brasier-056116291/?originalSubdomain=fr"
+                    ><img
+                      src="assets/img/testimonials/raimana.jpg"
+                      class="testimonial-img"
+                      alt=""
+                  /></a>
+                  <h3>Raimana Brasier</h3>
+                  <h4 data-i18n="testimonials.raimana.title">
+                    Student specialized in Big Data
+                  </h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    <span data-i18n="testimonials.raimana.text"
+                      >Anthony is a passionate person, he loves what he does and
+                      it shows. Very involved in all the projects we've done
+                      together. I look forward to working with you again.</span
+                    >
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <a href="https://www.linkedin.com/in/teony-mathieu/"
+                    ><img
+                      src="assets/img/testimonials/teony.jpg"
+                      class="testimonial-img"
+                      alt=""
+                  /></a>
+                  <h3>Teony Mathieu</h3>
+                  <h4 data-i18n="testimonials.teony.title">
+                    Student specialized in Big Data & Junior AQSE President
+                  </h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    <span data-i18n="testimonials.teony.text"
+                      >Anthony stands out for his professionalism and his
+                      ability to inspire the team. His pragmatic approach and
+                      innovative spirit make him an invaluable asset in the
+                      workplace. Working alongside him is both rewarding and
+                      stimulating.</span
+                    >
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="info">
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4 data-i18n="contact.linkedin">Linkedin:</h4>
-                <a href="https://www.linkedin.com/in/anthony-bryckaert-a482621b7/?originalSubdomain=fr">Anthony
-                  Bryckaert</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="info">
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4 data-i18n="contact.email">Email:</h4>
-                <p>bryckaert.anthony@gmail.com</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="info">
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4 data-i18n="contact.call">Call:</h4>
-                <p>+33781755907</p>
-              </div>
-            </div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
+      </section>
+      <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2 data-i18n="contact.title">Contact</h2>
+          </div>
 
-      </div>
-    </section>
+          <div class="row justify-content-center text-start">
+            <div class="col-md-3">
+              <div class="info">
+                <div class="address">
+                  <i class="bi bi-geo-alt"></i>
+                  <h4 data-i18n="contact.location">Location:</h4>
+                  <p>Avignon, 84000, France</p>
+                </div>
+              </div>
+            </div>
 
+            <div class="col-md-3">
+              <div class="info">
+                <div class="email">
+                  <i class="bi bi-envelope"></i>
+                  <h4 data-i18n="contact.linkedin">Linkedin:</h4>
+                  <a
+                    href="https://www.linkedin.com/in/anthony-bryckaert-a482621b7/?originalSubdomain=fr"
+                    >Anthony Bryckaert</a
+                  >
+                </div>
+              </div>
+            </div>
 
-  </main>
-  <footer id="footer">
+            <div class="col-md-3">
+              <div class="info">
+                <div class="email">
+                  <i class="bi bi-envelope"></i>
+                  <h4 data-i18n="contact.email">Email:</h4>
+                  <p>bryckaert.anthony@gmail.com</p>
+                </div>
+              </div>
+            </div>
 
-  </footer>
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+            <div class="col-md-3">
+              <div class="info">
+                <div class="phone">
+                  <i class="bi bi-phone"></i>
+                  <h4 data-i18n="contact.call">Call:</h4>
+                  <p>+33781755907</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer"></footer>
+    <div id="preloader"></div>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/main.js"></script>
-
-</body>
-
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/typed.js/typed.umd.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
