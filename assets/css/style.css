@@ -34,10 +34,10 @@ h2 {
   background-color: #0563bb;
   margin-top: 55px;
   border-radius: 20px;
-  padding: 10px;
-  font-size: 20px;
+  padding: 8px 10px;
+  font-size: 17px;
   text-align: left;
-  width: 250px;
+  width: 215px;
 }
 
 /* Bouton WhatsApp sous le bouton CV */
@@ -46,7 +46,7 @@ h2 {
   border-color: #25d366;
   margin-top: 15px;
   width: fit-content;
-  min-width: 250px;
+  min-width: 215px;
   white-space: nowrap;
 }
 
@@ -57,19 +57,19 @@ h2 {
 
 @media (max-width: 768px) {
   .btn-oval {
-    font-size: 16px;
+    font-size: 14px;
     display: block;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
-    width: 200px;
+    width: 175px;
   }
 
   .btn-oval.btn-whatsapp {
     display: flex !important;
     justify-content: center;
     width: fit-content;
-    min-width: 200px;
+    min-width: 175px;
     padding-left: 16px;
     padding-right: 16px;
   }
