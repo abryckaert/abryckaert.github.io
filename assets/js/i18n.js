@@ -78,7 +78,7 @@ const translations = {
     'about.email': 'Email:',
     'about.phone.fr': 'Professional phone (France):',
     'about.phone.ar': 'Professional phone (Argentina):',
-    'about.seeking': 'I am looking for a full-time position in AI engineering, cybersecurity, web application development or software development. I am particularly interested in artificial intelligence projects: model development, fine-tuning and deployment, as well as machine learning, deep learning and software solutions.',
+    'about.seeking': 'I am looking for a full-time position in AI engineering, cybersecurity, web application development or software development.',
     
     // Skills section
     'skills.title': 'Skills',
@@ -208,7 +208,7 @@ const translations = {
     'about.email': 'Email:',
     'about.phone.fr': 'Téléphone pro français :',
     'about.phone.ar': 'Téléphone pro argentin :',
-    'about.seeking': 'Je recherche un emploi dans l\'ingénierie IA, la cybersécurité, le développement d\'applications web ou le développement logiciel. Je suis particulièrement intéressé par les projets en intelligence artificielle : développement de modèles, fine-tuning et déploiement, ainsi que le machine learning, le deep learning et les solutions logicielles.',
+    'about.seeking': 'Je recherche un emploi dans l\'ingénierie IA, la cybersécurité, le développement d\'applications web ou le développement logiciel.',
     
     // Skills section
     'skills.title': 'Compétences',
@@ -337,7 +337,7 @@ const translations = {
     'about.email': 'Email:',
     'about.phone.fr': 'Teléfono profesional (Francia):',
     'about.phone.ar': 'Teléfono profesional (Argentina):',
-    'about.seeking': 'Busco un empleo en ingeniería de IA, ciberseguridad, desarrollo de aplicaciones web o desarrollo de software. Me interesan especialmente los proyectos de inteligencia artificial: desarrollo de modelos, fine-tuning y despliegue, así como machine learning, deep learning y soluciones de software.',
+    'about.seeking': 'Busco un empleo en ingeniería de IA, ciberseguridad, desarrollo de aplicaciones web o desarrollo de software.',
     
     // Skills section
     'skills.title': 'Habilidades',
