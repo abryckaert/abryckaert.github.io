@@ -328,6 +328,28 @@ h2 {
   }
 }
 
+/* Flèche « descendre » en bas de l'accueil : positionnée par rapport à toute
+ * la largeur de l'écran (left: 50%), et non à la zone de texte qui est
+ * décalée de 160 px à droite sur ordinateur pour laisser la place au menu. */
+#hero .hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  z-index: 2;
+  transform: translateX(-50%);
+  font-size: 3em;
+  line-height: 1;
+  color: #0563bb;
+}
+
+#hero .hero-scroll:hover {
+  color: #0678e3;
+}
+
+html[data-theme="dark"] #hero .hero-scroll {
+  color: #5aa3ea;
+}
+
 #hero:before {
   content: "";
   background: rgba(255, 255, 255, 0.8);
