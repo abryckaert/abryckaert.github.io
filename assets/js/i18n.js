@@ -1,59 +1,61 @@
-// Système de traduction multilingue
+/**
+ * =====================================================================
+ *  i18n.js : traductions du site (anglais, français, espagnol)
+ * =====================================================================
+ *  Fonctionnement :
+ *   - Dans index.html, chaque texte traduisible porte un attribut
+ *     data-i18n="cle" (ex. data-i18n="nav.about").
+ *   - L'objet `translations` ci-dessous contient, pour chaque langue
+ *     (en / fr / es), la valeur de chaque clé.
+ *   - Au chargement, getCurrentLanguage() choisit la langue, puis
+ *     setLanguage() remplace tous les textes de la page.
+ *
+ *  Choix de la langue (getBrowserLanguage) :
+ *   - navigateur en français                         -> fr
+ *   - navigateur en espagnol, ou pays d'Amérique latine -> es
+ *   - tout le reste                                  -> en
+ *   Un choix fait avec le menu de langue est retenu jusqu'à la fin de la
+ *   visite (sessionStorage), puis on revient à la langue du navigateur.
+ *
+ *  Ajouter / modifier un texte :
+ *   1. Mettre data-i18n="ma.cle" sur l'élément dans index.html
+ *      (garder le texte anglais dedans : il sert de secours).
+ *   2. Ajouter 'ma.cle': '...' dans les TROIS blocs en, fr et es.
+ *   3. Changer le numéro « ?v= » de i18n.js dans index.html.
+ *
+ *  Options d'un élément traduit :
+ *   - data-i18n-html  : la valeur peut contenir du HTML ; les \n
+ *                       deviennent des retours à la ligne <br>.
+ *   - attribut title  : s'il est présent, il est traduit aussi ; si
+ *                       l'élément contient des balises (icône, <span>…),
+ *                       seul le title est traduit, pas le contenu.
+ *   - data-i18n-typed-items : liste « a, b, c » pour le texte animé (Typed.js).
+ *
+ *  Débogage : dans la console du navigateur,
+ *   window.i18n.setLanguage('es')      -> passe le site en espagnol
+ *   window.i18n.getBrowserLanguage()   -> langue détectée
+ *   sessionStorage.clear()             -> oublie le choix manuel
+ * =====================================================================
+ */
+
 const translations = {
+  /* ============================ ANGLAIS ============================ */
   en: {
     // Navigation
     'nav.home': 'Home',
-    'nav.company': 'Company',
     'nav.about': 'About',
     'nav.resume': 'Resume',
     'nav.portfolio': 'Portfolio',
     'nav.contact': 'Contact',
+    'theme.toggle': 'Switch light / dark theme',
     
     // Hero section
     'hero.title': 'Anthony Bryckaert',
     'hero.subtitle': "I'm",
-    'hero.typedItems': 'Engineer, Freelancer, Developer, Pentester',
+    'hero.typedItems': 'Engineer, Developer, Pentester',
     'hero.download': 'Download resume',
     'hero.whatsapp': 'Contact me on WhatsApp',
 
-    // Company section
-    'company.title': 'My Company',
-    'company.subtitle': 'Flexible IT expertise, when you need it.',
-    'company.information.title': 'Business Information',
-    'company.services.title': 'My Services',
-    'company.website': 'Website:',
-    'company.status': 'Business status:',
-    'company.status.value': 'French micro-enterprise - Freelance',
-    'company.location': 'Location:',
-    'company.location.value': 'Avignon, France - Remote services available',
-    'company.siren': 'SIREN:',
-    'company.siret': 'SIRET:',
-    'company.cybersecurity.title': 'Cybersecurity',
-    'company.cybersecurity.description': 'Cybersecurity consulting and support for professionals, including vulnerability analysis, digital risk assessment, application, information system and network security, code review and correction, SIEM tool configuration, technical recommendations and user awareness of digital security best practices.',
-    'company.ai.title': 'Artificial Intelligence and Automation',
-    'company.ai.description': 'Design, development and integration of artificial intelligence solutions adapted to professional needs, including autonomous agents, RAG systems, chatbots and automated document processing tools. Implementation of workflows with N8N, API integration and business process automation.',
-    'company.cta': 'See more',
-    'company.development.title': 'Application Development',
-    'company.development.description': 'Design and development of web applications, software and tailor-made digital tools. Front-end and back-end development, API creation and integration, database design and management, Docker containerization, testing, deployment, maintenance, optimization and application security.',
-    'company.systems.title': 'IT Systems and Networks',
-    'company.systems.description': 'Installation, configuration, administration, maintenance and security of professional IT systems and networks. Equipment configuration, workstation management, incident diagnosis and resolution, network monitoring, hardware and software maintenance, technical assistance and user support.',
-    'company.description': 'I am deeply committed to the fields of Information Technology, with a particular focus on Cybersecurity and Artificial Intelligence.',
-    'company.nationality': 'Nationality:',
-    'company.nationality.value': 'French',
-    'company.firstLang': 'First language:',
-    'company.firstLang.value': 'French (native)',
-    'company.secondLang': 'Second language:',
-    'company.secondLang.value': 'English (B2)',
-    'company.thirdLang': 'Third language:',
-    'company.thirdLang.value': 'Spanish (B2)',
-    'company.city': 'City:',
-    'company.city.value': 'Avignon',
-    'company.age': 'Age:',
-    'company.degree': 'Degree:',
-    'company.degree.value': "Master's in Computer Science",
-    'company.email': 'Email:',
-    'company.phone': 'Professional phone number:',
-    'company.seeking': 'I am looking for freelance opportunities in AI engineering, cybersecurity, web application, and software development. I am particularly interested in projects involving artificial intelligence including model development, fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and software solutions.',
 
     
     // About section
@@ -65,21 +67,21 @@ const translations = {
     'about.firstLang': 'First language:',
     'about.firstLang.value': 'French (native)',
     'about.secondLang': 'Second language:',
-    'about.secondLang.value': 'English (B2)',
+    'about.secondLang.value': 'English (B2, TOEIC 850)',
     'about.thirdLang': 'Third language:',
     'about.thirdLang.value': 'Spanish (B2)',
     'about.city': 'City:',
     'about.city.value': 'Avignon',
     'about.age': 'Age:',
     'about.degree': 'Degree:',
-    'about.degree.value': "Master's in Computer Science",
+    'about.degree.value': 'Computer Science Engineer',
     'about.email': 'Email:',
-    'about.phone': 'Professional phone number:',
-    'about.seeking': 'I am looking for freelance opportunities in AI engineering, cybersecurity, web application, and software development. I am particularly interested in projects involving artificial intelligence including model development, fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and software solutions.',
+    'about.phone.fr': 'Professional phone (France):',
+    'about.phone.ar': 'Professional phone (Argentina):',
+    'about.seeking': 'I am looking for a full-time position in AI engineering, cybersecurity, web application development or software development. I am particularly interested in artificial intelligence projects: model development, fine-tuning and deployment, as well as machine learning, deep learning and software solutions.',
     
     // Skills section
     'skills.title': 'Skills',
-    'skills.subtitle': "Acquired at jobs, school and through personal projects.",
     'skills.network': 'Network : Wireshark, Cisco Pack Tracer, Firewall',
     'skills.backend': 'Backend : Java, Python, C++, Javascript',
     'skills.frontend': 'Frontend : Bootstrap, Angular, Javascript, Node JS CMS (Odoo, Wordpress, Wix)',
@@ -91,51 +93,46 @@ const translations = {
     'resume.title': 'Resume',
     'resume.subtitle': 'Qualifications and experiences',
     'resume.diplomas': 'Diplomas',
+    'resume.degree.note': 'Engineering school comparable to UTN or ITBA in Argentina',
     'resume.experience': 'Professional Experience',
-    'resume.m2.title': 'Third year of Engineer school (M2)',
-    'resume.m2.period': '2025 - 2026',
-    'resume.m2.school': 'ESAIP Engineering School, Aix-En-Provence 13090, France',
-    'resume.m2.exchange': 'Exchange Semester at UNAJ National University Arturo Jauretche, Buenos Aires, Argentina',
-    'resume.m2.courses': 'Development : Design Pattern in C#\nApplication Development : Kotlin\nWeb Application Development : Node.js, Express.js',
-    'resume.m1.title': 'Second year of Engineer school (M1)',
-    'resume.m1.period': '2023 - 2025',
-    'resume.m1.school': 'ESAIP Engineering School, Aix-En-Provence 13090, France',
-    'resume.m1.toeic': 'TOEIC certificate, score 850',
-    'resume.m1.courses': 'Cybersecurity : Forensic, CTF, Cryptology, Secure development, Risk management\nDevelopment : Backend Java | Android development\nLinux Administration : Apache, Ssh, Iptable, Git | Windows Administration :\nNetwork :',
-    'resume.l3.sem2.title': 'First year of Engineer school',
-    'resume.l3.sem2.period': 'Semester two of Engineer school 2023',
-    'resume.l3.sem2.school': 'ESAIP Engineering School, Aix-En-Provence 13090, France',
-    'resume.l3.sem2.exchange': 'Exchange Semester at VIA University College, Horsens, 8700, Denmark',
-    'resume.l3.sem2.courses': 'MongoDB, ASP.NET, SQL Server Management Studio',
-    'resume.l3.sem1.period': 'Semester one of Engineer school 2022',
-    'resume.l3.sem1.courses': 'Frontend : Html, Css | Backend : Java | Network : Cisco Packet Tracer',
-    'resume.bts.title': '2 years diploma in IT (BTS SN)',
-    'resume.bts.period': '2019 - 2022',
-    'resume.bts.school': 'Saint Jean-Baptiste de lasalle, Avignon 84000, France',
-    'resume.bts.courses': 'Development : Java, C++, Qt Creator Framework\nLinux administration : Apache, VsFtp, MySql, Ssh, Ufw firewall',
-    'resume.csgroup.title': 'CS GROUP FRANCE IA Solutions Developer',
-    'resume.csgroup.period': '2026-2026 (6 months)',
-    'resume.csgroup.location': 'Aix-En-Provence, France',
-    'resume.csgroup.description': 'Design and development of Artificial Intelligence-based solutions at CS GROUP FRANCE\'s Aix-en-Provence office. My work focused on creating intelligent systems aimed at optimizing business processes and enhancing decision support.',
-    'resume.capgemini.title': 'Capgemini secure development and risk analysis (EBIOS RM)',
-    'resume.capgemini.period': '2024-2025 (7 months)',
-    'resume.capgemini.location': 'Aix-En-Provence, France',
-    'resume.capgemini.description': 'During my internship at Capgemini\'s Aix-en-Provence office, I developed web application, an internal HR management tool using Node.js, to streamline employee activity tracking and KPI monitoring with role-based functionalities. In parallel, I conducted risk analyses using the EBIOS RM methodology and utilized Docker to deploy tools such as CISO Assistant. These tasks enhanced my technical expertise and contributed to improving operational efficiency and security.',
-    'resume.nato.title': 'NATO (OTAN)',
+    'resume.eng.title': 'Computer Science Engineering Degree · ESAIP',
+    'resume.eng.school': 'Aix-en-Provence, France',
+    'resume.eng.erasmus1': 'VIA University College, Horsens, Denmark',
+    'resume.eng.erasmus2': 'UNAJ National University Arturo Jauretche, Buenos Aires, Argentina',
+    'resume.eng.toeic': 'TOEIC: 850 / 990',
+    'resume.eng.period': '2022 – 2026',
+    'resume.bts.title': 'BTS in Digital Systems, IT & Networks option · La Salle Avignon',
+    'resume.bts.period': '2019 – 2022',
+    'resume.bts.school': 'Avignon, France',
+    'resume.bts.courses': 'Java and C++ (Qt) development, Linux administration (Apache, vsftpd, MySQL, SSH, UFW firewall).',
+    'resume.csgroup.title': 'AI Solutions Developer · CS GROUP',
+    'resume.csgroup.period': '2026 (6 months)',
+    'resume.csgroup.location': 'Aix-en-Provence, France',
+    'resume.csgroup.description': 'Design and development of AI solutions to optimize business processes and decision support.',
+    'resume.capgemini.title': 'Cybersecurity intern · Capgemini',
+    'resume.capgemini.period': '2024 – 2025 (7 months)',
+    'resume.capgemini.location': 'Aix-en-Provence, France',
+    'resume.capgemini.description': 'Development of an internal HR tool in Node.js (activity tracking, KPIs, role management), EBIOS RM risk analyses, and deployment of CISO Assistant with Docker.',
+    'resume.frenchtech.title': 'Jury member · French Tech Buenos Aires',
+    'resume.frenchtech.period': '2026',
+    'resume.frenchtech.location': 'Buenos Aires, Argentina',
+    'resume.frenchtech.description': 'Screening and evaluation of scientific projects, and help organizing the event.',
+    'resume.frenchtech.recognition': 'Award recognized by the City of Buenos Aires',
+    'resume.nato.title': 'Consultant · NATO',
     'resume.nato.period': '2024 (4 months)',
     'resume.nato.location': 'France',
-    'resume.archelon.title': 'Volunteering in Archelon',
+    'resume.archelon.title': 'Volunteer · Archelon',
     'resume.archelon.period': 'Summer 2023',
-    'resume.archelon.location': 'Chania, Crete',
-    'resume.archelon.description': 'Archelon is committed to protecting sea turtles through habitat conservation, scientific research to better understand their needs, and public awareness to encourage the preservation of these species and their natural environments.',
-    'resume.entrep.title': 'Les entrep\'',
+    'resume.archelon.location': 'Chania, Greece',
+    'resume.archelon.description': 'Sea turtle protection: habitat conservation, scientific monitoring and public awareness.',
+    'resume.entrep.title': 'Entrepreneurial Skills Certification · Les Entrep\'',
     'resume.entrep.period': '2022',
-    'resume.entrep.location': 'Avignon, 84000, France',
-    'resume.entrep.description': 'Practicing business creation involves exploring ideas and assessing fit through a cycle of doing, failing, and redoing, supported by diverse teamwork and mentorship. It combines practical learning and networking, culminating in the Les Entrep\' certificate for professional advancement.',
-    'resume.technician.title': 'Technician trainee',
+    'resume.entrep.location': 'Avignon, France',
+    'resume.entrep.description': 'Business creation program: from idea to project, in a team and with a mentor.',
+    'resume.technician.title': 'Technician intern · Emergency Informatique',
     'resume.technician.period': '2021',
-    'resume.technician.location': 'Emergency Informatique, Avignon, 84000, France',
-    'resume.technician.description': 'Computer repair, installation and configuration of network equipment',
+    'resume.technician.location': 'Avignon, France',
+    'resume.technician.description': 'Computer repair, and installation and configuration of network equipment.',
     
     // Portfolio section
     'portfolio.title': 'My projects',
@@ -144,30 +141,24 @@ const translations = {
     'portfolio.filter.software': 'Software',
     'portfolio.filter.web': 'Web',
     'portfolio.aepf.title': 'Website for Polynesian Association',
-    'portfolio.aepf.description': 'Creation of a website to promote Polynesian culture',
     'portfolio.aepf.lightbox': 'Website developed with Silex, an open-source website maker',
     'portfolio.pikawa.title': 'Connected Coffee Machine "Pikawa"',
-    'portfolio.pikawa.description': 'Make and manage coffee with Bluetooth',
     'portfolio.pikawa.lightbox': 'Developed in C++ with QT Creator framework during my 2-year diploma project',
     'portfolio.levigneux.title': 'Le Vigneux Vin',
-    'portfolio.levigneux.description': 'Web application for winemaker',
     'portfolio.levigneux.lightbox': 'Website created with ASP.NET, enabling the winemaker to add and manage their wines',
-    'portfolio.brainpilot.title': 'BrainPilot',
-    'portfolio.brainpilot.description': 'Android application to help students',
-    'portfolio.brainpilot.lightbox': 'Android application developed in Java to help students manage their time',
     'portfolio.hr.title': 'Internal HR Management Tool',
-    'portfolio.hr.description': 'An application developed using Node.js to streamline HR processes, including employee activity tracking, KPI monitoring, and role-based functionalities for administrators, project managers, and consultants.',
     'portfolio.hr.lightbox': 'Detailed description of the project',
     'portfolio.bimmer.title': 'Bimmer Buyer',
-    'portfolio.bimmer.description': 'Secure web platform to buy, sell and manage BMW vehicle listings, with admin moderation before publication.',
     'portfolio.bimmer.lightbox': 'Node.js / Express / MySQL application with a back office and OWASP-based security',
-    'portfolio.details': 'Portfolio Details',
+    'portfolio.lazone.title': 'LAZONE',
+    'portfolio.lazone.lightbox': 'Custom e-commerce marketplace with authentication, product catalog, cart, favorites, comments, orders and admin back office',
+    'portfolio.seeMore': 'See more',
     
     // Testimonials section
     'testimonials.title': 'Testimonials',
-    'testimonials.raimana.title': 'Student specialized in Big Data',
+    'testimonials.raimana.title': 'Machine Learning Engineer',
     'testimonials.raimana.text': 'Anthony is a passionate person, he loves what he does and it shows. Very involved in all the projects we\'ve done together. I look forward to working with you again.',
-    'testimonials.teony.title': 'Student specialized in Big Data & Junior AQSE President',
+    'testimonials.teony.title': 'Data Engineer',
     'testimonials.teony.text': 'Anthony stands out for his professionalism and his ability to inspire the team. His pragmatic approach and innovative spirit make him an invaluable asset in the workplace. Working alongside him is both rewarding and stimulating.',
     
     // Contact section
@@ -177,14 +168,15 @@ const translations = {
     'contact.email': 'Email:',
     'contact.call': 'Call:',
   },
+  /* ============================ FRANÇAIS =========================== */
   fr: {
     // Navigation
     'nav.home': 'Accueil',
-    'nav.company': 'Entreprise',
     'nav.about': 'À propos',
     'nav.resume': 'CV',
     'nav.portfolio': 'Portfolio',
     'nav.contact': 'Contact',
+    'theme.toggle': 'Changer de thème (clair / sombre)',
     
     // Hero section
     'hero.title': 'Anthony Bryckaert',
@@ -193,43 +185,6 @@ const translations = {
     'hero.download': 'Télécharger le CV',
     'hero.whatsapp': 'Me contacter sur WhatsApp',
 
-    // Company section
-    'company.title': 'Mon entreprise',
-    'company.subtitle': 'L\'expertise IT flexible, quand vous en avez besoin.',
-    'company.information.title': 'Informations de l\'entreprise',
-    'company.services.title': 'Mes services',
-    'company.website': 'Site web :',
-    'company.status': 'Statut de l\'entreprise :',
-    'company.status.value': 'Micro-entreprise française - Freelance',
-    'company.location': 'Localisation :',
-    'company.location.value': 'Avignon, France - Services à distance disponibles',
-    'company.siren': 'SIREN :',
-    'company.siret': 'SIRET :',
-    'company.cybersecurity.title': 'Cybersécurité',
-    'company.cybersecurity.description': 'Conseil et accompagnement en cybersécurité pour les professionnels : analyse des vulnérabilités, évaluation des risques numériques, sécurité des applications, des systèmes d\'information et des réseaux, revue et correction de code, configuration d\'outils SIEM, recommandations techniques et sensibilisation des utilisateurs aux bonnes pratiques de sécurité numérique.',
-    'company.ai.title': 'Intelligence artificielle et automatisation',
-    'company.ai.description': 'Conception, développement et intégration de solutions d\'intelligence artificielle adaptées aux besoins professionnels : agents autonomes, systèmes RAG, chatbots et outils de traitement automatisé de documents. Mise en place de workflows avec N8N, intégration d\'API et automatisation des processus métier.',
-    'company.cta': 'Voir plus',
-    'company.development.title': 'Développement d\'applications',
-    'company.development.description': 'Conception et développement d\'applications web, de logiciels et d\'outils numériques sur mesure. Développement front-end et back-end, création et intégration d\'API, conception et gestion de bases de données, conteneurisation Docker, tests, déploiement, maintenance, optimisation et sécurité applicative.',
-    'company.systems.title': 'Systèmes et réseaux informatiques',
-    'company.systems.description': 'Installation, configuration, administration, maintenance et sécurisation de systèmes et réseaux informatiques professionnels. Configuration des équipements, gestion des postes de travail, diagnostic et résolution des incidents, supervision réseau, maintenance matérielle et logicielle, assistance technique et support utilisateurs.',
-    'company.nationality': 'Nationality:',
-    'company.nationality.value': 'French',
-    'company.firstLang': 'First language:',
-    'company.firstLang.value': 'French (native)',
-    'company.secondLang': 'Second language:',
-    'company.secondLang.value': 'English (B2)',
-    'company.thirdLang': 'Third language:',
-    'company.thirdLang.value': 'Spanish (B2)',
-    'company.city': 'City:',
-    'company.city.value': 'Avignon',
-    'company.age': 'Age:',
-    'company.degree': 'Degree:',
-    'company.degree.value': "Master's in Computer Science",
-    'company.email': 'Email:',
-    'company.phone': 'Professional phone number:',
-    'company.seeking': 'I am looking for freelance opportunities in AI engineering, cybersecurity, web application, and software development. I am particularly interested in projects involving artificial intelligence including model development, fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and software solutions.',
 
 
     
@@ -242,21 +197,21 @@ const translations = {
     'about.firstLang': 'Première langue:',
     'about.firstLang.value': 'Français (natif)',
     'about.secondLang': 'Deuxième langue:',
-    'about.secondLang.value': 'Anglais (B2)',
+    'about.secondLang.value': 'Anglais (B2, TOEIC 850)',
     'about.thirdLang': 'Troisième langue:',
     'about.thirdLang.value': 'Espagnol (B2)',
     'about.city': 'Ville:',
     'about.city.value': 'Aix-En-Provence',
     'about.age': 'Âge:',
     'about.degree': 'Diplôme:',
-    'about.degree.value': 'Master en Informatique',
+    'about.degree.value': 'Ingénieur informatique',
     'about.email': 'Email:',
-    'about.phone': 'Téléphone professionnel:',
-    'about.seeking': 'Je recherche des opportunités en freelance dans l\'ingénierie IA, le développement d\'applications web et le développement logiciel. Je suis particulièrement intéressé par les projets impliquant l\'intelligence artificielle, notamment le développement de modèles, le fine-tuning et le déploiement, ainsi que l\'exploration d\'applications en machine learning, deep learning et solutions logicielles.',
+    'about.phone.fr': 'Téléphone pro français :',
+    'about.phone.ar': 'Téléphone pro argentin :',
+    'about.seeking': 'Je recherche un emploi dans l\'ingénierie IA, la cybersécurité, le développement d\'applications web ou le développement logiciel. Je suis particulièrement intéressé par les projets en intelligence artificielle : développement de modèles, fine-tuning et déploiement, ainsi que le machine learning, le deep learning et les solutions logicielles.',
     
     // Skills section
     'skills.title': 'Compétences',
-    'skills.subtitle': 'Compétences que j\'ai acquises au travail, à l\'école et à travers des projets personnels.',
     'skills.network': 'Réseau : Wireshark, Cisco Pack Tracer, Firewall',
     'skills.backend': 'Backend : Java, Python, C++, Javascript',
     'skills.frontend': 'Frontend : Bootstrap, Angular, Javascript, Node JS CMS (Odoo, Wordpress, Wix)',
@@ -268,51 +223,46 @@ const translations = {
     'resume.title': 'CV',
     'resume.subtitle': 'Qualifications et expériences',
     'resume.diplomas': 'Diplômes',
+    'resume.degree.note': 'École d’ingénieurs comparable à l’UTN ou l’ITBA en Argentine',
     'resume.experience': 'Expérience Professionnelle',
-    'resume.m2.title': 'Troisième année d\'école d\'ingénieur (M2)',
-    'resume.m2.period': '2025 - 2026',
-    'resume.m2.school': 'École d\'ingénieurs ESAIP, Aix-En-Provence 13090, France',
-    'resume.m2.exchange': 'Semestre d\'échange à l\'Université Nationale Arturo Jauretche (UNAJ), Buenos Aires, Argentine',
-    'resume.m2.courses': 'Développement : Design Pattern en C#\nDéveloppement d\'applications : Kotlin\nDéveloppement d\'applications web : Node.js, Express.js',
-    'resume.m1.title': 'Deuxième année d\'école d\'ingénieur (M1)',
-    'resume.m1.period': '2023 - 2025',
-    'resume.m1.school': 'École d\'ingénieurs ESAIP, Aix-En-Provence 13090, France',
-    'resume.m1.toeic': 'Certificat TOEIC, score 850',
-    'resume.m1.courses': 'Cybersécurité : Forensic, CTF, Cryptologie, Développement sécurisé, Gestion des risques\nDéveloppement : Backend Java | Développement Android\nAdministration Linux : Apache, Ssh, Iptable, Git | Administration Windows :\nRéseau :',
-    'resume.l3.sem2.title': 'Première année d\'école d\'ingénieur',
-    'resume.l3.sem2.period': 'Deuxième semestre d\'école d\'ingénieur 2023',
-    'resume.l3.sem2.school': 'École d\'ingénieurs ESAIP, Aix-En-Provence 13090, France',
-    'resume.l3.sem2.exchange': 'Semestre d\'échange au VIA University College, Horsens, 8700, Danemark',
-    'resume.l3.sem2.courses': 'MongoDB, ASP.NET, SQL Server Management Studio',
-    'resume.l3.sem1.period': 'Premier semestre d\'école d\'ingénieur 2022',
-    'resume.l3.sem1.courses': 'Frontend : Html, Css | Backend : Java | Réseau : Cisco Packet Tracer',
-    'resume.bts.title': 'Diplôme de 2 ans en informatique (BTS SN)',
-    'resume.bts.period': '2019 - 2022',
-    'resume.bts.school': 'Saint Jean-Baptiste de lasalle, Avignon 84000, France',
-    'resume.bts.courses': 'Développement : Java, C++, Framework Qt Creator\nAdministration Linux : Apache, VsFtp, MySql, Ssh, Pare-feu Ufw',
-    'resume.csgroup.title': 'CS GROUP FRANCE Développeur Solutions IA',
-    'resume.csgroup.period': '2026-2026 (6 mois)',
-    'resume.csgroup.location': 'Aix-En-Provence, France',
-    'resume.csgroup.description': 'Conception et développement de solutions basées sur l\'Intelligence Artificielle au bureau CS GROUP FRANCE d\'Aix-en-Provence. Mon travail s\'est concentré sur la création de systèmes intelligents visant à optimiser les processus métier et à améliorer l\'aide à la décision.',
-    'resume.capgemini.title': 'Capgemini développement sécurisé et analyse des risques (EBIOS RM)',
-    'resume.capgemini.period': '2024-2025 (7 mois)',
-    'resume.capgemini.location': 'Aix-En-Provence, France',
-    'resume.capgemini.description': 'Lors de mon stage au bureau Capgemini d\'Aix-en-Provence, j\'ai développé une application web, un outil de gestion RH interne utilisant Node.js, pour rationaliser le suivi des activités des employés et le suivi des KPI avec des fonctionnalités basées sur les rôles. En parallèle, j\'ai effectué des analyses de risques en utilisant la méthodologie EBIOS RM et utilisé Docker pour déployer des outils tels que CISO Assistant. Ces tâches ont renforcé mon expertise technique et contribué à améliorer l\'efficacité opérationnelle et la sécurité.',
-    'resume.nato.title': 'OTAN (NATO)',
+    'resume.eng.title': 'Diplôme d\'ingénieur en informatique · ESAIP',
+    'resume.eng.school': 'Aix-en-Provence, France',
+    'resume.eng.erasmus1': 'VIA University College, Horsens, Danemark',
+    'resume.eng.erasmus2': 'Université Nationale Arturo Jauretche (UNAJ), Buenos Aires, Argentine',
+    'resume.eng.toeic': 'TOEIC : 850 / 990',
+    'resume.eng.period': '2022 – 2026',
+    'resume.bts.title': 'BTS Systèmes numériques, option Informatique et réseaux · La Salle Avignon',
+    'resume.bts.period': '2019 – 2022',
+    'resume.bts.school': 'Avignon, France',
+    'resume.bts.courses': 'Développement Java et C++ (Qt), administration Linux (Apache, vsftpd, MySQL, SSH, pare-feu UFW).',
+    'resume.csgroup.title': 'Développeur de solutions IA · CS GROUP',
+    'resume.csgroup.period': '2026 (6 mois)',
+    'resume.csgroup.location': 'Aix-en-Provence, France',
+    'resume.csgroup.description': 'Conception et développement de solutions d\'IA pour optimiser les processus métier et l\'aide à la décision.',
+    'resume.capgemini.title': 'Stagiaire cybersécurité · Capgemini',
+    'resume.capgemini.period': '2024 – 2025 (7 mois)',
+    'resume.capgemini.location': 'Aix-en-Provence, France',
+    'resume.capgemini.description': 'Développement d\'un outil RH interne en Node.js (suivi d\'activité, KPI, gestion des rôles), analyses de risques EBIOS RM et déploiement de CISO Assistant avec Docker.',
+    'resume.frenchtech.title': 'Membre du jury · French Tech Buenos Aires',
+    'resume.frenchtech.period': '2026',
+    'resume.frenchtech.location': 'Buenos Aires, Argentine',
+    'resume.frenchtech.description': 'Sélection et évaluation de projets scientifiques, et participation à l\'organisation de l\'événement.',
+    'resume.frenchtech.recognition': 'Prix reconnu par la Ville de Buenos Aires',
+    'resume.nato.title': 'Consultant · OTAN',
     'resume.nato.period': '2024 (4 mois)',
     'resume.nato.location': 'France',
-    'resume.archelon.title': 'Bénévolat à Archelon',
+    'resume.archelon.title': 'Bénévole · Archelon',
     'resume.archelon.period': 'Été 2023',
-    'resume.archelon.location': 'Chania, Crète',
-    'resume.archelon.description': 'Archelon s\'engage à protéger les tortues marines grâce à la conservation de l\'habitat, à la recherche scientifique pour mieux comprendre leurs besoins, et à la sensibilisation du public pour encourager la préservation de ces espèces et de leurs environnements naturels.',
-    'resume.entrep.title': 'Les entrep\'',
+    'resume.archelon.location': 'Chania, Grèce',
+    'resume.archelon.description': 'Protection des tortues marines : préservation de leur habitat, suivi scientifique et sensibilisation du public.',
+    'resume.entrep.title': 'Certification en compétences entrepreneuriales · Les Entrep\'',
     'resume.entrep.period': '2022',
-    'resume.entrep.location': 'Avignon, 84000, France',
-    'resume.entrep.description': 'Pratiquer la création d\'entreprise implique d\'explorer des idées et d\'évaluer leur adéquation à travers un cycle de faire, échouer et refaire, soutenu par un travail d\'équipe diversifié et du mentorat. Cela combine l\'apprentissage pratique et le réseautage, culminant avec le certificat Les Entrep\' pour l\'avancement professionnel.',
-    'resume.technician.title': 'Stagiaire technicien',
+    'resume.entrep.location': 'Avignon, France',
+    'resume.entrep.description': 'Programme de création d\'entreprise : de l\'idée au projet, en équipe et avec un mentor.',
+    'resume.technician.title': 'Stagiaire technicien · Emergency Informatique',
     'resume.technician.period': '2021',
-    'resume.technician.location': 'Emergency Informatique, Avignon, 84000, France',
-    'resume.technician.description': 'Réparation d\'ordinateurs, installation et configuration d\'équipements réseau',
+    'resume.technician.location': 'Avignon, France',
+    'resume.technician.description': 'Réparation d\'ordinateurs, installation et configuration d\'équipements réseau.',
     
     // Portfolio section
     'portfolio.title': 'Mes projets',
@@ -321,30 +271,24 @@ const translations = {
     'portfolio.filter.software': 'Logiciel',
     'portfolio.filter.web': 'Web',
     'portfolio.aepf.title': 'Site web pour l\'Association Polynésienne',
-    'portfolio.aepf.description': 'Création d\'un site web pour promouvoir la culture polynésienne',
     'portfolio.aepf.lightbox': 'Site web développé avec Silex, un créateur de sites web open-source',
     'portfolio.pikawa.title': 'Machine à café connectée "Pikawa"',
-    'portfolio.pikawa.description': 'Faire et gérer le café avec Bluetooth',
     'portfolio.pikawa.lightbox': 'Développé en C++ avec le framework QT Creator lors de mon projet de diplôme de 2 ans',
     'portfolio.levigneux.title': 'Le Vigneux Vin',
-    'portfolio.levigneux.description': 'Application web pour viticulteur',
     'portfolio.levigneux.lightbox': 'Site web créé avec ASP.NET, permettant au viticulteur d\'ajouter et de gérer ses vins',
-    'portfolio.brainpilot.title': 'BrainPilot',
-    'portfolio.brainpilot.description': 'Application Android pour aider les étudiants',
-    'portfolio.brainpilot.lightbox': 'Application Android développée en Java pour aider les étudiants à gérer leur temps',
     'portfolio.hr.title': 'Outil de gestion RH interne',
-    'portfolio.hr.description': 'Une application développée en utilisant Node.js pour rationaliser les processus RH, incluant le suivi des activités des employés, le suivi des KPI et les fonctionnalités basées sur les rôles pour les administrateurs, chefs de projet et consultants.',
     'portfolio.hr.lightbox': 'Description détaillée du projet',
     'portfolio.bimmer.title': 'Bimmer Buyer',
-    'portfolio.bimmer.description': 'Plateforme web sécurisée pour acheter, vendre et gérer des annonces de BMW, avec modération par un administrateur avant publication.',
     'portfolio.bimmer.lightbox': 'Application Node.js / Express / MySQL avec back office et sécurité basée sur l\'OWASP',
-    'portfolio.details': 'Détails du Portfolio',
+    'portfolio.lazone.title': 'LAZONE',
+    'portfolio.lazone.lightbox': 'Marketplace e-commerce sur mesure avec authentification, catalogue produits, panier, favoris, commentaires, commandes et back office admin',
+    'portfolio.seeMore': 'Voir plus',
     
     // Testimonials section
     'testimonials.title': 'Témoignages',
-    'testimonials.raimana.title': 'Étudiant spécialisé en Big Data',
+    'testimonials.raimana.title': 'Ingénieur en apprentissage machine',
     'testimonials.raimana.text': 'Anthony est une personne passionnée, il aime ce qu\'il fait et cela se voit. Très impliqué dans tous les projets que nous avons faits ensemble. J\'ai hâte de retravailler avec vous.',
-    'testimonials.teony.title': 'Étudiant spécialisé en Big Data & Président Junior AQSE',
+    'testimonials.teony.title': 'Data Engineer',
     'testimonials.teony.text': 'Anthony se distingue par son professionnalisme et sa capacité à inspirer l\'équipe. Son approche pragmatique et son esprit innovant font de lui un atout inestimable sur le lieu de travail. Travailler à ses côtés est à la fois enrichissant et stimulant.',
     
     // Contact section
@@ -354,14 +298,15 @@ const translations = {
     'contact.email': 'Email:',
     'contact.call': 'Téléphone:',
   },
+  /* ============================ ESPAGNOL =========================== */
   es: {
     // Navigation
     'nav.home': 'Inicio',
-    'nav.company': 'Empresa',
     'nav.about': 'Acerca de',
     'nav.resume': 'Currículum',
     'nav.portfolio': 'Portafolio',
     'nav.contact': 'Contacto',
+    'theme.toggle': 'Cambiar tema (claro / oscuro)',
     
     // Hero section
     'hero.title': 'Anthony Bryckaert',
@@ -370,44 +315,6 @@ const translations = {
     'hero.download': 'Descargar currículum',
     'hero.whatsapp': 'Escríbeme por WhatsApp',
     
-    // Company section
-    'company.title': 'Mi empresa',
-    'company.subtitle': 'Experiencia IT flexible, cuando la necesitas.',
-    'company.information.title': 'Información de la empresa',
-    'company.services.title': 'Mis servicios',
-    'company.website': 'Sitio web:',
-    'company.status': 'Estado de la empresa:',
-    'company.status.value': 'Microempresa francesa - Freelance',
-    'company.location': 'Ubicación:',
-    'company.location.value': 'Avignon, Francia - Servicios a distancia disponibles',
-    'company.siren': 'SIREN:',
-    'company.siret': 'SIRET:',
-    'company.cybersecurity.title': 'Ciberseguridad',
-    'company.cybersecurity.description': 'Consultoría y soporte en ciberseguridad para profesionales, incluyendo análisis de vulnerabilidades, evaluación de riesgos digitales, seguridad de aplicaciones, sistemas de información y redes, revisión y corrección de código, configuración de herramientas SIEM, recomendaciones técnicas y concienciación de los usuarios sobre buenas prácticas de seguridad digital.',
-    'company.ai.title': 'Inteligencia artificial y automatización',
-    'company.ai.description': 'Diseño, desarrollo e integración de soluciones de inteligencia artificial adaptadas a las necesidades profesionales, incluyendo agentes autónomos, sistemas RAG, chatbots y herramientas de procesamiento automatizado de documentos. Implementación de flujos de trabajo con N8N, integración de API y automatización de procesos empresariales.',
-    'company.cta': 'Ver más',
-    'company.development.title': 'Desarrollo de aplicaciones',
-    'company.development.description': 'Diseño y desarrollo de aplicaciones web, software y herramientas digitales a medida. Desarrollo front-end y back-end, creación e integración de API, diseño y gestión de bases de datos, contenerización con Docker, pruebas, despliegue, mantenimiento, optimización y seguridad de aplicaciones.',
-    'company.systems.title': 'Sistemas y redes informáticas',
-    'company.systems.description': 'Instalación, configuración, administración, mantenimiento y seguridad de sistemas y redes informáticas profesionales. Configuración de equipos, gestión de estaciones de trabajo, diagnóstico y resolución de incidentes, monitorización de redes, mantenimiento de hardware y software, asistencia técnica y soporte a usuarios.',
-    'company.description': 'I am deeply committed to the fields of Information Technology, with a particular focus on Cybersecurity and Artificial Intelligence.',
-    'company.nationality': 'Nationality:',
-    'company.nationality.value': 'French',
-    'company.firstLang': 'First language:',
-    'company.firstLang.value': 'French (native)',
-    'company.secondLang': 'Second language:',
-    'company.secondLang.value': 'English (B2)',
-    'company.thirdLang': 'Third language:',
-    'company.thirdLang.value': 'Spanish (B2)',
-    'company.city': 'City:',
-    'company.city.value': 'Avignon',
-    'company.age': 'Age:',
-    'company.degree': 'Degree:',
-    'company.degree.value': "Master's in Computer Science",
-    'company.email': 'Email:',
-    'company.phone': 'Professional phone number:',
-    'company.seeking': 'I am looking for freelance opportunities in AI engineering, cybersecurity, web application, and software development. I am particularly interested in projects involving artificial intelligence including model development, fine-tuning, and deployment as well as exploring applications in machine learning, deep learning, and software solutions.',
 
     
     // About section
@@ -419,77 +326,72 @@ const translations = {
     'about.firstLang': 'Primera lengua:',
     'about.firstLang.value': 'Francés (nativo)',
     'about.secondLang': 'Segunda lengua:',
-    'about.secondLang.value': 'Inglés (B2)',
+    'about.secondLang.value': 'Inglés (B2, TOEIC 850)',
     'about.thirdLang': 'Tercera lengua:',
     'about.thirdLang.value': 'Español (B2)',
     'about.city': 'Ciudad:',
     'about.city.value': 'Aix-En-Provence',
     'about.age': 'Edad:',
     'about.degree': 'Título:',
-    'about.degree.value': 'Máster en Informática',
+    'about.degree.value': 'Ingeniero informático',
     'about.email': 'Email:',
-    'about.phone': 'Teléfono profesional:',
-    'about.seeking': 'Busco oportunidades freelance en ingeniería de IA, desarrollo de aplicaciones web y desarrollo de software. Estoy particularmente interesado en proyectos que involucren inteligencia artificial, incluyendo desarrollo de modelos, fine-tuning y despliegue, así como explorar aplicaciones en machine learning, deep learning y soluciones de software.',
+    'about.phone.fr': 'Teléfono profesional (Francia):',
+    'about.phone.ar': 'Teléfono profesional (Argentina):',
+    'about.seeking': 'Busco un empleo en ingeniería de IA, ciberseguridad, desarrollo de aplicaciones web o desarrollo de software. Me interesan especialmente los proyectos de inteligencia artificial: desarrollo de modelos, fine-tuning y despliegue, así como machine learning, deep learning y soluciones de software.',
     
     // Skills section
     'skills.title': 'Habilidades',
-    'skills.subtitle': 'Habilidades que he adquirido en trabajos, escuela y a través de proyectos personales.',
     'skills.network': 'Red : Wireshark, Cisco Pack Tracer, Firewall',
     'skills.backend': 'Backend : Java, Python, C++, Javascript',
     'skills.frontend': 'Frontend : Bootstrap, Angular, Javascript, Node JS CMS (Odoo, Wordpress, Wix)',
     'skills.ai': 'Desarrollo IA : PyTorch, Langchain, Skills, N8N, Azure',
-    'skills.forensic': 'Forensic',
+    'skills.forensic': 'Forense, OSINT',
     'skills.pentesting': 'Pentesting',
     
     // Resume section
     'resume.title': 'Currículum',
     'resume.subtitle': 'Calificaciones y experiencias',
     'resume.diplomas': 'Diplomas',
+    'resume.degree.note': 'Escuela de ingeniería comparable a la UTN o el ITBA en Argentina',
     'resume.experience': 'Experiencia Profesional',
-    'resume.m2.title': 'Tercer año de escuela de ingeniería (M2)',
-    'resume.m2.period': '2025 - 2026',
-    'resume.m2.school': 'Escuela de Ingeniería ESAIP, Aix-En-Provence 13090, Francia',
-    'resume.m2.exchange': 'Semestre de intercambio en la Universidad Nacional Arturo Jauretche (UNAJ), Buenos Aires, Argentina',
-    'resume.m2.courses': 'Desarrollo : Design Pattern en C#\nDesarrollo de aplicaciones : Kotlin\nDesarrollo de aplicaciones web : Node.js, Express.js',
-    'resume.m1.title': 'Segundo año de escuela de ingeniería (M1)',
-    'resume.m1.period': '2023 - 2025',
-    'resume.m1.school': 'Escuela de Ingeniería ESAIP, Aix-En-Provence 13090, Francia',
-    'resume.m1.toeic': 'Certificado TOEIC, puntuación 850',
-    'resume.m1.courses': 'Ciberseguridad : Forensic, CTF, Criptología, Desarrollo seguro, Gestión de riesgos\nDesarrollo : Backend Java | Desarrollo Android\nAdministración Linux : Apache, Ssh, Iptable, Git | Administración Windows :\nRed :',
-    'resume.l3.sem2.title': 'Primer año de escuela de ingeniería',
-    'resume.l3.sem2.period': 'Segundo semestre de escuela de ingeniería 2023',
-    'resume.l3.sem2.school': 'Escuela de Ingeniería ESAIP, Aix-En-Provence 13090, Francia',
-    'resume.l3.sem2.exchange': 'Semestre de intercambio en VIA University College, Horsens, 8700, Dinamarca',
-    'resume.l3.sem2.courses': 'MongoDB, ASP.NET, SQL Server Management Studio',
-    'resume.l3.sem1.period': 'Primer semestre de escuela de ingeniería 2022',
-    'resume.l3.sem1.courses': 'Frontend : Html, Css | Backend : Java | Red : Cisco Packet Tracer',
-    'resume.bts.title': 'Diploma de 2 años en informática (BTS SN)',
-    'resume.bts.period': '2019 - 2022',
-    'resume.bts.school': 'Saint Jean-Baptiste de lasalle, Avignon 84000, Francia',
-    'resume.bts.courses': 'Desarrollo : Java, C++, Framework Qt Creator\nAdministración Linux : Apache, VsFtp, MySql, Ssh, Firewall Ufw',
-    'resume.csgroup.title': 'CS GROUP FRANCE Desarrollador de Soluciones IA',
-    'resume.csgroup.period': '2026-2026 (6 meses)',
-    'resume.csgroup.location': 'Aix-En-Provence, Francia',
-    'resume.csgroup.description': 'Diseño y desarrollo de soluciones basadas en Inteligencia Artificial en la oficina de CS GROUP FRANCE en Aix-en-Provence. Mi trabajo se centró en crear sistemas inteligentes destinados a optimizar los procesos empresariales y mejorar el apoyo a la toma de decisiones.',
-    'resume.capgemini.title': 'Capgemini desarrollo seguro y análisis de riesgos (EBIOS RM)',
-    'resume.capgemini.period': '2024-2025 (7 meses)',
-    'resume.capgemini.location': 'Aix-En-Provence, Francia',
-    'resume.capgemini.description': 'Durante mi pasantía en la oficina de Capgemini en Aix-en-Provence, desarrollé una aplicación web, una herramienta de gestión de RRHH interna usando Node.js, para optimizar el seguimiento de actividades de empleados y el monitoreo de KPI con funcionalidades basadas en roles. En paralelo, realicé análisis de riesgos usando la metodología EBIOS RM y utilicé Docker para desplegar herramientas como CISO Assistant. Estas tareas mejoraron mi experiencia técnica y contribuyeron a mejorar la eficiencia operativa y la seguridad.',
-    'resume.nato.title': 'OTAN (NATO)',
+    'resume.eng.title': 'Título de ingeniero informático · ESAIP',
+    'resume.eng.school': 'Aix-en-Provence, Francia',
+    'resume.eng.erasmus1': 'VIA University College, Horsens, Dinamarca',
+    'resume.eng.erasmus2': 'Universidad Nacional Arturo Jauretche (UNAJ), Buenos Aires, Argentina',
+    'resume.eng.toeic': 'TOEIC: 850 / 990',
+    'resume.eng.period': '2022 – 2026',
+    'resume.bts.title': 'BTS en Sistemas Digitales, opción Informática y Redes · La Salle Avignon',
+    'resume.bts.period': '2019 – 2022',
+    'resume.bts.school': 'Avignon, Francia',
+    'resume.bts.courses': 'Desarrollo en Java y C++ (Qt), administración Linux (Apache, vsftpd, MySQL, SSH, firewall UFW).',
+    'resume.csgroup.title': 'Desarrollador de soluciones de IA · CS GROUP',
+    'resume.csgroup.period': '2026 (6 meses)',
+    'resume.csgroup.location': 'Aix-en-Provence, Francia',
+    'resume.csgroup.description': 'Diseño y desarrollo de soluciones de IA para optimizar los procesos de negocio y el apoyo a la toma de decisiones.',
+    'resume.capgemini.title': 'Pasante de ciberseguridad · Capgemini',
+    'resume.capgemini.period': '2024 – 2025 (7 meses)',
+    'resume.capgemini.location': 'Aix-en-Provence, Francia',
+    'resume.capgemini.description': 'Desarrollo de una herramienta interna de RR. HH. en Node.js (seguimiento de actividad, KPI, gestión de roles), análisis de riesgos EBIOS RM y despliegue de CISO Assistant con Docker.',
+    'resume.frenchtech.title': 'Miembro del jurado · French Tech Buenos Aires',
+    'resume.frenchtech.period': '2026',
+    'resume.frenchtech.location': 'Buenos Aires, Argentina',
+    'resume.frenchtech.description': 'Selección y evaluación de proyectos científicos, y participación en la organización del evento.',
+    'resume.frenchtech.recognition': 'Premio reconocido por la Ciudad de Buenos Aires',
+    'resume.nato.title': 'Consultor · OTAN',
     'resume.nato.period': '2024 (4 meses)',
     'resume.nato.location': 'Francia',
-    'resume.archelon.title': 'Voluntariado en Archelon',
+    'resume.archelon.title': 'Voluntario · Archelon',
     'resume.archelon.period': 'Verano 2023',
-    'resume.archelon.location': 'Chania, Creta',
-    'resume.archelon.description': 'Archelon se compromete a proteger las tortugas marinas a través de la conservación del hábitat, la investigación científica para comprender mejor sus necesidades, y la concienciación pública para fomentar la preservación de estas especies y sus entornos naturales.',
-    'resume.entrep.title': 'Les entrep\'',
+    'resume.archelon.location': 'Chania, Grecia',
+    'resume.archelon.description': 'Protección de las tortugas marinas: conservación de su hábitat, seguimiento científico y sensibilización del público.',
+    'resume.entrep.title': 'Certificación en competencias emprendedoras · Les Entrep\'',
     'resume.entrep.period': '2022',
-    'resume.entrep.location': 'Avignon, 84000, Francia',
-    'resume.entrep.description': 'Practicar la creación de empresas implica explorar ideas y evaluar su adecuación a través de un ciclo de hacer, fallar y rehacer, apoyado por un trabajo en equipo diverso y mentoría. Combina aprendizaje práctico y networking, culminando en el certificado Les Entrep\' para el avance profesional.',
-    'resume.technician.title': 'Técnico en prácticas',
+    'resume.entrep.location': 'Avignon, Francia',
+    'resume.entrep.description': 'Programa de creación de empresas: de la idea al proyecto, en equipo y con un mentor.',
+    'resume.technician.title': 'Técnico en prácticas · Emergency Informatique',
     'resume.technician.period': '2021',
-    'resume.technician.location': 'Emergency Informatique, Avignon, 84000, Francia',
-    'resume.technician.description': 'Reparación de computadoras, instalación y configuración de equipos de red',
+    'resume.technician.location': 'Avignon, Francia',
+    'resume.technician.description': 'Reparación de computadoras, instalación y configuración de equipos de red.',
     
     // Portfolio section
     'portfolio.title': 'Mis proyectos',
@@ -498,30 +400,24 @@ const translations = {
     'portfolio.filter.software': 'Software',
     'portfolio.filter.web': 'Web',
     'portfolio.aepf.title': 'Sitio web para la Asociación Polinesia',
-    'portfolio.aepf.description': 'Creación de un sitio web para promover la cultura polinesia',
     'portfolio.aepf.lightbox': 'Sitio web desarrollado con Silex, un creador de sitios web de código abierto',
     'portfolio.pikawa.title': 'Máquina de café conectada "Pikawa"',
-    'portfolio.pikawa.description': 'Hacer y gestionar café con Bluetooth',
     'portfolio.pikawa.lightbox': 'Desarrollado en C++ con el framework QT Creator durante mi proyecto de diploma de 2 años',
     'portfolio.levigneux.title': 'Le Vigneux Vin',
-    'portfolio.levigneux.description': 'Aplicación web para viticultor',
     'portfolio.levigneux.lightbox': 'Sitio web creado con ASP.NET, permitiendo al viticultor agregar y gestionar sus vinos',
-    'portfolio.brainpilot.title': 'BrainPilot',
-    'portfolio.brainpilot.description': 'Aplicación Android para ayudar a estudiantes',
-    'portfolio.brainpilot.lightbox': 'Aplicación Android desarrollada en Java para ayudar a los estudiantes a gestionar su tiempo',
     'portfolio.hr.title': 'Herramienta de gestión de RRHH interna',
-    'portfolio.hr.description': 'Una aplicación desarrollada usando Node.js para optimizar los procesos de RRHH, incluyendo seguimiento de actividades de empleados, monitoreo de KPI y funcionalidades basadas en roles para administradores, gerentes de proyecto y consultores.',
     'portfolio.hr.lightbox': 'Descripción detallada del proyecto',
     'portfolio.bimmer.title': 'Bimmer Buyer',
-    'portfolio.bimmer.description': 'Plataforma web segura para comprar, vender y gestionar anuncios de BMW, con moderación de un administrador antes de la publicación.',
     'portfolio.bimmer.lightbox': 'Aplicación Node.js / Express / MySQL con back office y seguridad basada en OWASP',
-    'portfolio.details': 'Detalles del Portafolio',
+    'portfolio.lazone.title': 'LAZONE',
+    'portfolio.lazone.lightbox': 'Marketplace e-commerce a medida con autenticación, catálogo de productos, carrito, favoritos, comentarios, pedidos y back office de administración',
+    'portfolio.seeMore': 'Ver más',
     
     // Testimonials section
     'testimonials.title': 'Testimonios',
-    'testimonials.raimana.title': 'Estudiante especializado en Big Data',
+    'testimonials.raimana.title': 'Ingeniero en aprendizaje automático',
     'testimonials.raimana.text': 'Anthony es una persona apasionada, ama lo que hace y se nota. Muy involucrado en todos los proyectos que hemos hecho juntos. Espero trabajar contigo de nuevo.',
-    'testimonials.teony.title': 'Estudiante especializado en Big Data y Presidente Junior AQSE',
+    'testimonials.teony.title': 'Data Engineer',
     'testimonials.teony.text': 'Anthony se destaca por su profesionalismo y su capacidad para inspirar al equipo. Su enfoque pragmático y espíritu innovador lo convierten en un activo invaluable en el lugar de trabajo. Trabajar junto a él es tanto gratificante como estimulante.',
     
     // Contact section
@@ -534,34 +430,54 @@ const translations = {
 };
 
 // Fonction pour obtenir la langue actuelle
+/* ===================================================================
+ * Détection de la langue
+ * =================================================================== */
+
+// Pays d'Amérique latine (codes région) -> espagnol.
+// '419' = code générique « Amérique latine » (ex. es-419).
+const LATAM_REGIONS = [
+  'AR', 'BO', 'BR', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'GT', 'HN', 'MX',
+  'NI', 'PA', 'PE', 'PR', 'PY', 'SV', 'UY', 'VE', '419'
+];
+
+// Langue choisie à la main pendant la visite (sinon : celle du navigateur)
+function getSavedLanguage() {
+  try {
+    const saved = sessionStorage.getItem('preferred-language');
+    return saved && translations[saved] ? saved : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Langue à afficher : choix manuel de la visite, sinon langue du navigateur
 function getCurrentLanguage() {
-  // Vérifier si une langue est sauvegardée dans localStorage
-  const savedLang = localStorage.getItem('preferred-language');
-  if (savedLang && translations[savedLang]) {
-    return savedLang;
-  }
-  
-  // Détecter la langue du navigateur
-  const browserLang = navigator.language || navigator.userLanguage;
-  const langCode = browserLang.split('-')[0];
-  
-  // Si la langue du navigateur est supportée, l'utiliser
-  if (translations[langCode]) {
-    return langCode;
-  }
-  
-  // Par défaut, retourner l'anglais
+  return getSavedLanguage() || getBrowserLanguage();
+}
+
+// Langue du navigateur ramenée à fr / es / en.
+// On regarde la 1re langue préférée du visiteur (ex. 'es-AR', 'pt-BR', 'en-US') :
+//   fr-*  -> fr ;  es-*  -> es ;  *-AR, *-MX, *-BR… (Amérique latine) -> es ;  sinon en.
+function getBrowserLanguage() {
+  const preferred = (navigator.languages && navigator.languages[0]) ||
+    navigator.language || navigator.userLanguage || 'en';
+  const [lang, region] = preferred.replace('_', '-').split('-');
+  const code = (lang || '').toLowerCase();
+
+  if (code === 'fr') return 'fr';
+  if (code === 'es') return 'es';
+  if (region && LATAM_REGIONS.includes(region.toUpperCase())) return 'es';
   return 'en';
 }
 
-function getBrowserLanguage() {
-  const browserLanguage = navigator.language || navigator.userLanguage || 'en';
-  const languageCode = browserLanguage.split('-')[0].toLowerCase();
+/* ===================================================================
+ * Application d'une langue à la page
+ * =================================================================== */
 
-  return ['en', 'fr', 'es'].includes(languageCode) ? languageCode : 'en';
-}
-
-// Fonction pour changer la langue
+// Remplace tous les textes data-i18n par ceux de la langue `lang`
+// et retient ce choix pour la durée de la visite.
+// Une clé absente de la langue garde le texte déjà affiché (pas d'erreur).
 function setLanguage(lang) {
   if (!translations[lang]) {
     console.error(`Language ${lang} is not supported`);
@@ -569,7 +485,9 @@ function setLanguage(lang) {
   }
   
   // Sauvegarder la préférence
-  localStorage.setItem('preferred-language', lang);
+  try {
+    sessionStorage.setItem('preferred-language', lang);
+  } catch (e) {}
   
   // Mettre à jour l'attribut lang du HTML
   document.documentElement.lang = lang;
@@ -591,6 +509,9 @@ function setLanguage(lang) {
       } else if (element.hasAttribute('title') && element.children.length > 0) {
         // Si l'élément a un attribut title et des enfants (comme les liens avec icônes), seulement mettre à jour le title
         element.setAttribute('title', translations[lang][key]);
+        if (element.hasAttribute('aria-label')) {
+          element.setAttribute('aria-label', translations[lang][key]);
+        }
       } else {
         element.textContent = translations[lang][key];
       }
@@ -629,7 +550,8 @@ function setLanguage(lang) {
   }
 }
 
-// Fonction pour initialiser Typed.js
+// Démarre le texte animé de l'accueil (« Je suis Ingénieur… ») dans la
+// bonne langue. Appelé une seule fois, après la première traduction.
 function initializeTyped() {
   const typed = document.querySelector('.typed');
   if (typed && !window.typedInstance) {
@@ -655,7 +577,11 @@ function initializeTyped() {
   }
 }
 
-// Initialiser la langue au chargement
+/* ===================================================================
+ * Démarrage
+ * =================================================================== */
+
+// Au chargement du HTML : choix de la langue, traduction, texte animé
 document.addEventListener('DOMContentLoaded', () => {
   const currentLang = getCurrentLanguage();
   setLanguage(currentLang);
@@ -670,11 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeTyped();
 });
 
-window.addEventListener('load', () => {
-  setLanguage(getBrowserLanguage());
-});
-
-// Exporter les fonctions pour utilisation globale
+// Fonctions accessibles depuis main.js et la console (window.i18n)
 window.i18n = {
   setLanguage,
   getCurrentLanguage,

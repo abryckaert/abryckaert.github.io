@@ -1,12 +1,53 @@
 <!doctype html>
 <html lang="en">
+  <!--
+   ======================================================================
+    index.html : contenu du portfolio (une seule page)
+   ======================================================================
+    Ordre de la page : menu latéral, accueil (hero), À propos, CV,
+    Compétences, Portfolio, Témoignages, Contact.
+  
+    Textes : chaque texte traduisible a un attribut data-i18n="cle".
+    Le texte écrit dans le HTML est la version anglaise de secours ; le
+    texte réellement affiché vient de assets/js/i18n.js (en / fr / es).
+    => Pour modifier un texte, le modifier dans i18n.js, dans les 3 langues.
+  
+    Comportements : assets/js/main.js. Styles : assets/css/style.css.
+    Les « ?v=N » sur style.css / i18n.js / main.js forcent les navigateurs
+    à recharger le fichier : augmenter N à chaque modification.
+  
+    Voir README.md pour les recettes (ajouter un projet, un diplôme…).
+   ======================================================================
+  -->
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
+    <!-- Couleur de la barre du navigateur (et du fond visible en défilant au-delà
+         de la page sur Safari) : identique au fond du site. Mise à jour par
+         main.js (section 11) quand on change de thème. -->
+    <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
+
+    <!-- Thème clair / sombre, appliqué avant l'affichage pour éviter un flash
+         blanc : choix enregistré par le bouton, sinon réglage de l'appareil. -->
+    <script>
+      (function () {
+        var theme = null;
+        try { theme = localStorage.getItem('theme'); } catch (e) {}
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        var meta = document.getElementById('theme-color-meta');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0f1620' : '#ffffff');
+      })();
+    </script>
+
     <title>Anthony Bryckaert</title>
 
-    <link href="assets/img/favicon.jpeg" rel="icon" />
+    <!-- Favicon « AB » : SVG (navigateurs récents), PNG de secours, icône iPhone -->
+    <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="assets/img/favicon-32.png" rel="icon" type="image/png" sizes="32x32" />
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <link
@@ -30,11 +71,13 @@
     />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-    <link href="assets/css/style.css?v=3" rel="stylesheet" />
+    <link href="assets/css/style.css?v=22" rel="stylesheet" />
   </head>
 
   <body>
     <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+    <!-- ===== MENU LATÉRAL + SÉLECTEUR DE LANGUE =====
+         Chaque lien pointe vers l'id d'une section (#about, #resume…). -->
     <header id="header" class="d-flex flex-column justify-content-center">
       <nav id="navbar" class="navbar nav-menu">
         <ul>
@@ -43,16 +86,6 @@
               ><i class="bx bx-home"></i>
               <span data-i18n="nav.home">Home</span></a
             >
-          </li>
-          <li>
-            <a href="#mycompany" class="nav-link scrollto company-nav-link">
-              <img
-                src="assets/img/favicon.jpeg"
-                class="company-nav-logo"
-                alt="Company logo"
-              />
-              <span data-i18n="nav.company">Company</span>
-            </a>
           </li>
           <li>
             <a href="#about" class="nav-link scrollto"
@@ -81,6 +114,17 @@
         </ul>
       </nav>
       <div class="language-selector-container">
+        <!-- Bouton thème clair / sombre (géré dans main.js, section 11) -->
+        <button
+          type="button"
+          id="theme-toggle"
+          data-i18n="theme.toggle"
+          title="Switch light / dark theme"
+          aria-label="Switch light / dark theme"
+        >
+          <i class="bx bx-moon" aria-hidden="true"></i>
+          <i class="bx bx-sun" aria-hidden="true"></i>
+        </button>
         <select id="language-selector">
           <option value="en">🇬🇧 English</option>
           <option value="fr">🇫🇷 Français</option>
@@ -89,6 +133,9 @@
       </div>
     </header>
 
+    <!-- ===== ACCUEIL (hero) =====
+         Nom, texte animé (Typed.js, data-i18n-typed-items), boutons CV et WhatsApp.
+         La flèche « mobile-only » descend vers #about. -->
     <section id="hero" class="d-flex flex-column justify-content-center">
       <div
         class="container"
@@ -101,7 +148,7 @@
           <span data-i18n="hero.subtitle">I'm</span>
           <span
             class="typed"
-            data-typed-items="Engineer, Freelancer, Developer, Pentester"
+            data-typed-items="Engineer, Developer, Pentester"
             data-i18n-typed-items="hero.typedItems"
           ></span>
         </p>
@@ -129,7 +176,7 @@
       </div>
       <div class="d-flex justify-content-center">
         <a
-          href="#mycompany"
+          href="#about"
           class="bi bi-chevron-down mobile-only"
           style="font-size: 3em; color: #0563bb; transform: translateY(185px)"
         ></a>
@@ -137,194 +184,8 @@
     </section>
 
     <main id="main">
-      <section id="mycompany" class="mycompany">
-        <div class="container" data-aos="fade-up">
-          <div class="section-title">
-            <h2 data-i18n="company.title">Mon entreprise</h2>
-            <h3 data-i18n="company.subtitle">
-              L'expertise IT flexible, quand vous en avez besoin.
-            </h3>
-          </div>
-
-          <div class="row mt-5 company-services-section">
-            <div class="col-lg-12">
-              <h3
-                class="company-services-title mb-4"
-                data-i18n="company.services.title"
-              >
-                My Services
-              </h3>
-              <div class="row g-4 company-services">
-                <div class="col-lg-4 d-flex">
-                  <div
-                    class="card company-service-card h-100 w-100 d-flex flex-column"
-                  >
-                    <div class="card-body">
-                      <div class="company-service-icon">
-                        <i
-                          class="bi bi-shield-check"
-                          style="font-size: 1.3em"
-                        ></i>
-                      </div>
-                      <h3
-                        class="card-title"
-                        data-i18n="company.cybersecurity.title"
-                      >
-                        Cybersecurity
-                      </h3>
-                      <p
-                        class="card-text"
-                        data-i18n="company.cybersecurity.description"
-                      >
-                        Cybersecurity consulting and support for professionals,
-                        including vulnerability analysis, digital risk
-                        assessment, application, information system and network
-                        security, code review and correction, SIEM tool
-                        configuration, technical recommendations and user
-                        awareness of digital security best practices.
-                      </p>
-                    </div>
-                    <a
-                      href="#contact"
-                      class="btn btn-primary btn-sm w-auto align-self-center mt-auto mb-4"
-                      data-i18n="company.cta"
-                      >See more</a
-                    >
-                  </div>
-                </div>
-                <div class="col-lg-4 d-flex">
-                  <div
-                    class="card company-service-card h-100 w-100 d-flex flex-column"
-                  >
-                    <div class="card-body">
-                      <div class="company-service-icon">
-                        <i class="bi bi-cpu" style="font-size: 1.3em"></i>
-                      </div>
-                      <h3 class="card-title" data-i18n="company.ai.title">
-                        Artificial Intelligence and Automation
-                      </h3>
-                      <p class="card-text" data-i18n="company.ai.description">
-                        Design, development and integration of artificial
-                        intelligence solutions adapted to professional needs,
-                        including autonomous agents, RAG systems, chatbots and
-                        automated document processing tools. Implementation of
-                        workflows with N8N, API integration and business process
-                        automation.
-                      </p>
-                    </div>
-                    <a
-                      href="#contact"
-                      class="btn btn-primary btn-sm w-auto align-self-center mt-auto mb-4"
-                      data-i18n="company.cta"
-                      >See more</a
-                    >
-                  </div>
-                </div>
-                <div class="col-lg-4 d-flex">
-                  <div
-                    class="card company-service-card h-100 w-100 d-flex flex-column"
-                  >
-                    <div class="card-body">
-                      <div class="company-service-icon">
-                        <i
-                          class="bi bi-code-slash"
-                          style="font-size: 1.3em"
-                        ></i>
-                      </div>
-                      <h3
-                        class="card-title"
-                        data-i18n="company.development.title"
-                      >
-                        Application Development
-                      </h3>
-                      <p
-                        class="card-text"
-                        data-i18n="company.development.description"
-                      >
-                        Design and development of web applications, software and
-                        tailor-made digital tools. Front-end and back-end
-                        development, API creation and integration, database
-                        design and management, Docker containerization, testing,
-                        deployment, maintenance, optimization and application
-                        security.
-                      </p>
-                    </div>
-                    <a
-                      href="#contact"
-                      class="btn btn-primary btn-sm w-auto align-self-center mt-auto mb-4"
-                      data-i18n="company.cta"
-                      >See more</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row mt-5 mb-0 align-text-top company-information">
-            <h3
-              class="company-information-title mb-4"
-              data-i18n="company.information.title"
-            >
-              Business Information
-            </h3>
-            <div class="col-lg-4">
-              <p>
-                <strong data-i18n="company.status">Business status:</strong
-                ><br /><span data-i18n="company.status.value"
-                  >French micro-enterprise - Freelance</span
-                >
-              </p>
-              <p>
-                <strong data-i18n="company.location">Location:</strong
-                ><br /><span data-i18n="company.location.value"
-                  >Avignon, France - Remote services available</span
-                >
-              </p>
-              <p>
-                <strong data-i18n="company.siren">SIREN:</strong><br /><span
-                  >109131110</span
-                >
-              </p>
-              <p class="mb-0">
-                <strong data-i18n="company.siret">SIRET:</strong><br /><span
-                  >10913111000016</span
-                >
-              </p>
-            </div>
-            <div class="col-lg-4">
-              <p>
-                <strong data-i18n="company.website">Website:</strong><br /><a
-                  >Soon!</a
-                >
-              </p>
-              <p>
-                <strong data-i18n="company.email">Email:</strong><br /><a
-                  href="mailto:bryckaert.anthony@gmail.com"
-                  >bryckaert.anthony@gmail.com</a
-                >
-              </p>
-              <p class="mb-0">
-                <strong data-i18n="company.phone">Phone:</strong><br /><a
-                  href="tel:+33781755907"
-                  >+33 7 81 75 59 07</a
-                >
-              </p>
-            </div>
-            <div
-              class="col-lg-4 d-flex align-items-start justify-content-center"
-            >
-              <img
-                src="assets/img/favicon.jpeg"
-                class="img-fluid"
-                alt="Freelance software engineer logo"
-                style="width: 45%"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <!-- ===== À PROPOS =====
+           Photo, présentation, liste (nationalité, langues, diplôme, e-mail, téléphones). -->
       <section id="about" class="about">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
@@ -370,7 +231,7 @@
                         >Second language:</strong
                       >
                       <span data-i18n="about.secondLang.value"
-                        >English (B2)</span
+                        >English (B2, TOEIC 850)</span
                       >
                     </li>
                     <li>
@@ -400,7 +261,7 @@
                       <i class="bi bi-chevron-right"></i>
                       <strong data-i18n="about.degree">Degree:</strong>
                       <span data-i18n="about.degree.value"
-                        >Master's in Computer Science</span
+                        >Computer Science Engineer</span
                       >
                     </li>
                     <li>
@@ -410,33 +271,257 @@
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
-                      <strong data-i18n="about.phone"
-                        >Professional phone number:</strong
+                      <strong data-i18n="about.phone.fr"
+                        >Professional phone (France):</strong
                       >
                       <span>+33781755907</span>
+                    </li>
+                    <li>
+                      <i class="bi bi-chevron-right"></i>
+                      <strong data-i18n="about.phone.ar"
+                        >Professional phone (Argentina):</strong
+                      >
+                      <span>+54 9 11 5898 2230</span>
                     </li>
                   </ul>
                 </div>
               </div>
               <p data-i18n="about.seeking">
-                I am looking for freelance opportunities in AI engineering,
-                cybersecurity, web application, and software development. I am
-                particularly interested in projects involving artificial
-                intelligence including model development, fine-tuning, and
-                deployment as well as exploring applications in machine
-                learning, deep learning, and software solutions.
+                I am looking for a full-time position in AI engineering, cybersecurity, web application development or software development. I am particularly interested in artificial intelligence projects: model development, fine-tuning and deployment, as well as machine learning, deep learning and software solutions.
               </p>
             </div>
           </div>
         </div>
       </section>
-      <section id="skills" class="skills section-bg">
+      <!-- ===== CV =====
+           Colonne gauche : Diplômes ; colonne droite : Expérience professionnelle.
+           Chaque élément est un accordéon (.resume-collapsible) ouvert par main.js :
+             .resume-header = logo (assets/img/logos/) + titre + date + flèche
+             .resume-body   = détails affichés à l'ouverture.
+           Pour ajouter un élément : copier un bloc .resume-item existant,
+           changer ses clés data-i18n et les ajouter dans i18n.js. -->
+      <section id="resume" class="resume section-bg">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2 data-i18n="resume.title">Resume</h2>
+            <h3 data-i18n="resume.subtitle">Qualifications and experiences</h3>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <h3 class="resume-title" data-i18n="resume.diplomas">Diplomas</h3>
+              <div class="resume-item resume-collapsible">
+                <div class="resume-header" role="button" tabindex="0" aria-expanded="false">
+                  <span class="resume-logo"><img src="assets/img/logos/esaip.svg" alt="ESAIP" loading="lazy" /></span>
+                  <div class="resume-header-text">
+                    <h4 data-i18n="resume.eng.title">Computer Science Engineering Degree · ESAIP</h4>
+                    <p class="resume-header-note" data-i18n="resume.degree.note">Engineering school comparable to UTN or ITBA in Argentina</p>
+                    <h5 data-i18n="resume.eng.period">2022 – 2026</h5>
+                  </div>
+                  <i class="bx bx-chevron-down resume-chevron" aria-hidden="true"></i>
+                </div>
+                <div class="resume-body"><div class="resume-body-inner">
+                  <p>
+                    <em>
+                                            <span data-i18n="resume.eng.school"
+                        >Aix-en-Provence, France</span
+                      >
+                    </em>
+                  </p>
+                  <div class="erasmus-list">
+                    <div class="erasmus-card">
+                      <span class="erasmus-flag">🇦🇷</span>
+                      <div>
+                        <span class="erasmus-badge">Erasmus · 2025 – 2026</span>
+                        <strong data-i18n="resume.eng.erasmus2"
+                          >UNAJ National University Arturo Jauretche, Buenos Aires, Argentina</strong
+                        >
+                      </div>
+                    </div>
+                    <div class="erasmus-card">
+                      <span class="erasmus-flag">🇩🇰</span>
+                      <div>
+                        <span class="erasmus-badge">Erasmus · 2023</span>
+                        <strong data-i18n="resume.eng.erasmus1"
+                          >VIA University College, Horsens, Denmark</strong
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <b data-i18n="resume.eng.toeic">TOEIC: 850 / 990</b>
+                </div></div>
+              </div>
+              <div class="resume-item resume-collapsible">
+                <div class="resume-header" role="button" tabindex="0" aria-expanded="false">
+                  <span class="resume-logo"><img src="assets/img/logos/lesentrep.png" alt="Les Entrep'" loading="lazy" /></span>
+                  <div class="resume-header-text">
+                <h4 data-i18n="resume.entrep.title">Entrepreneurial Skills Certification · Les Entrep'</h4>
+                <h5 data-i18n="resume.entrep.period">2022</h5>
+                  </div>
+                  <i class="bx bx-chevron-down resume-chevron" aria-hidden="true"></i>
+                </div>
+                <div class="resume-body"><div class="resume-body-inner">
+                <p>
+                  <em data-i18n="resume.entrep.location"
+                    >Avignon, France</em
+                  >
+                </p>
+                <p data-i18n="resume.entrep.description">
+                  Business creation program: from idea to project, in a team and with a mentor.
+                </p>
+                </div></div>
+              </div>
+              <div class="resume-item resume-collapsible">
+                <div class="resume-header" role="button" tabindex="0" aria-expanded="false">
+                  <span class="resume-logo"><img src="assets/img/logos/lasalle.png" alt="La Salle Avignon" loading="lazy" /></span>
+                  <div class="resume-header-text">
+                <h4 data-i18n="resume.bts.title">BTS in Digital Systems, IT &amp; Networks option · La Salle Avignon</h4>
+                <h5 data-i18n="resume.bts.period">2019 – 2022</h5>
+                  </div>
+                  <i class="bx bx-chevron-down resume-chevron" aria-hidden="true"></i>
+                </div>
+                <div class="resume-body"><div class="resume-body-inner">
+                <p>
+                  <em>
+                                        <span data-i18n="resume.bts.school"
+                      >Avignon, France</span
+                    >
+                  </em>
+                </p>
+                <p data-i18n="resume.bts.courses" data-i18n-html>
+                  Java and C++ (Qt) development, Linux administration (Apache, vsftpd, MySQL, SSH, UFW firewall).
+                </p>
+                </div></div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <h3 class="resume-title" data-i18n="resume.experience">
+                Professional Experience
+              </h3>
+              <div class="resume-item resume-collapsible">
+                <div class="resume-header" role="button" tabindex="0" aria-expanded="false">
+                  <span class="resume-logo"><img src="assets/img/logos/frenchtech.svg" alt="La French Tech" loading="lazy" /></span>
+                  <div class="resume-header-text">
+                    <h4 data-i18n="resume.frenchtech.title">Jury member · French Tech Buenos Aires</h4>
+                    <h5 data-i18n="resume.frenchtech.period">2026</h5>
+                  </div>
+                  <i class="bx bx-chevron-down resume-chevron" aria-hidden="true"></i>
+                </div>
+                <div class="resume-body"><div class="resume-body-inner">
+                  <p>
+                    <em>
+                      <span data-i18n="resume.frenchtech.location">Buenos Aires, Argentina</span>
+                    </em>
+                  </p>
+                  <p class="resume-recognition">
+                    <b data-i18n="resume.frenchtech.recognition">Award recognized by the City of Buenos Aires</b>
+                  </p>
+                  <p data-i18n="resume.frenchtech.description">
+                  Screening and evaluation of scientific projects, and help organizing the event.
+                </p>
+                </div></div>
+              </div>
+              <div class="resume-item resume-collapsible">
+                <div class="resume-header" role="button" tabindex="0" aria-expanded="false">
+                  <span class="resume-logo"><img src="assets/img/logos/csgroup.png" alt="CS GROUP" loading="lazy" /></span>
+                  <div class="resume-header-text">
+                <h4 data-i18n="resume.csgroup.title">AI Solutions Developer · CS GROUP</h4>
+                <h5 data-i18n="resume.csgroup.period">2026 (6 months)</h5>
+                  </div>
+                  <i class="bx bx-chevron-down resume-chevron" aria-hidden="true"></i>
+                </div>
+                <div class="resume-body"><div class="resume-body-inner">
+                <p>
+                  <em data-i18n="resume.csgroup.location"
+                    >Aix-en-Provence, France</em
+                  >
+                </p>
+                <p data-i18n="resume.csgroup.description">
+                  Design and development of AI solutions to optimize business processes and decision support.
+                </p>
+                </div></div>
+              </div>
+              <div class="resume-item resume-collapsible">
+                <div class="resume-header" role="button" tabindex="0" aria-expanded="false">
+                  <span class="resume-logo"><img src="assets/img/logos/capgemini.png" alt="Capgemini" loading="lazy" /></span>
+                  <div class="resume-header-text">
+                <h4 data-i18n="resume.capgemini.title">Cybersecurity intern · Capgemini</h4>
+                <h5 data-i18n="resume.capgemini.period">2024 – 2025 (7 months)</h5>
+                  </div>
+                  <i class="bx bx-chevron-down resume-chevron" aria-hidden="true"></i>
+                </div>
+                <div class="resume-body"><div class="resume-body-inner">
+                <p>
+                  <em data-i18n="resume.capgemini.location"
+                    >Aix-en-Provence, France</em
+                  >
+                </p>
+                <p data-i18n="resume.capgemini.description">
+                  Development of an internal HR tool in Node.js (activity tracking, KPIs, role management), EBIOS RM risk analyses, and deployment of CISO Assistant with Docker.
+                </p>
+                </div></div>
+              </div>
+              <div class="resume-item resume-collapsible">
+                <div class="resume-header" role="button" tabindex="0" aria-expanded="false">
+                  <span class="resume-logo"><img src="assets/img/logos/nato.png" alt="NATO / OTAN" loading="lazy" /></span>
+                  <div class="resume-header-text">
+                <h4 data-i18n="resume.nato.title">Consultant · NATO</h4>
+                <h5 data-i18n="resume.nato.period">2024 (4 months)</h5>
+                  </div>
+                  <i class="bx bx-chevron-down resume-chevron" aria-hidden="true"></i>
+                </div>
+                <div class="resume-body"><div class="resume-body-inner">
+                <p><em data-i18n="resume.nato.location">France</em></p>
+                </div></div>
+              </div>
+              <div class="resume-item resume-collapsible">
+                <div class="resume-header" role="button" tabindex="0" aria-expanded="false">
+                  <span class="resume-logo"><img src="assets/img/logos/archelon.png" alt="Archelon" loading="lazy" /></span>
+                  <div class="resume-header-text">
+                <h4 data-i18n="resume.archelon.title">Volunteer · Archelon</h4>
+                <h5 data-i18n="resume.archelon.period">Summer 2023</h5>
+                  </div>
+                  <i class="bx bx-chevron-down resume-chevron" aria-hidden="true"></i>
+                </div>
+                <div class="resume-body"><div class="resume-body-inner">
+                <p>
+                  <em data-i18n="resume.archelon.location">Chania, Greece</em>
+                </p>
+                <p data-i18n="resume.archelon.description">
+                  Sea turtle protection: habitat conservation, scientific monitoring and public awareness.
+                </p>
+                </div></div>
+              </div>
+              <div class="resume-item resume-collapsible">
+                <div class="resume-header" role="button" tabindex="0" aria-expanded="false">
+                  <span class="resume-logo"><img src="assets/img/logos/emergency.png" alt="Emergency Informatique" loading="lazy" /></span>
+                  <div class="resume-header-text">
+                <h4 data-i18n="resume.technician.title">Technician intern · Emergency Informatique</h4>
+                <h5 data-i18n="resume.technician.period">2021</h5>
+                  </div>
+                  <i class="bx bx-chevron-down resume-chevron" aria-hidden="true"></i>
+                </div>
+                <div class="resume-body"><div class="resume-body-inner">
+                <p>
+                  <em data-i18n="resume.technician.location"
+                    >Avignon, France</em
+                  >
+                </p>
+                <p data-i18n="resume.technician.description">
+                  Computer repair, and installation and configuration of network equipment.
+                </p>
+                </div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ===== COMPÉTENCES =====
+           Le remplissage de chaque barre = attribut aria-valuenow (en %). -->
+      <section id="skills" class="skills">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
             <h2 data-i18n="skills.title">Skills</h2>
-            <h3 data-i18n="skills.subtitle">
-              Acquired at jobs, school and through personal projects.
-            </h3>
           </div>
 
           <div class="row skills-content">
@@ -551,240 +636,15 @@
           </div>
         </div>
       </section>
-      <section id="resume" class="resume">
-        <div class="container" data-aos="fade-up">
-          <div class="section-title">
-            <h2 data-i18n="resume.title">Resume</h2>
-            <h3 data-i18n="resume.subtitle">Qualifications and experiences</h3>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6">
-              <h3 class="resume-title" data-i18n="resume.diplomas">Diplomas</h3>
-              <div class="resume-item pb-0">
-                <h4 data-i18n="resume.m2.title">
-                  Third year of Engineer school (M2)
-                </h4>
-                <h5 data-i18n="resume.m2.period">2025 - 2026</h5>
-                <p>
-                  <em>
-                    🇫🇷
-                    <span data-i18n="resume.m2.school"
-                      >ESAIP Engineering School, Aix-En-Provence 13090,
-                      France</span
-                    >
-                  </em>
-                  <br />
-                  <em>
-                    🇦🇷
-                    <span data-i18n="resume.m2.exchange"
-                      >Exchange Semester at UNAJ National University Arturo
-                      Jauretche, Buenos Aires, Argentina</span
-                    >
-                  </em>
-                </p>
-                <p data-i18n="resume.m2.courses" data-i18n-html>
-                  <br />
-                  Développement : <b>Design Pattern</b> in <b>C#</b> <br />
-                  Application Development : <b>Kotlin</b> <br />
-                  Web Application Development : <b>Node.js</b>,
-                  <b>Express.js</b>
-                </p>
-              </div>
-
-              <div class="resume-item pb-0">
-                <h4 data-i18n="resume.m1.title">
-                  Second year of Engineer school (M1)
-                </h4>
-                <h5 data-i18n="resume.m1.period">2023 - 2025</h5>
-                <p>
-                  <em>
-                    🇫🇷
-                    <span data-i18n="resume.m1.school"
-                      >ESAIP Engineering School, Aix-En-Provence 13090,
-                      France</span
-                    >
-                  </em>
-                </p>
-                <b data-i18n="resume.m1.toeic">TOEIC certificate, score 850</b>
-                <p data-i18n="resume.m1.courses" data-i18n-html>
-                  <br />
-                  Cybersécurité : <b>Forensic</b>, <b>CTF</b>,
-                  <b>Cryptology</b>, <b>Secure development</b>,
-                  <b>Risk management</b> <br />
-                  Développement : Backend <b>Java</b> | Android development
-                  <br />
-                  Linux Administration : <b>Apache</b>, <b>Ssh</b>,
-                  <b>Iptable</b>, <b>Git</b> | Windows Administration :
-                  <br />
-                  Network :
-                </p>
-              </div>
-              <div class="resume-item pb-0">
-                <h4 data-i18n="resume.l3.sem2.title">
-                  First year of Engineer school
-                </h4>
-                <h5 data-i18n="resume.l3.sem2.period">
-                  Semester two of Engineer school 2023
-                </h5>
-                <p>
-                  <em>
-                    🇫🇷
-                    <span data-i18n="resume.l3.sem2.school"
-                      >ESAIP Engineering School, Aix-En-Provence 13090,
-                      France</span
-                    >
-                  </em>
-                  <br />
-                  <em>
-                    🇩🇰
-                    <span data-i18n="resume.l3.sem2.exchange"
-                      >Exchange Semester at VIA University College, Horsens,
-                      8700, Denmark</span
-                    >
-                  </em>
-                </p>
-                <p data-i18n="resume.l3.sem2.courses">
-                  <b>MongoDB</b>, <b>ASP.NET</b>,
-                  <b>SQL Server Management Studio</b>
-                </p>
-                <h5 data-i18n="resume.l3.sem1.period">
-                  Semester one of Engineer school 2022
-                </h5>
-                <p>
-                  <em>
-                    🇫🇷
-                    <span data-i18n="resume.l3.sem2.school"
-                      >ESAIP Engineering School, Aix-En-Provence 13090,
-                      France</span
-                    >
-                  </em>
-                </p>
-                <p data-i18n="resume.l3.sem1.courses">
-                  Frontend : <b>Html</b>, <b>Css</b> | Backend : <b>Java</b> |
-                  Network : <b>Cisco Packet Tracer</b>
-                </p>
-              </div>
-              <div class="resume-item">
-                <h4 data-i18n="resume.bts.title">
-                  2 years diploma in IT (BTS SN)
-                </h4>
-                <h5 data-i18n="resume.bts.period">2019 - 2022</h5>
-                <p>
-                  <em>
-                    🇫🇷
-                    <span data-i18n="resume.bts.school"
-                      >Saint Jean-Baptiste de lasalle, Avignon 84000,
-                      France</span
-                    >
-                  </em>
-                </p>
-                <p data-i18n="resume.bts.courses" data-i18n-html>
-                  Développement : <b>Java</b>, <b>C++</b>,
-                  <b>Qt Creator Framework</b> <br />
-                  Linux administration : <b>Apache</b>, <b>VsFtp</b>,
-                  <b>MySql</b>, <b>Ssh</b>, <b>Ufw firewall</b>
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <h3 class="resume-title" data-i18n="resume.experience">
-                Professional Experience
-              </h3>
-              <div class="resume-item">
-                <h4 data-i18n="resume.csgroup.title">
-                  CS GROUP FRANCE IA Solutions Developer
-                </h4>
-                <h5 data-i18n="resume.csgroup.period">2026-2026 (6 months)</h5>
-                <p>
-                  <em data-i18n="resume.csgroup.location"
-                    >Aix-En-Provence, France</em
-                  >
-                </p>
-                <p data-i18n="resume.csgroup.description">
-                  Design and development of Artificial Intelligence-based
-                  solutions at CS GROUP FRANCE's Aix-en-Provence office. My work
-                  focused on creating intelligent systems aimed at optimizing
-                  business processes and enhancing decision support.
-                </p>
-              </div>
-              <div class="resume-item">
-                <h4 data-i18n="resume.capgemini.title">
-                  Capgemini secure development and risk analysis (EBIOS RM)
-                </h4>
-                <h5 data-i18n="resume.capgemini.period">
-                  2024-2025 (7 months)
-                </h5>
-                <p>
-                  <em data-i18n="resume.capgemini.location"
-                    >Aix-En-Provence, France</em
-                  >
-                </p>
-                <p data-i18n="resume.capgemini.description">
-                  During my internship at Capgemini's Aix-en-Provence office, I
-                  developed web application, an internal HR management tool
-                  using <b>Node.js</b>, to streamline employee activity tracking
-                  and KPI monitoring with role-based functionalities. In
-                  parallel, I conducted risk analyses using the
-                  <b>EBIOS RM</b> methodology and utilized <b>Docker</b> to
-                  deploy tools such as <b>CISO Assistant</b>. These tasks
-                  enhanced my technical expertise and contributed to improving
-                  operational efficiency and security.
-                </p>
-              </div>
-              <div class="resume-item">
-                <h4 data-i18n="resume.nato.title">NATO (OTAN)</h4>
-                <h5 data-i18n="resume.nato.period">2024 (4 months)</h5>
-                <p><em data-i18n="resume.nato.location">France</em></p>
-              </div>
-              <div class="resume-item">
-                <h4 data-i18n="resume.archelon.title">
-                  Volunteering in Archelon
-                </h4>
-                <h5 data-i18n="resume.archelon.period">Summer 2023</h5>
-                <p>
-                  <em data-i18n="resume.archelon.location">Chania, Crete</em>
-                </p>
-                <p data-i18n="resume.archelon.description">
-                  Archelon is committed to protecting sea turtles through
-                  habitat conservation, scientific research to better understand
-                  their needs, and public awareness to encourage the
-                  preservation of these species and their natural environments.
-                </p>
-              </div>
-              <div class="resume-item">
-                <h4 data-i18n="resume.entrep.title">Les entrep'</h4>
-                <h5 data-i18n="resume.entrep.period">2022</h5>
-                <p>
-                  <em data-i18n="resume.entrep.location"
-                    >Avignon, 84000, France</em
-                  >
-                </p>
-                <p data-i18n="resume.entrep.description">
-                  Practicing business creation involves exploring ideas and
-                  assessing fit through a cycle of doing, failing, and redoing,
-                  supported by diverse teamwork and mentorship. It combines
-                  practical learning and networking, culminating in the Les
-                  Entrep' certificate for professional advancement.
-                </p>
-              </div>
-              <div class="resume-item">
-                <h4 data-i18n="resume.technician.title">Technician trainee</h4>
-                <h5 data-i18n="resume.technician.period">2021</h5>
-                <p>
-                  <em data-i18n="resume.technician.location"
-                    >Emergency Informatique, Avignon, 84000, France</em
-                  >
-                </p>
-                <p data-i18n="resume.technician.description">
-                  Computer repair, installation and configuration of network
-                  equipment
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- ===== PORTFOLIO =====
+           Une carte = .portfolio-item (classe filter-web ou filter-app pour les filtres).
+           Dans chaque carte :
+             - <img> = image affichée sur la carte ;
+             - 1er lien .portfolio-lightbox.portfolio-more = bouton « Voir plus » ;
+             - liens .portfolio-lightbox cachés (display: none) = autres photos ;
+             - tous les liens d'un projet partagent le même data-gallery.
+           Les photos de ces liens servent aussi au diaporama au survol (main.js).
+           Images : assets/img/portfolio/. -->
       <section id="portfolio" class="portfolio section-bg">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
@@ -829,25 +689,328 @@
             <div class="col-lg-4 col-md-6 portfolio-item filter-web">
               <div class="portfolio-wrap">
                 <img
+                  src="assets/img/portfolio/t-one-1.webp"
+                  class="img-fluid"
+                  alt="T-ONE"
+                />
+                <div class="portfolio-info">
+                  <h4 data-i18n="portfolio.hr.title">
+                    Internal HR Management Tool
+                  </h4>
+                  <div class="portfolio-links">
+                    <a
+                      href="assets/img/portfolio/t-one-1.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox portfolio-more"
+                      data-i18n="portfolio.hr.lightbox"
+                      title="Detailed description of the project"
+                      ><span data-i18n="portfolio.seeMore">See more</span></a
+                    >
+                    <a
+                      href="assets/img/portfolio/t-one-2.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-3.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-4.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-5.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-6.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-7.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-8.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-9.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-10.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-11.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-12.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-13.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-14.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-15.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-16.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-17.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-18.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-19.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/t-one-20.webp"
+                      data-gallery="toneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="T-ONE"
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+              <div class="portfolio-wrap">
+                <img
+                  src="assets/img/portfolio/lazone-1.webp"
+                  class="img-fluid"
+                  alt="LAZONE"
+                />
+                <div class="portfolio-info">
+                  <h4 data-i18n="portfolio.lazone.title">LAZONE</h4>
+                  <div class="portfolio-links">
+                    <a
+                      href="assets/img/portfolio/lazone-1.webp"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox portfolio-more"
+                      data-i18n="portfolio.lazone.lightbox"
+                      title="Custom e-commerce marketplace with authentication, product catalog, cart, favorites, comments, orders and admin back office"
+                      ><span data-i18n="portfolio.seeMore">See more</span></a
+                    >
+                    <a
+                      href="assets/img/portfolio/lazone-2.webp"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-3.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-4.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-5.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-6.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-7.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-8.webp"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-9.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-10.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-11.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-12.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-13.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-14.webp"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-15.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-16.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-17.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-18.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/lazone-19.png"
+                      data-gallery="lazoneGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="LAZONE"
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+              <div class="portfolio-wrap">
+                <img
                   src="assets/img/portfolio/bimmer-buyer-1.webp"
                   class="img-fluid"
                   alt="Bimmer Buyer"
                 />
                 <div class="portfolio-info">
                   <h4 data-i18n="portfolio.bimmer.title">Bimmer Buyer</h4>
-                  <p data-i18n="portfolio.bimmer.description">
-                    Secure web platform to buy, sell and manage BMW vehicle
-                    listings, with admin moderation before publication.
-                  </p>
                   <div class="portfolio-links">
                     <a
                       href="assets/img/portfolio/bimmer-buyer-1.webp"
                       data-gallery="bimmerBuyerGallery"
-                      class="portfolio-lightbox"
+                      class="portfolio-lightbox portfolio-more"
                       data-i18n="portfolio.bimmer.lightbox"
                       title="Node.js / Express / MySQL application with a back office and OWASP-based security"
-                      ><i class="bx bx-plus"></i
-                    ></a>
+                      ><span data-i18n="portfolio.seeMore">See more</span></a
+                    >
                     <a
                       href="assets/img/portfolio/bimmer-buyer-2.webp"
                       data-gallery="bimmerBuyerGallery"
@@ -883,13 +1046,161 @@
                       style="display: none"
                       title="Bimmer Buyer"
                     ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+              <div class="portfolio-wrap">
+                <img
+                  src="assets/img/portfolio/levigneux-1.webp"
+                  class="img-fluid"
+                  alt="Le Vigneux Vin"
+                />
+                <div class="portfolio-info">
+                  <h4 data-i18n="portfolio.levigneux.title">Le Vigneux Vin</h4>
+                  <div class="portfolio-links">
                     <a
-                      href="https://github.com/abryckaert/Bimmer-Buyer"
-                      class="portfolio-details-lightbox"
-                      data-glightbox="type: external"
-                      data-i18n="portfolio.details"
-                      title="Portfolio Details"
-                      ><i class="bx bx-link"></i
+                      href="assets/img/portfolio/levigneux-1.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox portfolio-more"
+                      data-i18n="portfolio.levigneux.lightbox"
+                      title="Website created with ASP.NET, enabling the winemaker to add and manage their wines"
+                      ><span data-i18n="portfolio.seeMore">See more</span></a
+                    >
+                    <a
+                      href="assets/img/portfolio/levigneux-2.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-3.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-4.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-5.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-6.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-7.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-8.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-9.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-10.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-11.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-12.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-13.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-14.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-15.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-16.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-17.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-18.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-19.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
+                    ></a>
+                    <a
+                      href="assets/img/portfolio/levigneux-20.webp"
+                      data-gallery="levigneuxGallery"
+                      class="portfolio-lightbox"
+                      style="display: none"
+                      title="Le Vigneux Vin"
                     ></a>
                   </div>
                 </div>
@@ -907,26 +1218,15 @@
                   <h4 data-i18n="portfolio.aepf.title">
                     Website for Polynesian Association
                   </h4>
-                  <p data-i18n="portfolio.aepf.description">
-                    Creation of a website to promote Polynesian culture
-                  </p>
                   <div class="portfolio-links">
                     <a
                       href="assets/img/portfolio/siteWebAepf.png"
                       data-gallery="portfolioGallery"
-                      class="portfolio-lightbox"
+                      class="portfolio-lightbox portfolio-more"
                       data-i18n="portfolio.aepf.lightbox"
                       title="Website developed with Silex, an open-source website maker"
-                      ><i class="bx bx-plus"></i
-                    ></a>
-                    <a
-                      href="#"
-                      class="portfolio-details-lightbox"
-                      data-glightbox="type: external"
-                      data-i18n="portfolio.details"
-                      title="Portfolio Details"
-                      ><i class="bx bx-link"></i
-                    ></a>
+                      ><span data-i18n="portfolio.seeMore">See more</span></a
+                    >
                   </div>
                 </div>
               </div>
@@ -943,136 +1243,15 @@
                   <h4 data-i18n="portfolio.pikawa.title">
                     Connected Coffee Machine "Pikawa"
                   </h4>
-                  <p data-i18n="portfolio.pikawa.description">
-                    Make and manage coffee with Bluetooth
-                  </p>
                   <div class="portfolio-links">
                     <a
                       href="assets/img/portfolio/pikawa.gif"
                       data-gallery="portfolioGallery"
-                      class="portfolio-lightbox"
+                      class="portfolio-lightbox portfolio-more"
                       data-i18n="portfolio.pikawa.lightbox"
                       title="Developed in C++ with QT Creator framework during my 2-year diploma project"
-                      ><i class="bx bx-plus"></i
-                    ></a>
-                    <a
-                      href="https://github.com/btssn-lasalle-84/pikawa-2022"
-                      class="portfolio-details-lightbox"
-                      data-glightbox="type: external"
-                      data-i18n="portfolio.details"
-                      title="Portfolio Details"
-                      ><i class="bx bx-link"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-              <div class="portfolio-wrap">
-                <img
-                  src="assets/img/portfolio/leVigneuxVin.png"
-                  class="img-fluid"
-                  alt
-                />
-                <div class="portfolio-info">
-                  <h4 data-i18n="portfolio.levigneux.title">Le Vigneux Vin</h4>
-                  <p data-i18n="portfolio.levigneux.description">
-                    Web application for winemaker
-                  </p>
-                  <div class="portfolio-links">
-                    <a
-                      href="assets/img/portfolio/leVigneuxVin.png"
-                      data-gallery="portfolioGallery"
-                      class="portfolio-lightbox"
-                      data-i18n="portfolio.levigneux.lightbox"
-                      title="Website created with ASP.NET, enabling the winemaker to add and manage their wines"
-                      ><i class="bx bx-plus"></i
-                    ></a>
-                    <a
-                      href="https://github.com/abryckaert/LeVigneuxVin"
-                      class="portfolio-details-lightbox"
-                      data-glightbox="type: external"
-                      data-i18n="portfolio.details"
-                      title="Portfolio Details"
-                      ><i class="bx bx-link"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="col-lg-4 col-md-6 portfolio-item filter-app"
-              style="width: 14%"
-            >
-              <div class="portfolio-wrap">
-                <img
-                  src="assets/img/portfolio/brainPilot.gif"
-                  class="img-fluid"
-                  alt
-                />
-                <div class="portfolio-info">
-                  <h4 data-i18n="portfolio.brainpilot.title">BrainPilot</h4>
-                  <p data-i18n="portfolio.brainpilot.description">
-                    Android application to help students
-                  </p>
-                  <div class="portfolio-links">
-                    <a
-                      href="assets/img/portfolio/brainPilot.gif"
-                      data-gallery="portfolioGallery"
-                      class="portfolio-lightbox"
-                      data-i18n="portfolio.brainpilot.lightbox"
-                      title="Android application developed in Java to help students manage their time"
-                      ><i class="bx bx-plus"></i
-                    ></a>
-                    <a
-                      href="https://github.com/abryckaert/BrainPilotAndroid"
-                      class="portfolio-details-lightbox"
-                      data-glightbox="type: external"
-                      data-i18n="portfolio.details"
-                      title="Portfolio Details"
-                      ><i class="bx bx-link"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-              <div class="portfolio-wrap">
-                <img
-                  src="assets/img/portfolio/t-one.png"
-                  class="img-fluid"
-                  alt
-                />
-                <div class="portfolio-info">
-                  <h4 data-i18n="portfolio.hr.title">
-                    Internal HR Management Tool
-                  </h4>
-                  <p data-i18n="portfolio.hr.description">
-                    An application developed using Node.js to streamline HR
-                    processes, including employee activity tracking, KPI
-                    monitoring, and role-based functionalities for
-                    administrators, project managers, and consultants.
-                  </p>
-                  <div class="portfolio-links">
-                    <a
-                      href="assets/img/portfolio/t-one.png"
-                      data-gallery="portfolioGallery"
-                      class="portfolio-lightbox"
-                      data-i18n="portfolio.hr.lightbox"
-                      title="Detailed description of the project"
-                      ><i class="bx bx-plus"></i
-                    ></a>
-                    <a
-                      href="https://github.com/your-repo-link"
-                      class="portfolio-details-lightbox"
-                      data-glightbox="type: external"
-                      data-i18n="portfolio.details"
-                      title="Portfolio Details"
-                      ><i class="bx bx-link"></i
-                    ></a>
+                      ><span data-i18n="portfolio.seeMore">See more</span></a
+                    >
                   </div>
                 </div>
               </div>
@@ -1080,6 +1259,8 @@
           </div>
         </div>
       </section>
+      <!-- ===== SERVICES : section désactivée (tout le bloc ci-dessous est en commentaire).
+           Ses clés de traduction services.* n'existent pas encore dans i18n.js. ===== -->
       <!--
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
@@ -1193,6 +1374,7 @@
       </div>
     </section>
     -->
+      <!-- ===== TÉMOIGNAGES (carrousel Swiper) ===== -->
       <section id="testimonials" class="testimonials section-bg">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
@@ -1215,7 +1397,7 @@
                   /></a>
                   <h3>Raimana Brasier</h3>
                   <h4 data-i18n="testimonials.raimana.title">
-                    Student specialized in Big Data
+                    Machine Learning Engineer
                   </h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -1238,7 +1420,7 @@
                   /></a>
                   <h3>Teony Mathieu</h3>
                   <h4 data-i18n="testimonials.teony.title">
-                    Student specialized in Big Data & Junior AQSE President
+                    Data Engineer
                   </h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -1258,6 +1440,7 @@
           </div>
         </div>
       </section>
+      <!-- ===== CONTACT ===== -->
       <section id="contact" class="contact">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
@@ -1303,7 +1486,7 @@
                 <div class="phone">
                   <i class="bi bi-phone"></i>
                   <h4 data-i18n="contact.call">Call:</h4>
-                  <p>+33781755907</p>
+                  <p>+33781755907<br />+54 9 11 5898 2230</p>
                 </div>
               </div>
             </div>
@@ -1319,6 +1502,8 @@
       ><i class="bi bi-arrow-up-short"></i
     ></a>
 
+    <!-- Bibliothèques externes (dossier assets/vendor), puis nos scripts :
+         i18n.js DOIT être chargé avant main.js. -->
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1327,7 +1512,7 @@
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/typed.js/typed.umd.js"></script>
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/js/i18n.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/i18n.js?v=17"></script>
+    <script src="assets/js/main.js?v=9"></script>
   </body>
 </html>

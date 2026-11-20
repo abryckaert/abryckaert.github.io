@@ -1,4 +1,34 @@
+/* =====================================================================
+ *  style.css : styles du site (chargé après les styles des bibliothèques)
+ * =====================================================================
+ *  Sommaire (chercher le titre « ===== XXX ===== ») :
+ *    BASE, BOUTON ............ police, liens, boutons CV / WhatsApp
+ *    BACK TO TOP, PRELOADER .. bouton « retour en haut », écran de chargement
+ *    HEADER / NAV ............ menu latéral (rond, s'élargit au survol)
+ *    HERO .................... écran d'accueil
+ *    SECTIONS ................ titres de section communs
+ *    ABOUT ................... « À propos » (liste nationalité, langues, téléphones…)
+ *    FACTS, SKILLS ........... chiffres clés, barres de compétences
+ *    RESUME .................. CV : diplôme, accordéons, logos, cartes Erasmus
+ *    PORTFOLIO ............... cartes projets, diaporama au survol, bouton « Voir plus »
+ *    PORTFOLIO LIGHTBOX ...... fenêtre « Voir plus » (GLightbox restylé)
+ *    PORTFOLIO DETAILS, SERVICES .. anciennes sections (non affichées)
+ *    TESTIMONIALS, CONTACT, FOOTER
+ *    LANGUAGE SELECTOR ....... menu de langue en haut à droite
+ *
+ *  Couleurs principales : bleu #0563bb (survol #0678e3),
+ *  texte gris foncé #45505b, texte secondaire #728394.
+ *
+ *  Après chaque modification, changer le numéro « ?v= » de style.css
+ *  dans index.html pour forcer les navigateurs à recharger le fichier.
+ * ===================================================================== */
+
 /* ===== BASE ===== */
+/* Fond de la zone visible quand on défile au-delà de la page */
+html {
+  background: #fff;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #272829;
@@ -214,14 +244,6 @@ h2 {
   font-size: 20px;
 }
 
-.company-nav-logo {
-  width: 24px;
-  height: 24px;
-  object-fit: cover;
-  border-radius: 4px;
-  flex: 0 0 24px;
-}
-
 .nav-menu a span,
 .nav-menu a:focus span {
   padding: 0 5px 0 7px;
@@ -415,63 +437,6 @@ section {
   margin-bottom: 0;
 }
 
-.mycompany .section-title h3 {
-  font-weight: 700;
-  font-size: 26px;
-  color: #728394;
-  margin-bottom: 0;
-}
-
-.company-services-title,
-.company-information-title {
-  color: #45505b;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-/* ===== SERVICE CARDS ===== */
-.company-service-card {
-  border: 0;
-  border-top: 3px solid #0563bb;
-  border-radius: 4px;
-  min-height: 520px;
-  box-shadow: 0 8px 24px rgba(69, 80, 91, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.company-service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(69, 80, 91, 0.14);
-}
-
-.company-service-card .card-body {
-  padding: 48px 32px 40px;
-}
-
-.company-service-icon {
-  color: #0563bb;
-  font-size: 48px;
-  line-height: 1;
-  margin-bottom: 18px;
-  text-align: center;
-  padding-bottom: 35px;
-}
-
-.company-service-card .card-title {
-  color: #45505b;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 22px;
-}
-
-.company-service-card .card-text {
-  color: #728394;
-  font-size: 16px;
-  line-height: 1.8;
-  margin-bottom: 0;
-}
-
 h3 {
   font-weight: 700;
   font-size: 26px;
@@ -644,6 +609,160 @@ h3 {
   border: 2px solid #0563bb;
 }
 
+/* --- Petite note sous un titre du CV, visible même fermé
+ * (ex. « École d'ingénieurs comparable à l'UTN ou l'ITBA ») --- */
+.resume .resume-header-note {
+  margin: -4px 0 10px;
+  font-size: 14px;
+  font-style: italic;
+  color: #6b7785;
+}
+
+/* --- CV : éléments dépliables (accordéons) ---
+ * Fermé : .resume-body a une hauteur 0 (grid-template-rows: 0fr).
+ * Ouvert : main.js ajoute .open sur .resume-collapsible -> 1fr (animation fluide).
+ * La flèche (.resume-chevron) est placée à gauche via `order: -1`. */
+.resume .resume-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 6px;
+  outline: none;
+}
+
+.resume .resume-header:focus-visible {
+  box-shadow: 0 0 0 2px rgba(5, 99, 187, 0.4);
+}
+
+.resume .resume-header:hover h4 {
+  color: #0678e3;
+}
+
+.resume .resume-chevron {
+  order: -1;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #0563bb;
+  background: rgba(5, 99, 187, 0.1);
+  border-radius: 50%;
+  transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.resume .resume-header:hover .resume-chevron,
+.resume .resume-collapsible.open .resume-chevron {
+  background: #0563bb;
+  color: #fff;
+}
+
+.resume .resume-collapsible.open .resume-chevron {
+  transform: rotate(180deg);
+}
+
+.resume .resume-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.resume .resume-collapsible.open .resume-body {
+  grid-template-rows: 1fr;
+}
+
+.resume .resume-body-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.resume .resume-collapsible .resume-body-inner > :last-child {
+  margin-bottom: 0;
+}
+
+/* --- Cartes Erasmus dans le bloc « Cycle ingénieur » --- */
+.resume .erasmus-list {
+  display: grid;
+  gap: 10px;
+  margin: 4px 0 16px;
+}
+
+.resume .erasmus-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid rgba(5, 99, 187, 0.25);
+  border-left: 4px solid #0563bb;
+  border-radius: 8px;
+  background: rgba(5, 99, 187, 0.05);
+}
+
+.resume .erasmus-flag {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.resume .erasmus-card strong {
+  display: block;
+  color: #45505b;
+  font-size: 15px;
+}
+
+.resume .erasmus-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #0563bb;
+  border-radius: 4px;
+  padding: 1px 8px;
+  margin-bottom: 4px;
+}
+
+/* --- Logo d'école / d'entreprise dans l'en-tête d'un élément du CV
+ * (fichiers dans assets/img/logos/) --- */
+.resume .resume-logo {
+  flex: 0 0 72px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #e3e8ee;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.resume .resume-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.resume .resume-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* --- Encadré « Prix reconnu par la Ville de Buenos Aires » (French Tech) --- */
+.resume .resume-recognition {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: rgba(5, 99, 187, 0.08);
+  color: #0563bb;
+}
+
 /* ===== PORTFOLIO ===== */
 .portfolio .portfolio-item {
   margin-bottom: 30px;
@@ -793,6 +912,306 @@ h3 {
 .portfolio .portfolio-wrap:hover .portfolio-info::after {
   bottom: 15px;
   right: 15px;
+}
+
+/* --- Diaporama au survol (créé par main.js, section 9) ---
+ * .portfolio-slides : calque d'images posé sur l'image de la carte ;
+ * l'image .active est visible, les autres sont transparentes. */
+.portfolio .portfolio-wrap .portfolio-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.portfolio .portfolio-wrap .portfolio-slides.on {
+  opacity: 1;
+}
+
+.portfolio .portfolio-wrap .portfolio-slides img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.portfolio .portfolio-wrap .portfolio-slides img.active {
+  opacity: 1;
+}
+
+.portfolio .portfolio-wrap .portfolio-slide-count {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(69, 80, 91, 0.75);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.portfolio .portfolio-wrap.has-slides:hover .portfolio-slide-count {
+  opacity: 1;
+}
+
+/* Carte avec diaporama : le voile blanc disparaît et le titre + « Voir plus »
+ * passent dans une bande dégradée en bas, pour laisser voir les photos. */
+.portfolio .portfolio-wrap.has-slides:hover::before {
+  opacity: 0;
+}
+
+.portfolio .portfolio-wrap.has-slides .portfolio-info {
+  justify-content: flex-end;
+  padding: 0 20px 18px;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(255, 255, 255, 0.92) 40%,
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.portfolio .portfolio-wrap.has-slides .portfolio-info::before,
+.portfolio .portfolio-wrap.has-slides .portfolio-info::after {
+  display: none;
+}
+
+/* --- Bouton « Voir plus » au survol d'une carte (ouvre la galerie) --- */
+.portfolio .portfolio-wrap .portfolio-links a.portfolio-more {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 7px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #0563bb;
+  border-radius: 50px;
+  transition: background 0.2s ease;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a.portfolio-more:hover {
+  color: #fff;
+  background: #0678e3;
+}
+
+/* ===== PORTFOLIO LIGHTBOX ===== */
+/* Fond sombre flouté derrière la photo */
+.glightbox-container .goverlay {
+  background: rgba(12, 18, 28, 0.88);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+/* Barre de description de GLightbox masquée (le titre est dans .glb-head) */
+.glightbox-container .gslide-description {
+  display: none !important;
+}
+
+.glightbox-container .gslide-media,
+.glightbox-clean .gslide-media {
+  box-shadow: none;
+  background: transparent;
+}
+
+.glightbox-container .gslide-image img {
+  max-height: calc(100vh - 210px) !important;
+  max-width: min(1100px, calc(100vw - 180px));
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  background: #fff;
+}
+
+.glightbox-container .ginner-container {
+  margin-top: -40px;
+}
+
+/* --- Boutons : précédent / suivant / fermer (ronds, effet verre) --- */
+.glightbox-clean .gprev,
+.glightbox-clean .gnext,
+.glightbox-clean .gclose {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 1;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.glightbox-clean .gprev:hover,
+.glightbox-clean .gnext:hover,
+.glightbox-clean .gclose:hover {
+  background-color: #0563bb;
+  border-color: #0563bb;
+  transform: scale(1.06);
+}
+
+.glightbox-clean .gprev svg,
+.glightbox-clean .gnext svg {
+  width: 20px;
+}
+
+.glightbox-clean .gclose {
+  width: 44px;
+  height: 44px;
+  top: 22px;
+  right: 24px;
+}
+
+.glightbox-clean .gclose svg {
+  width: 14px;
+}
+
+.glightbox-clean .gprev {
+  left: 32px;
+}
+
+.glightbox-clean .gnext {
+  right: 32px;
+}
+
+.glightbox-clean .gbtn.focused {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* --- En-tête : nom du projet + compteur « 3 / 20 » (créé par main.js) --- */
+.glb-head {
+  position: fixed;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: calc(100vw - 160px);
+  color: #fff;
+  pointer-events: none;
+}
+
+.glb-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.glb-count {
+  flex-shrink: 0;
+  padding: 3px 11px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* --- Bande de miniatures cliquables en bas (créée par main.js) --- */
+.glb-thumbs {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 100000;
+  display: flex;
+  gap: 8px;
+  max-width: calc(100vw - 48px);
+  padding: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glb-thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.glb-thumb {
+  flex: 0 0 auto;
+  width: 84px;
+  height: 54px;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: #fff;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.glb-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.glb-thumb:hover {
+  opacity: 0.85;
+}
+
+.glb-thumb.active {
+  opacity: 1;
+  border-color: #0563bb;
+}
+
+.glb-thumb:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Fenêtre « Voir plus » sur mobile : image et miniatures plus petites */
+@media (max-width: 768px) {
+  .glightbox-container .gslide-image img {
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 190px) !important;
+    border-radius: 8px;
+  }
+
+  .glightbox-container .ginner-container {
+    margin-top: -20px;
+  }
+
+  .glb-head {
+    top: 20px;
+    left: 16px;
+    transform: none;
+    max-width: calc(100vw - 90px);
+  }
+
+  .glb-title {
+    font-size: 15px;
+  }
+
+  .glightbox-clean .gclose {
+    top: 12px;
+    right: 12px;
+  }
+
+  .glb-thumb {
+    width: 64px;
+    height: 42px;
+  }
 }
 
 /* ===== PORTFOLIO DETAILS ===== */
@@ -1252,4 +1671,336 @@ h3 {
     top: 20px;
     right: 20px;
   }
+}
+
+/* =====================================================================
+ * ===== THÈME SOMBRE =====
+ * =====================================================================
+ * Activé quand <html data-theme="dark"> (posé par le petit script du
+ * <head> de index.html, puis par le bouton soleil / lune).
+ * Par défaut : suit le réglage clair / sombre de l'appareil du visiteur.
+ * Couleurs : fond #0f1620, surfaces #17212d / #1e2a38, bordures #2a3746,
+ * texte #d5dde5, titres #eef2f6, texte secondaire #9aa8b6,
+ * bleu éclairci #3b8fe0 (meilleur contraste sur fond sombre).
+ * ===================================================================== */
+
+/* --- Bouton soleil / lune (à côté du menu de langue) --- */
+.language-selector-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#theme-toggle {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  font-size: 20px;
+  color: #0563bb;
+  background: #fff;
+  border: 1px solid #0563bb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#theme-toggle:hover {
+  color: #fff;
+  background: #0563bb;
+}
+
+#theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(5, 99, 187, 0.3);
+}
+
+/* Icône : lune en clair (passer en sombre), soleil en sombre */
+#theme-toggle .bx-sun,
+html[data-theme="dark"] #theme-toggle .bx-moon {
+  display: none;
+}
+
+html[data-theme="dark"] #theme-toggle .bx-sun {
+  display: block;
+}
+
+@media (max-width: 991px) {
+  #theme-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 17px;
+  }
+}
+
+/* --- Base --- */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  background: #0f1620;
+}
+
+html[data-theme="dark"] body {
+  background: #0f1620;
+  color: #d5dde5;
+}
+
+html[data-theme="dark"] a {
+  color: #5aa3ea;
+}
+
+html[data-theme="dark"] h3,
+html[data-theme="dark"] .about .content h3 {
+  color: #9aa8b6;
+}
+
+html[data-theme="dark"] #preloader {
+  background: #0f1620;
+}
+
+html[data-theme="dark"] #preloader:before {
+  border-top-color: #0f1620;
+  border-bottom-color: #0f1620;
+}
+
+/* --- Menu latéral et sélecteurs --- */
+html[data-theme="dark"] #header {
+  background: transparent;
+}
+
+@media (max-width: 991px) {
+  html[data-theme="dark"] #header {
+    background: #17212d;
+    border-right-color: #2a3746;
+  }
+}
+
+html[data-theme="dark"] .nav-menu a,
+html[data-theme="dark"] .nav-menu a:focus {
+  color: #d5dde5;
+  background: #1e2a38;
+}
+
+html[data-theme="dark"] .nav-menu a span,
+html[data-theme="dark"] .nav-menu a:focus span,
+html[data-theme="dark"] .mobile-nav-toggle i {
+  color: #d5dde5;
+}
+
+html[data-theme="dark"] .nav-menu a:hover,
+html[data-theme="dark"] .nav-menu .active,
+html[data-theme="dark"] .nav-menu li:hover > a {
+  color: #fff;
+  background: #0563bb;
+}
+
+html[data-theme="dark"] .nav-menu a:hover span,
+html[data-theme="dark"] .nav-menu .active span,
+html[data-theme="dark"] .nav-menu li:hover > a span {
+  color: #fff;
+}
+
+html[data-theme="dark"] #language-selector,
+html[data-theme="dark"] #theme-toggle {
+  color: #5aa3ea;
+  background: #17212d;
+  border-color: #3b8fe0;
+}
+
+html[data-theme="dark"] #language-selector:hover,
+html[data-theme="dark"] #theme-toggle:hover {
+  color: #fff;
+  background: #0563bb;
+}
+
+/* --- Accueil --- */
+html[data-theme="dark"] #hero:before {
+  background: rgba(15, 22, 32, 0.82);
+}
+
+html[data-theme="dark"] #hero h1,
+html[data-theme="dark"] #hero p {
+  color: #eef2f6;
+}
+
+html[data-theme="dark"] #hero p span {
+  color: #5aa3ea;
+}
+
+/* Boutons « Télécharger le CV » et « WhatsApp » : couleurs adoucies,
+ * les teintes vives d'origine paraissent fluo sur fond sombre */
+html[data-theme="dark"] .btn-oval {
+  color: #e6edf3;
+  background-color: #1f4f80;
+  border-color: #2b5f93;
+}
+
+html[data-theme="dark"] .btn-oval:hover {
+  color: #fff;
+  background-color: #275f98;
+  border-color: #3570aa;
+}
+
+html[data-theme="dark"] .btn-oval.btn-whatsapp {
+  background-color: #1e6b43;
+  border-color: #267a4e;
+}
+
+html[data-theme="dark"] .btn-oval.btn-whatsapp:hover {
+  background-color: #237c4e;
+  border-color: #2d8c5b;
+}
+
+/* --- Titres de section --- */
+html[data-theme="dark"] .section-title h2 {
+  color: #eef2f6;
+}
+
+html[data-theme="dark"] .section-title h2::before {
+  background: #2a3746;
+}
+
+/* --- Compétences --- */
+html[data-theme="dark"] .skills .progress .skill {
+  color: #d5dde5;
+}
+
+html[data-theme="dark"] .skills .progress-bar-wrap {
+  background: #1e2a38;
+}
+
+/* --- CV --- */
+html[data-theme="dark"] .resume .resume-title {
+  color: #eef2f6;
+}
+
+html[data-theme="dark"] .resume .resume-item h4 {
+  color: #5aa3ea;
+}
+
+html[data-theme="dark"] .resume .resume-item h5 {
+  color: #d5dde5;
+  background: #1e2a38;
+}
+
+html[data-theme="dark"] .resume .resume-item::before {
+  background: #0f1620;
+  border-color: #3b8fe0;
+}
+
+html[data-theme="dark"] .resume .resume-item {
+  border-left-color: #3b8fe0;
+}
+
+html[data-theme="dark"] .resume .resume-header-note {
+  color: #9aa8b6;
+}
+
+html[data-theme="dark"] .resume .resume-chevron {
+  color: #5aa3ea;
+  background: rgba(59, 143, 224, 0.15);
+}
+
+html[data-theme="dark"] .resume .resume-header:hover .resume-chevron,
+html[data-theme="dark"] .resume .resume-collapsible.open .resume-chevron {
+  color: #fff;
+  background: #0563bb;
+}
+
+html[data-theme="dark"] .resume .resume-logo {
+  border-color: #2a3746;
+  box-shadow: none;
+}
+
+html[data-theme="dark"] .resume .erasmus-card {
+  background: rgba(59, 143, 224, 0.08);
+  border-color: rgba(59, 143, 224, 0.3);
+  border-left-color: #3b8fe0;
+}
+
+html[data-theme="dark"] .resume .erasmus-card strong {
+  color: #d5dde5;
+}
+
+html[data-theme="dark"] .resume .resume-recognition {
+  color: #5aa3ea;
+  background: rgba(59, 143, 224, 0.12);
+}
+
+/* --- Portfolio --- */
+html[data-theme="dark"] .portfolio #portfolio-flters {
+  background: #17212d;
+}
+
+html[data-theme="dark"] .portfolio #portfolio-flters li {
+  color: #d5dde5;
+}
+
+html[data-theme="dark"] .portfolio #portfolio-flters li:hover,
+html[data-theme="dark"] .portfolio #portfolio-flters li.filter-active {
+  color: #5aa3ea;
+}
+
+html[data-theme="dark"] .portfolio .portfolio-wrap::before {
+  background: rgba(15, 22, 32, 0.78);
+}
+
+html[data-theme="dark"] .portfolio .portfolio-wrap .portfolio-info h4 {
+  color: #eef2f6;
+}
+
+html[data-theme="dark"] .portfolio .portfolio-wrap.has-slides .portfolio-info {
+  background: linear-gradient(
+    to top,
+    rgba(15, 22, 32, 0.96) 0%,
+    rgba(15, 22, 32, 0.9) 40%,
+    rgba(15, 22, 32, 0) 70%
+  );
+}
+
+/* --- Témoignages --- */
+html[data-theme="dark"] .testimonials .testimonial-item .testimonial-img {
+  border-color: #17212d;
+}
+
+html[data-theme="dark"] .testimonials .testimonial-item h3 {
+  color: #eef2f6;
+}
+
+html[data-theme="dark"] .testimonials .testimonial-item h4 {
+  color: #9aa8b6;
+}
+
+html[data-theme="dark"] .testimonials .swiper-pagination .swiper-pagination-bullet {
+  background-color: #17212d;
+  border-color: #3b8fe0;
+}
+
+html[data-theme="dark"] .testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #3b8fe0;
+}
+
+/* --- Contact et pied de page --- */
+html[data-theme="dark"] .contact .info {
+  background: transparent;
+}
+
+html[data-theme="dark"] .contact .info i {
+  color: #5aa3ea;
+  background: rgba(59, 143, 224, 0.15);
+}
+
+html[data-theme="dark"] .contact .info h4 {
+  color: #eef2f6;
+}
+
+html[data-theme="dark"] .contact .info p {
+  color: #9aa8b6;
+}
+
+html[data-theme="dark"] #footer {
+  color: #d5dde5;
+  background: #17212d;
 }
