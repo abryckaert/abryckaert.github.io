@@ -52,7 +52,7 @@ const translations = {
     // Hero section
     'hero.title': 'Anthony Bryckaert',
     'hero.subtitle': "I'm",
-    'hero.typedItems': 'Engineer, Developer, Pentester',
+    'hero.typedItems': 'an AI engineer, a cybersecurity engineer, a software developer, open to new opportunities',
     'hero.download': 'Download resume',
     'hero.whatsapp': 'Contact me on WhatsApp',
 
@@ -181,7 +181,7 @@ const translations = {
     // Hero section
     'hero.title': 'Anthony Bryckaert',
     'hero.subtitle': "Je suis",
-    'hero.typedItems': 'Ingénieur, Développeur, Pentester',
+    'hero.typedItems': 'ingénieur IA, ingénieur en cybersécurité, développeur logiciel, à la recherche d\'un emploi',
     'hero.download': 'Télécharger le CV',
     'hero.whatsapp': 'Me contacter sur WhatsApp',
 
@@ -311,7 +311,7 @@ const translations = {
     // Hero section
     'hero.title': 'Anthony Bryckaert',
     'hero.subtitle': 'Soy',
-    'hero.typedItems': 'Ingeniero, Desarrollador, Pentester',
+    'hero.typedItems': 'ingeniero de IA, ingeniero en ciberseguridad, desarrollador de software, en búsqueda de empleo',
     'hero.download': 'Descargar currículum',
     'hero.whatsapp': 'Escríbeme por WhatsApp',
     
