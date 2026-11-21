@@ -135,12 +135,60 @@
     }
   });
 
-  // Retire l'écran de chargement une fois la page chargée
-    let preloader = select('#preloader');
+  // Écran d'ouverture « glitch » : reste affiché au moins MIN_MS, puis
+  // part avec une dernière salve de glitch (classe .is-leaving, ~0,5 s).
+  // Sécurité : il part de toute façon après MAX_MS, même si la page charge encore.
+  let preloader = select('#preloader');
   if (preloader) {
+    const MIN_MS = 1400;
+    const MAX_MS = 3500;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let leaving = false;
+
+    // Lignes de terminal qui défilent au-dessus du nom (une toutes les 120 ms).
+    // Les anciennes montent et sortent par le haut du bloc (CSS : .glitch-term).
+    const term = preloader.querySelector('.glitch-term');
+    const TERM_LINES = [
+      ['ok', 'loading profile: Anthony Bryckaert'],
+      ['ok', 'role: AI & Cybersecurity Engineer'],
+      ['ok', 'education: Computer Engineering degree'],
+      ['ok', 'experience: NATO · Capgemini · CS GROUP'],
+      ['ok', 'skills: Python · React · Security · ML'],
+      ['ok', 'location: Buenos Aires, Argentina'],
+      ['ok', 'status: open to new opportunities'],
+      ['cmd', '> ready']
+    ];
+    if (term) {
+      let i = 0;
+      const addLine = () => {
+        if (leaving || i >= TERM_LINES.length) return;
+        const [kind, text] = TERM_LINES[i++];
+        const line = document.createElement('div');
+        line.className = 'glitch-line' + (kind ? ' is-' + kind : '');
+        const tag = kind === 'ok' ? '✓  ' : '';
+        line.textContent = tag + text;
+        if (kind === 'cmd') {
+          const cursor = document.createElement('span');
+          cursor.className = 'glitch-cursor';
+          cursor.textContent = '_';
+          line.appendChild(cursor);
+        }
+        term.appendChild(line);
+        if (i < TERM_LINES.length) setTimeout(addLine, reduceMotion ? 0 : 120);
+      };
+      addLine();
+    }
+    const leave = () => {
+      if (leaving) return;
+      leaving = true;
+      preloader.classList.add('is-leaving');
+      setTimeout(() => preloader.remove(), reduceMotion ? 200 : 550);
+    };
     window.addEventListener('load', () => {
-      preloader.remove()
+      const wait = Math.max(0, (reduceMotion ? 300 : MIN_MS) - performance.now());
+      setTimeout(leave, wait);
     });
+    setTimeout(leave, MAX_MS);
   }
 
     // Typed.js (texte « Je suis Ingénieur… » qui s'écrit tout seul) est

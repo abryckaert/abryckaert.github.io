@@ -138,35 +138,193 @@ h2 {
   opacity: 1;
 }
 
-/* ===== PRELOADER ===== */
+/* ===== PRELOADER : écran d'ouverture « liquid glass » =====
+   Verre blanc dépoli posé sur la page (on devine le site flouté derrière),
+   aux couleurs du site. En thème sombre, le verre devient sombre. Des lignes de terminal
+   s'affichent (main.js), le nom apparaît puis a deux salves de glitch,
+   une barre se remplit. main.js ajoute .is-leaving pour la sortie (fondu
+   vers le haut), puis supprime l'élément. */
 #preloader {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 9999;
   overflow: hidden;
-  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.9), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(5, 99, 187, 0.08), transparent 50%),
+    rgba(255, 255, 255, 0.62);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  font-family: "SFMono-Regular", Menlo, Consolas, "Courier New", monospace;
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
-#preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #0563bb;
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: animate-preloader 1s linear infinite;
+#preloader .glitch-wrap {
+  position: relative;
+  text-align: center;
+  padding: 0 16px;
 }
 
-@keyframes animate-preloader {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* Bloc de terminal : 6 lignes visibles, les plus récentes en bas */
+#preloader .glitch-term {
+  height: calc(6 * 1.7em);
+  margin-bottom: 22px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #728394;
+  white-space: pre;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 50%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 50%);
+}
+
+#preloader .glitch-line { flex: none; animation: glitch-line-in 0.25s ease-out; }
+#preloader .glitch-line.is-ok::first-letter { color: #0563bb; }
+#preloader .glitch-line.is-cmd { color: #0563bb; }
+#preloader .glitch-cursor { animation: glitch-blink 0.8s steps(1) infinite; }
+
+#preloader .glitch {
+  position: relative;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: clamp(26px, 6vw, 52px);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  color: #45505b;
+}
+
+/* Le nom apparaît flou → net, puis deux salves de glitch nettes et courtes :
+   décalage horizontal + séparation bleu / rose (text-shadow), et deux copies
+   du texte (::before / ::after) découpées en tranches qui sautent. */
+#preloader .glitch {
+  animation:
+    name-reveal 0.7s 0.1s cubic-bezier(0.2, 0.7, 0.2, 1) both,
+    name-glitch 1.3s linear both;
+}
+
+#preloader .glitch::before,
+#preloader .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#preloader .glitch::before {
+  color: #0563bb;
+  animation: name-slice-1 1.3s steps(1) both;
+}
+
+#preloader .glitch::after {
+  color: #ff2a6d;
+  animation: name-slice-2 1.3s steps(1) both;
+}
+
+#preloader .glitch-bar {
+  margin: 22px auto 0;
+  width: min(220px, 60vw);
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(69, 80, 91, 0.12);
+  overflow: hidden;
+}
+
+#preloader .glitch-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #0563bb;
+  animation: glitch-load 1.2s ease-in-out forwards;
+}
+
+#preloader.is-leaving {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+/* Thème sombre : même verre, en sombre */
+html[data-theme="dark"] #preloader {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.06), transparent 45%),
+    rgba(15, 22, 32, 0.66);
+}
+html[data-theme="dark"] #preloader .glitch { color: #eef2f6; }
+html[data-theme="dark"] #preloader .glitch-term { color: #9aa8b6; }
+html[data-theme="dark"] #preloader .glitch-line.is-ok::first-letter,
+html[data-theme="dark"] #preloader .glitch-line.is-cmd { color: #5aa3ea; }
+html[data-theme="dark"] #preloader .glitch-bar span { background: #3b8fe0; }
+html[data-theme="dark"] #preloader .glitch-bar { background: #2a3746; }
+
+@keyframes glitch-line-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes glitch-blink {
+  50% { opacity: 0; }
+}
+
+@keyframes glitch-load {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes name-reveal {
+  0% { opacity: 0; filter: blur(10px); letter-spacing: 0.14em; }
+  100% { opacity: 1; filter: blur(0); letter-spacing: 0.04em; }
+}
+
+@keyframes name-glitch {
+  0%, 56% { transform: none; text-shadow: none; }
+  58% { transform: translateX(-5px) skewX(-10deg); text-shadow: 3px 0 rgba(255, 42, 109, 0.7), -3px 0 rgba(5, 99, 187, 0.8); }
+  61% { transform: translateX(4px); text-shadow: -3px 0 rgba(255, 42, 109, 0.7), 3px 0 rgba(5, 99, 187, 0.8); }
+  64% { transform: translateX(-2px) skewX(5deg); text-shadow: 2px 0 rgba(255, 42, 109, 0.6), -2px 0 rgba(5, 99, 187, 0.7); }
+  67%, 83% { transform: none; text-shadow: none; }
+  85% { transform: translateX(6px); text-shadow: -4px 0 rgba(255, 42, 109, 0.7), 4px 0 rgba(5, 99, 187, 0.8); }
+  88% { transform: translateX(-3px) skewX(-6deg); text-shadow: 2px 0 rgba(255, 42, 109, 0.6), -2px 0 rgba(5, 99, 187, 0.7); }
+  91%, 100% { transform: none; text-shadow: none; }
+}
+
+@keyframes name-slice-1 {
+  0%, 56% { opacity: 0; }
+  58% { opacity: 0.9; clip-path: inset(10% 0 62% 0); transform: translateX(-10px); }
+  61% { opacity: 0.9; clip-path: inset(55% 0 25% 0); transform: translateX(8px); }
+  64% { opacity: 0.9; clip-path: inset(30% 0 50% 0); transform: translateX(-4px); }
+  67%, 83% { opacity: 0; }
+  85% { opacity: 0.9; clip-path: inset(70% 0 8% 0); transform: translateX(12px); }
+  88% { opacity: 0.9; clip-path: inset(20% 0 65% 0); transform: translateX(-6px); }
+  91%, 100% { opacity: 0; }
+}
+
+@keyframes name-slice-2 {
+  0%, 56% { opacity: 0; }
+  58% { opacity: 0.7; clip-path: inset(60% 0 15% 0); transform: translateX(9px); }
+  61% { opacity: 0.7; clip-path: inset(15% 0 70% 0); transform: translateX(-7px); }
+  64% { opacity: 0.7; clip-path: inset(42% 0 40% 0); transform: translateX(5px); }
+  67%, 83% { opacity: 0; }
+  85% { opacity: 0.7; clip-path: inset(5% 0 75% 0); transform: translateX(-11px); }
+  88% { opacity: 0.7; clip-path: inset(50% 0 30% 0); transform: translateX(7px); }
+  91%, 100% { opacity: 0; }
+}
+
+/* Visiteurs qui demandent moins d'animations : simple fondu */
+@media (prefers-reduced-motion: reduce) {
+  #preloader .glitch,
+  #preloader .glitch-line,
+  #preloader .glitch::before,
+  #preloader .glitch::after,
+  #preloader .glitch-cursor { animation: none; }
+  #preloader .glitch-bar span { animation-duration: 0.3s; }
+  #preloader.is-leaving { transform: none; }
 }
 
 @keyframes animate-loading {
@@ -1776,15 +1934,6 @@ html[data-theme="dark"] a {
 html[data-theme="dark"] h3,
 html[data-theme="dark"] .about .content h3 {
   color: #9aa8b6;
-}
-
-html[data-theme="dark"] #preloader {
-  background: #0f1620;
-}
-
-html[data-theme="dark"] #preloader:before {
-  border-top-color: #0f1620;
-  border-bottom-color: #0f1620;
 }
 
 /* --- Menu latéral et sélecteurs --- */
