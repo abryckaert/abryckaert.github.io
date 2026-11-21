@@ -61,7 +61,7 @@ const translations = {
     // About section
     'about.title': 'About',
     'about.subtitle': 'Engineer specializing in Software Development, Cybersecurity, and Artificial Intelligence',
-    'about.description': 'I am deeply committed to the fields of Information Technology, with a particular focus on Cybersecurity and Artificial Intelligence.',
+    'about.description': '“I am deeply committed to the fields of Information Technology, with a particular focus on Cybersecurity and Artificial Intelligence.”',
     'about.nationality': 'Nationality:',
     'about.nationality.value': 'French',
     'about.firstLang': 'First language:',
@@ -192,7 +192,7 @@ const translations = {
     // About section
     'about.title': 'À propos',
     'about.subtitle': 'Ingénieur spécialisé en Développement Logiciel, Cybersécurité et Intelligence Artificielle',
-    'about.description': 'Je suis profondément engagé dans les domaines des Technologies de l\'Information, avec un focus particulier sur la Cybersécurité et l\'Intelligence Artificielle.',
+    'about.description': '« Je suis profondément engagé dans les domaines des Technologies de l\'Information, avec un focus particulier sur la Cybersécurité et l\'Intelligence Artificielle. »',
     'about.nationality': 'Nationalité:',
     'about.nationality.value': 'Française',
     'about.firstLang': 'Première langue:',
@@ -322,7 +322,7 @@ const translations = {
     // About section
     'about.title': 'Acerca de',
     'about.subtitle': 'Ingeniero especializado en Desarrollo de Software, Ciberseguridad e Inteligencia Artificial',
-    'about.description': 'Estoy profundamente comprometido con los campos de Tecnologías de la Información, con un enfoque particular en Ciberseguridad e Inteligencia Artificial.',
+    'about.description': '«Estoy profundamente comprometido con los campos de Tecnologías de la Información, con un enfoque particular en Ciberseguridad e Inteligencia Artificial.»',
     'about.nationality': 'Nacionalidad:',
     'about.nationality.value': 'Francesa',
     'about.firstLang': 'Primera lengua:',
